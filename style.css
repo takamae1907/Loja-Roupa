@@ -149,8 +149,8 @@ body {
 
 .product-grid {
     display: grid;
-    /* Layout 3x2, como pedido */
-    grid-template-columns: repeat(3, 1fr);
+    /* === LAYOUT PADRÃO (TABLET) MUDADO DE 3 PARA 2 COLUNAS === */
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
@@ -168,17 +168,21 @@ body {
 }
 
 
-/* Imagens de placeholder (6 cards) */
+/* ==== CLASSE DA IMAGEM ADICIONADA DE VOLTA ==== */
 
 .product-image-placeholder {
     width: 100%;
     height: 250px;
     background-color: var(--color-light-pink);
+    /* Cor caso a imagem não carregue */
     border-radius: 8px;
     margin-bottom: 1rem;
     background-size: cover;
     background-position: center;
 }
+
+
+/* Classes antigas de imagem (não são mais necessárias se usar o style inline) */
 
 .img-1 {
     background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500');
@@ -813,4 +817,64 @@ body {
     border-top: 1px solid var(--color-border);
     color: var(--color-text-light);
     font-size: 0.9rem;
+}
+
+
+/* ---- 11. Estilos do Bento Grid (Adicionado) ---- */
+
+
+/* Nova estrutura de labels para os cards */
+
+.product-card-label {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+    /* Espaçamento menor */
+}
+
+
+/* ===== ESTILOS ANTIGOS REMOVIDOS DAQUI ===== */
+
+
+/* Remove o aspect-ratio e min-height que eram para cards sem foto */
+
+#colecao .product-card {
+    /* Não precisa mais de flex, aspect-ratio ou min-height. */
+    /* O card flui naturalmente com a imagem. */
+}
+
+#colecao .product-card h3 {
+    margin-bottom: 0.25rem;
+}
+
+
+/* Layout do Grid (Desktop - Bento) */
+
+@media (min-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    /* Analytics (Card 1) - Padrão (1x1) */
+    /* Dashboard (Card 2) - Padrão (1x1) */
+    /* Collaboration (Card 3) - (2x2) */
+    .product-grid .product-card:nth-child(3) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    /* Automation (Card 4) - (2x2) */
+    .product-grid .product-card:nth-child(4) {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+    }
+    /* Integration (Card 5) - (1x1) */
+    .product-grid .product-card:nth-child(5) {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    /* Security (Card 6) - (1x1) */
+    .product-grid .product-card:nth-child(6) {
+        grid-column: 4;
+        grid-row: 3;
+    }
 }
