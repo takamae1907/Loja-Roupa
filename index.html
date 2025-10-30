@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Loja - Moda Feminina</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/ogl@0.0.100/dist/ogl.umd.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Sua Marca</a>
+            <nav class="nav-menu">
+                <a href="#home">Início</a>
+                <a href="#colecao">Coleção</a>
+                <a href="#destaques-carousel">Destaques</a>
+                <a href="#novidades">Novidades</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <div class="nav-icons">
+                <div class="icon-btn icon-btn--small">
+                    <span class="icon-btn__back"></span>
+                    <span class="icon-btn__front">
+                        <span class="icon-btn__icon"><i class="fas fa-shopping-bag"></i></span>
+                    </span>
+                    <span class="icon-btn__label">Sacola</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-aurora">
+            <div class="aurora-content">
+                <h2>Coleção Essencial</h2>
+                <p>Elegância e conforto para o seu dia a dia.</p>
+                <a href="#colecao" class="cta-button">Ver Agora</a>
+            </div>
+        </section>
+
+
+        <section id="colecao" class="product-grid-section">
+            <h2>Nossa Coleção</h2>
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-image-placeholder img-1"></div>
+                    <h3>Vestido Elegante</h3>
+                    <p>R$ 299,90</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-placeholder img-2"></div>
+                    <h3>Bolsa Minimalista</h3>
+                    <p>R$ 450,00</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-placeholder img-3"></div>
+                    <h3>Casaco de Lã</h3>
+                    <p>R$ 799,90</p>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder img-4"></div>
+                    <h3>Saia Plissada</h3>
+                    <p>R$ 180,00</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-placeholder img-5"></div>
+                    <h3>Blazer de Linho</h3>
+                    <p>R$ 350,00</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-placeholder img-6"></div>
+                    <h3>Sandália de Tira</h3>
+                    <p>R$ 220,00</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="destaques-carousel" class="product-carousel-section">
+            <h2>Destaques da Semana</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-button prev" id="carousel-prev">&lt;</button>
+                <div class="product-carousel-track-container">
+                    <div class="product-carousel-track">
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=500" alt="Roupa 1">
+                        </div>
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=500" alt="Roupa 2">
+                        </div>
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1548883526-71e38a594101?w=500" alt="Roupa 3">
+                        </div>
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1496747631119-35a4985a9751?w=500" alt="Roupa 4">
+                        </div>
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1550979334-a210b6d1b78b?w=500" alt="Roupa 5">
+                        </div>
+                        <div class="product-carousel-card">
+                            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=500" alt="Roupa 6">
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button next" id="carousel-next">&gt;</button>
+            </div>
+        </section>
+
+
+        <section id="novidades" class="stepper-section">
+            <h2>Como Comprar</h2>
+            <p>Siga os passos para finalizar seu pedido.</p>
+            <div class="stepper-outer-container">
+                <div class="stepper-indicator-row">
+                </div>
+                <div class="stepper-content-wrapper">
+                    <div class="stepper-content active" data-step="1">
+                        <h3>Bem-vinda ao nosso provador!</h3>
+                        <p>Explore as coleções e adicione seus itens favoritos à sacola.</p>
+                    </div>
+                    <div class="stepper-content" data-step="2">
+                        <h3>Quase lá!</h3>
+                        <p>Informe seu endereço e forma de pagamento.</p>
+                        <input type="text" placeholder="Seu CEP" class="stepper-input">
+                    </div>
+                    <div class="stepper-content" data-step="3">
+                        <h3>Pedido Finalizado!</h3>
+                        <p>Obrigada por comprar com a gente. Você receberá atualizações por e-mail!</p>
+                    </div>
+                </div>
+                <div class="stepper-footer">
+                    <div class="stepper-nav">
+                        <button class="stepper-button-back" style="display: none;">Voltar</button>
+                        <button class="stepper-button-next">Próximo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contato" class="contact-section">
+            <div class="contact-content">
+                <h2>Entre em contato</h2>
+                <p>Tem alguma dúvida ou sugestão? Fale com a vendedora.</p>
+
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Seu Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Seu E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <nav class="mobile-dock">
+        <a href="#home" class="dock-item active">
+            <div class="icon-btn">
+                <span class="icon-btn__back"></span>
+                <span class="icon-btn__front">
+                    <span class="icon-btn__icon"><i class="fas fa-home"></i></span>
+                </span>
+                <span class="icon-btn__label">Início</span>
+            </div>
+        </a>
+        <a href="#colecao" class="dock-item">
+            <div class="icon-btn">
+                <span class="icon-btn__back"></span>
+                <span class="icon-btn__front">
+                    <span class="icon-btn__icon"><i class="fas fa-box-archive"></i></span>
+                </span>
+                <span class="icon-btn__label">Coleção</span>
+            </div>
+        </a>
+        <a href="#contato" class="dock-item">
+            <div class="icon-btn">
+                <span class="icon-btn__back"></span>
+                <span class="icon-btn__front">
+                    <span class="icon-btn__icon"><i class="fas fa-user"></i></span>
+                </span>
+                <span class="icon-btn__label">Contato</span>
+            </div>
+        </a>
+    </nav>
+
+    <footer class="footer">
+        <p>&copy; 2025 Sua Marca. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
