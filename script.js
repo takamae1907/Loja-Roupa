@@ -2,9 +2,30 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =================================================================
-    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) - REMOVIDA ====
+    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) - (CORRIGIDO) ====
     // =================================================================
-    // (Todo o código do texto rotativo foi removido)
+    // **** CORREÇÃO: Envolvido em try...catch ****
+    // Isso garante que, se o RotatingText falhar, o resto do script 
+    // (incluindo o menu/barra) continue funcionando.
+    try {
+        const rotatingTextContainer = document.getElementById('hero-rotating-text');
+        if (rotatingTextContainer) {
+            new RotatingText(rotatingTextContainer, {
+                texts: [
+                    'Coleção Essencial',
+                    'Coleção de Inverno',
+                    'Coleção de Verão',
+                    'Coleção de Outono'
+                ],
+                rotationInterval: 3000, // Intervalo de 3 segundos
+                splitBy: 'characters', // Animar por letras
+                staggerDuration: 50 // Atraso de 50ms entre as letras
+            });
+        }
+    } catch (e) {
+        // Se der erro, avisa no console, mas não para o script.
+        console.error("Falha ao iniciar o RotatingText:", e);
+    }
 
 
     // =============================================
@@ -300,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Função para animar a entrada no Desktop (MODIFICADA)
         function runDesktopEntryAnimation() {
             if (window.innerWidth > 768) {
-                // Força o menu a ABRIR no desktop ao carregar a página
+                // Força o menu a ABRIR no desktop ao carregar a spágina
                 setNavState(true);
 
                 // Aplica a animação de entrada escalonada (o CSS cuida da animação)

@@ -311,34 +311,47 @@ body {
 }
 
 
-/* Novo container para o texto em gradiente */
+/* **** MODIFICADO **** */
 
-.animated-gradient-container {
+
+/* Classes antigas removidas */
+
+
+/* .animated-gradient-container { ... } */
+
+
+/* .animated-gradient-text { ... } */
+
+
+/* Estilo para o NOVO container de texto rotativo */
+
+#hero-rotating-text {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--color-text-dark);
+    min-height: 50px;
+    /* Altura aprox. de uma linha */
 }
 
 
-/* Texto em gradiente (adaptado do seu CSS) */
+/* Aplica o gradiente animado aos SPANs internos criados pelo script */
 
-.animated-gradient-text {
+#hero-rotating-text span[aria-hidden="true"]>span {
     display: inline-block;
-    position: relative;
-    z-index: 2;
+    /* Garante que a animação funcione */
+    /* USANDO A PALETA DE CORES DO SEU SITE */
+    background-image: linear-gradient( to right, var(--color-accent), var(--color-dark-yellow), var(--color-accent), var(--color-dark-yellow), var(--color-accent));
     background-size: 300% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    /* USANDO A PALETA DE CORES DO SEU SITE */
-    background-image: linear-gradient( to right, var(--color-accent), var(--color-dark-yellow), var(--color-accent), var(--color-dark-yellow), var(--color-accent));
     /* Animação */
     animation: gradient-animation 8s linear infinite;
 }
 
 
-/* Animação do Gradiente */
+/* Animação do Gradiente (Mantida) */
 
 @keyframes gradient-animation {
     0% {
@@ -1077,9 +1090,12 @@ body {
         width: 90%;
         padding: 1.5rem;
     }
-    /* Tamanho do novo texto gradiente no mobile */
-    .animated-gradient-container {
+    /* **** MODIFICADO **** */
+    /* Tamanho do novo texto rotativo no mobile */
+    #hero-rotating-text {
         font-size: 2.2rem;
+        min-height: 40px;
+        /* Altura mobile */
     }
     .hero-animated-subtitle {
         font-size: 1rem;
