@@ -6,42 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sua Loja - Moda Feminina</title>
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/ogl@0.0.100/dist/ogl.umd.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
 
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">Sua Marca</a>
-            <nav class="nav-menu">
-                <a href="#home">Início</a>
-                <a href="#colecao">Coleção</a>
-                <a href="#destaques-carousel">Destaques</a>
-                <a href="#novidades">Novidades</a>
-                <a href="#contato">Contato</a>
-            </nav>
-            <div class="nav-icons">
-                <div class="icon-btn icon-btn--small">
-                    <span class="icon-btn__back"></span>
-                    <span class="icon-btn__front">
-                        <span class="icon-btn__icon"><i class="fas fa-shopping-bag"></i></span>
-                    </span>
-                    <span class="icon-btn__label">Sacola</span>
+    <header class="card-nav-container">
+        <nav class="card-nav" id="card-nav">
+            <div class="card-nav-top">
+                
+                <div class="logo-container">
+                    <a href="#" class="nav-logo">Sua Marca</a>
+                </div>
+
+                <div class="nav-icons">
+                    <div class="icon-btn icon-btn--small">
+                        <span class="icon-btn__back"></span>
+                        <span class="icon-btn__front">
+                            <span class="icon-btn__icon"><i class="fas fa-shopping-bag"></i></span>
+                        </span>
+                        <span class="icon-btn__label">Sacola</span>
+                    </div>
+                </div>
+
+                <div class="hamburger-menu" id="hamburger-menu" role="button" aria-label="Abrir menu" tabIndex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
                 </div>
             </div>
-        </div>
+
+            <div class="card-nav-content" id="card-nav-content" aria-hidden="true">
+                <div class="nav-card" style="background-color: var(--color-light-pink); color: var(--color-text-dark);">
+                    <div class="nav-card-label">Navegação</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="#home">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
+                            Início
+                        </a>
+                        <a class="nav-card-link" href="#colecao">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
+                            Coleção
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color: var(--color-beige); color: var(--color-text-dark);">
+                    <div class="nav-card-label">Descubra</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="#destaques-carousel">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
+                            Destaques
+                        </a>
+                        <a class="nav-card-link" href="#novidades">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
+                            Novidades
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color: var(--color-text-dark); color: var(--color-white);">
+                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="#contato">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
+                            Fale Conosco
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
 
-        <section id="home" class="hero-aurora">
-            <div class="aurora-content">
-                <h2>Coleção Essencial</h2>
-                <p>Elegância e conforto para o seu dia a dia.</p>
+        <section id="home" class="hero-masonry">
+            
+            <div class="masonry-background">
+                <div class="masonry-column">
+                    <div class="masonry-item"><img src="fotos/foto1.PNG" alt="Look 1"></div>
+                    <div class="masonry-item"><img src="fotos/foto2.PNG" alt="Look 2"></div>
+                    <div class="masonry-item"><img src="fotos/foto-deitada.jpg" alt="Evento"></div>
+                </div>
+                <div class="masonry-column">
+                    <div class="masonry-item"><img src="fotos/foto3.PNG" alt="Look 3"></div>
+                    <div class="masonry-item"><img src="fotos/foto4.PNG" alt="Look 4"></div>
+                    <div class="masonry-item"><img src="fotos/foto-deitada2.jpg" alt="Amigas"></div>
+                </div>
+                <div class="masonry-column">
+                    <div class="masonry-item"><img src="fotos/foto5.PNG" alt="Look 5"></div>
+                    <div class="masonry-item"><img src="fotos/foto6.PNG" alt="Look 6"></div>
+                    <div class="masonry-item"><img src="fotos/foto7.PNG" alt="Look 7"></div>
+                </div>
+                <div class="masonry-column">
+                    <div class="masonry-item"><img src="fotos/foto8.PNG" alt="Look 8"></div>
+                    <div class="masonry-item"><img src="fotos/foto9.PNG" alt="Look 9"></div>
+                    <div class="masonry-item"><img src="fotos/foto10.PNG" alt="Look 10"></div>
+                </div>
+                <div class="masonry-column">
+                    <div class="masonry-item"><img src="fotos/foto11.PNG" alt="Look 11"></div>
+                    <div class="masonry-item"><img src="fotos/foto12.PNG" alt="Look 12"></div>
+                    <div class="masonry-item"><img src="fotos/foto13.PNG" alt="Look 13"></div>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-text-slider">
+                    <div class="hero-text-slide active">
+                        <h2>Coleção Essencial</h2>
+                        <p>Elegância e conforto para o seu dia a dia.</p>
+                    </div>
+                    <div class="hero-text-slide">
+                        <h2>Moda Inverno</h2>
+                        <p>As peças mais quentes para a estação.</p>
+                    </div>
+                    <div class="hero-text-slide">
+                        <h2>Moda Verão</h2>
+                        <p>Leveza e estilo para aproveitar o sol.</p>
+                    </div>
+                </div>
+                <div class="hero-slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
                 <a href="#colecao" class="cta-button">Ver Agora</a>
             </div>
         </section>
@@ -51,37 +136,61 @@
             <div class="product-grid">
 
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto1.PNG');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto1.PNG');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido alguma coisa</h3>
                     <p>$ 133,00</p>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto2.PNG');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto2.PNG');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido de inverno</h3>
                     <p>$ 133,00</p>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada2.jpg');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada2.jpg');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido de Verão</h3>
                     <p>$ 133,00</p>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada.jpg');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada.jpg');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestidos para isso</h3>
                     <p>$ 133,00</p>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto6.PNG');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto6.PNG');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>vestidos para aquilo </h3>
                     <p>$ 133,00</p>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-placeholder" style="background-image: url('fotos/foto7.PNG');"></div>
+                    <div class="product-image-placeholder" style="background-image: url('fotos/foto7.PNG');">
+                        <a href="#" class="liquid-button">
+                            <i class="fas fa-eye"></i> Veja Mais
+                        </a>
+                    </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Não sei pra que</h3>
                     <p>$ 133,00</p>
@@ -89,6 +198,7 @@
 
             </div>
         </section>
+
         <section id="destaques-carousel" class="product-carousel-section">
             <h2>Destaques da Semana</h2>
             <div class="carousel-wrapper">
@@ -175,34 +285,21 @@
         </section>
     </main>
 
-    <nav class="mobile-dock">
-        <a href="#home" class="dock-item active">
-            <div class="icon-btn">
-                <span class="icon-btn__back"></span>
-                <span class="icon-btn__front">
-                    <span class="icon-btn__icon"><i class="fas fa-home"></i></span>
-                </span>
-                <span class="icon-btn__label">Início</span>
-            </div>
-        </a>
-        <a href="#colecao" class="dock-item">
-            <div class="icon-btn">
-                <span class="icon-btn__back"></span>
-                <span class="icon-btn__front">
-                    <span class="icon-btn__icon"><i class="fas fa-box-archive"></i></span>
-                </span>
-                <span class="icon-btn__label">Coleção</span>
-            </div>
-        </a>
-        <a href="#contato" class="dock-item">
-            <div class="icon-btn">
-                <span class="icon-btn__back"></span>
-                <span class="icon-btn__front">
-                    <span class="icon-btn__icon"><i class="fas fa-user"></i></span>
-                </span>
-                <span class="icon-btn__label">Contato</span>
-            </div>
-        </a>
+    <nav class="mobile-dock" id="mobile-dock">
+        <div class="dock-panel" id="dock-panel">
+            <a href="#home" class="dock-item" data-label="Início">
+                <span class="dock-icon"><i class="fas fa-home"></i></span>
+                <span class="dock-label">Início</span>
+            </a>
+            <a href="#colecao" class="dock-item" data-label="Coleção">
+                <span class="dock-icon"><i class="fas fa-box-archive"></i></span>
+                <span class="dock-label">Coleção</span>
+            </a>
+            <a href="#contato" class="dock-item" data-label="Contato">
+                <span class="dock-icon"><i class="fas fa-user"></i></span>
+                <span class="dock-label">Contato</span>
+            </a>
+        </div>
     </nav>
 
     <footer class="footer">

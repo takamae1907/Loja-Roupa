@@ -2,184 +2,43 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =============================================
-    // ==== 1. LÓGICA DA AURORA (WebGL) ====
+    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) ====
     // =============================================
+    const textSlides = document.querySelectorAll('.hero-text-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
 
-    const VERT = `#version 300 es
-    in vec2 position;
-    void main() {
-      gl_Position = vec4(position, 0.0, 1.0);
-    }
-    `;
-
-    const FRAG = `#version 300 es
-    precision highp float;
-    uniform float uTime;
-    uniform float uAmplitude;
-    uniform vec3 uColorStops[3];
-    uniform vec2 uResolution;
-    uniform float uBlend;
-    out vec4 fragColor;
-    vec3 permute(vec3 x) {
-      return mod(((x * 34.0) + 1.0) * x, 289.0);
-    }
-    float snoise(vec2 v){
-      const vec4 C = vec4(
-          0.211324865405187, 0.366025403784439,
-          -0.577350269189626, 0.024390243902439
-      );
-      vec2 i  = floor(v + dot(v, C.yy));
-      vec2 x0 = v - i + dot(i, C.xx);
-      vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-      vec4 x12 = x0.xyxy + C.xxzz;
-      x12.xy -= i1;
-      i = mod(i, 289.0);
-      vec3 p = permute(
-          permute(i.y + vec3(0.0, i1.y, 1.0))
-        + i.x + vec3(0.0, i1.x, 1.0)
-      );
-      vec3 m = max(
-          0.5 - vec3(
-              dot(x0, x0),
-              dot(x12.xy, x12.xy),
-              dot(x12.zw, x12.zw)
-          ), 
-          0.0
-      );
-      m = m * m;
-      m = m * m;
-      vec3 x = 2.0 * fract(p * C.www) - 1.0;
-      vec3 h = abs(x) - 0.5;
-      vec3 ox = floor(x + 0.5);
-      vec3 a0 = x - ox;
-      m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
-      vec3 g;
-      g.x  = a0.x  * x0.x  + h.x  * x0.y;
-      g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-      return 130.0 * dot(m, g);
-    }
-    struct ColorStop {
-      vec3 color;
-      float position;
-    };
-    #define COLOR_RAMP(colors, factor, finalColor) { \
-      int index = 0; \
-      for (int i = 0; i < 2; i++) { \
-        ColorStop currentColor = colors[i]; \
-        bool isInBetween = currentColor.position <= factor; \
-        index = int(mix(float(index), float(i), float(isInBetween))); \
-      } \
-      ColorStop currentColor = colors[index]; \
-      ColorStop nextColor = colors[index + 1]; \
-      float range = nextColor.position - currentColor.position; \
-      float lerpFactor = (factor - currentColor.position) / range; \
-      finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \
-    }
-    void main() {
-      vec2 uv = gl_FragCoord.xy / uResolution;
-      ColorStop colors[3];
-      colors[0] = ColorStop(uColorStops[0], 0.0);
-      colors[1] = ColorStop(uColorStops[1], 0.5);
-      colors[2] = ColorStop(uColorStops[2], 1.0);
-      vec3 rampColor;
-      COLOR_RAMP(colors, uv.x, rampColor);
-      float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
-      height = exp(height);
-      height = (uv.y * 2.0 - height + 0.2);
-      float intensity = 0.6 * height;
-      float midPoint = 0.20;
-      float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
-      vec3 auroraColor = intensity * rampColor;
-      fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
-    }
-    `;
-
-    // Configurações da Aurora
-    const auroraConfig = {
-        colorStops: ['#FFF5F7', '#FFC0CB', '#FFFFFF'],
-        amplitude: 1.0,
-        blend: 0.5,
-        speed: 1.0
-    };
-
-    const ctn = document.getElementById('home');
-    // Verifica se a OGL foi carregada antes de usá-la
-    if (ctn && typeof ogl !== 'undefined') {
-        const { Renderer, Program, Mesh, Color, Triangle } = ogl;
-        const renderer = new Renderer({
-            alpha: true,
-            premultipliedAlpha: true,
-            antialias: true
+    function showSlide(index) {
+        textSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-        const gl = renderer.gl;
-
-        gl.canvas.style.position = 'absolute';
-        gl.canvas.style.top = '0';
-        gl.canvas.style.left = '0';
-        gl.canvas.style.width = '100%';
-        gl.canvas.style.height = '100%';
-        gl.canvas.style.zIndex = '1';
-
-        gl.clearColor(0, 0, 0, 0);
-        gl.enable(gl.BLEND);
-        gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-
-        let program;
-
-        function resize() {
-            if (!ctn) return;
-            const width = ctn.offsetWidth;
-            const height = ctn.offsetHeight;
-            renderer.setSize(width, height);
-            if (program) {
-                program.uniforms.uResolution.value = [width, height];
-            }
-        }
-        window.addEventListener('resize', resize);
-
-        const geometry = new Triangle(gl);
-        if (geometry.attributes.uv) {
-            delete geometry.attributes.uv;
-        }
-
-        const colorStopsArray = auroraConfig.colorStops.map(hex => {
-            const c = new Color(hex);
-            return [c.r, c.g, c.b];
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
         });
+    }
 
-        program = new Program(gl, {
-            vertex: VERT,
-            fragment: FRAG,
-            uniforms: {
-                uTime: { value: 0 },
-                uAmplitude: { value: auroraConfig.amplitude },
-                uColorStops: { value: colorStopsArray },
-                uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-                uBlend: { value: auroraConfig.blend }
-            }
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % textSlides.length;
+        showSlide(currentSlide);
+    }
+
+    // Navegação por bolinhas
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            currentSlide = parseInt(dot.dataset.slide);
+            showSlide(currentSlide);
         });
+    });
 
-        const mesh = new Mesh(gl, { geometry, program });
-        ctn.appendChild(gl.canvas);
-
-        let animateId = 0;
-        const update = (t) => {
-            animateId = requestAnimationFrame(update);
-            const time = t * 0.0001;
-            program.uniforms.uTime.value = time * auroraConfig.speed * 0.1;
-            program.uniforms.uAmplitude.value = auroraConfig.amplitude;
-            program.uniforms.uBlend.value = auroraConfig.blend;
-            renderer.render({ scene: mesh });
-        };
-        animateId = requestAnimationFrame(update);
-        resize();
+    // Troca automática
+    if (textSlides.length > 0) {
+        setInterval(nextSlide, 5000); // Troca a cada 5 segundos
     }
 
 
     // =============================================
-    // ==== 2. LÓGICA DO SPOTLIGHT CARD ====
+    // ==== 2. LÓGICA DO SPOTLIGHT CARD (MANTIDA) ====
     // =============================================
-
     const spotlightCards = document.querySelectorAll('.product-card');
 
     spotlightCards.forEach(card => {
@@ -195,9 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ========================================================
-    // ==== 3. LÓGICA DO CARROSSEL DE PRODUTOS (ROSA) ====
+    // ==== 3. LÓGICA DO CARROSSEL DE PRODUTOS (MANTIDA) ====
     // ========================================================
-
     const productTrack = document.querySelector('.product-carousel-track');
 
     if (productTrack) {
@@ -221,10 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // =============================================
-    // ==== 4. LÓGICA DO STEPPER (com Glass Icons) ====
-    // =============================================
-
+    // ===================================================
+    // ==== 4. LÓGICA DO STEPPER (MANTIDA) ====
+    // ===================================================
     const stepper = document.querySelector('.stepper-outer-container');
 
     if (stepper) {
@@ -234,11 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextBtn = stepper.querySelector('.stepper-button-next');
         const backBtn = stepper.querySelector('.stepper-button-back');
         const navContainer = stepper.querySelector('.stepper-nav');
-
         let currentStep = 1;
         const totalSteps = contents.length;
-
-        // --- HTML para o ícone de Check (Glass sem fundo) ---
         const checkIconHTML = `
             <div class="icon-btn icon-btn--small">
                 <span class="icon-btn__back"></span>
@@ -247,8 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
                 <span class="icon-btn__label">Feito</span>
             </div>`;
-
-        // --- HTML para o ícone de Número (Glass Inativo) ---
         function getNumberIconHTML(num) {
             return `
             <div class="icon-btn icon-btn--small">
@@ -259,8 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="icon-btn__label">Etapa ${num}</span>
             </div>`;
         }
-
-        // --- HTML para o ícone Ativo (Glass) ---
         function getActiveIconHTML(num) {
             return `
             <div class="icon-btn icon-btn--small">
@@ -271,15 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="icon-btn__label">Etapa ${num}</span>
             </div>`;
         }
-
-        // --- Função para Gerar os Indicadores na Linha ---
         function initializeIndicators() {
-            indicatorRow.innerHTML = ''; // Limpa
+            indicatorRow.innerHTML = '';
             for (let i = 1; i <= totalSteps; i++) {
                 const indicator = document.createElement('div');
                 indicator.classList.add('stepper-indicator');
                 indicator.dataset.step = i;
-
                 if (i === 1) {
                     indicator.classList.add('active');
                     indicator.innerHTML = getActiveIconHTML(i);
@@ -287,9 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     indicator.classList.add('inactive');
                     indicator.innerHTML = getNumberIconHTML(i);
                 }
-
                 indicatorRow.appendChild(indicator);
-
                 if (i < totalSteps) {
                     const connector = document.createElement('div');
                     connector.classList.add('stepper-connector');
@@ -298,15 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
-
         function updateStepper() {
             const indicators = stepper.querySelectorAll('.stepper-indicator');
-
-            // 1. Atualiza Indicadores
             indicators.forEach((indicator, index) => {
                 const stepNum = index + 1;
                 indicator.classList.remove('active', 'complete', 'inactive');
-
                 if (stepNum < currentStep) {
                     indicator.classList.add('complete');
                     indicator.innerHTML = checkIconHTML;
@@ -318,11 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     indicator.innerHTML = getNumberIconHTML(stepNum);
                 }
             });
-
-            // 2. Atualiza Conteúdo
             const newContent = stepper.querySelector(`.stepper-content[data-step="${currentStep}"]`);
             const oldContent = stepper.querySelector('.stepper-content.active');
-
             if (oldContent) {
                 oldContent.classList.remove('active');
                 oldContent.classList.add('exiting');
@@ -332,14 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 newContent.classList.add('active');
                 contentWrapper.style.height = newContent.offsetHeight + 'px';
             }
-
-            // 3. Atualiza Botões
             backBtn.style.display = (currentStep === 1) ? 'none' : 'block';
             navContainer.classList.toggle('end', currentStep === 1);
             nextBtn.textContent = (currentStep === totalSteps) ? 'Finalizar' : 'Próximo';
         }
-
-        // Event Listeners
         nextBtn.addEventListener('click', () => {
             if (currentStep < totalSteps) {
                 currentStep++;
@@ -354,10 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateStepper();
             }
         });
-
-        // Inicializa o stepper
         initializeIndicators();
-        // Define a altura inicial correta
         const firstContent = stepper.querySelector(`.stepper-content[data-step="1"]`);
         if (firstContent) {
             contentWrapper.style.height = firstContent.offsetHeight + 'px';
@@ -366,22 +197,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =============================================
-    // ==== 5. LÓGICA DO DOCK MÓVEL ====
+    // ==== 5. LÓGICA DO NOVO DOCK MÓVEL (Liquid) ====
     // =============================================
-
+    const dockPanel = document.getElementById('dock-panel');
     const dockItems = document.querySelectorAll('.dock-item');
-    if (dockItems.length > 0) {
-        function setActiveItem(event) {
+
+    if (dockPanel && dockItems.length > 0) {
+        const baseSize = 48;
+        const maxMagnification = 1.6;
+        const magnificationRange = 100;
+
+        dockPanel.addEventListener('mousemove', e => {
+            const mouseX = e.pageX;
+
             dockItems.forEach(item => {
-                item.classList.remove('active');
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.left + window.scrollX + itemRect.width / 2;
+                const distance = Math.abs(mouseX - itemCenter);
+
+                let scale = 1;
+                if (distance < magnificationRange) {
+                    const proximity = (magnificationRange - distance) / magnificationRange;
+                    scale = 1 + (maxMagnification - 1) * proximity;
+                }
+                const icon = item.querySelector('.dock-icon');
+                if (icon) {
+                    icon.style.transform = `scale(${scale})`;
+                }
             });
-            // 'this' é o <a>, que é o .dock-item
-            this.classList.add('active');
-        }
-        dockItems.forEach(item => {
-            // Adiciona o listener no <a>
-            item.addEventListener('click', setActiveItem);
         });
+
+        dockPanel.addEventListener('mouseleave', () => {
+            dockItems.forEach(item => {
+                const icon = item.querySelector('.dock-icon');
+                if (icon) {
+                    icon.style.transform = 'scale(1)';
+                }
+            });
+        });
+    }
+
+    // =============================================
+    // ==== 6. LÓGICA DO HEADER (CardNav) COM ANIMAÇÃO ====
+    // =============================================
+    const hamburger = document.getElementById('hamburger-menu');
+    const nav = document.getElementById('card-nav');
+    const navContent = document.getElementById('card-nav-content');
+    const navCards = navContent.querySelectorAll('.nav-card');
+
+    if (hamburger && nav && navContent) {
+        let isNavOpen = false;
+
+        // Função para calcular a altura do conteúdo no mobile
+        function getNavContentHeight() {
+            let height = 0;
+            const gap = 8; // 8px gap
+            navCards.forEach(card => {
+                height += card.offsetHeight;
+            });
+            height += (navCards.length - 1) * gap;
+            const contentStyle = getComputedStyle(navContent);
+            height += parseFloat(contentStyle.paddingTop) + parseFloat(contentStyle.paddingBottom);
+            return height;
+        }
+
+        // --- Lógica para Mobile (Click) ---
+        hamburger.addEventListener('click', () => {
+            isNavOpen = !isNavOpen;
+            hamburger.classList.toggle('open', isNavOpen);
+            nav.classList.toggle('open', isNavOpen);
+
+            if (isNavOpen) {
+                const topBarHeight = 60;
+                const contentHeight = getNavContentHeight();
+                nav.style.height = topBarHeight + contentHeight + 'px';
+                nav.setAttribute('aria-hidden', 'false');
+            } else {
+                nav.style.height = '60px';
+                nav.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // --- Lógica para Desktop (Animação de Entrada) ---
+        function runDesktopEntryAnimation() {
+            if (window.innerWidth > 768) {
+                // 1. Anima a altura do container
+                nav.style.height = '260px';
+
+                // 2. Anima os cards com delay
+                navCards.forEach((card, index) => {
+                    card.style.transitionDelay = `${0.15 + index * 0.1}s`;
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                });
+            }
+        }
+
+        // --- Lógica de Redimensionamento ---
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                // Ao redimensionar PARA desktop
+                nav.style.height = '260px'; // Garante que fique aberto
+                navCards.forEach((card, index) => {
+                    card.style.transitionDelay = '0s'; // Remove delay para reajuste
+                    card.style.transform = 'translateY(0)';
+                    card.style.opacity = '1';
+                });
+                nav.classList.remove('open');
+                hamburger.classList.remove('open');
+                isNavOpen = false;
+            } else {
+                // Ao redimensionar PARA mobile
+                // Reseta estilos dos cards para o estado inicial (oculto)
+                navCards.forEach(card => {
+                    card.style.transform = 'translateY(30px)';
+                    card.style.opacity = '0';
+                    card.style.transitionDelay = '0s';
+                });
+
+                if (isNavOpen) {
+                    // Se estava aberto, recalcula a altura
+                    const topBarHeight = 60;
+                    const contentHeight = getNavContentHeight();
+                    nav.style.height = topBarHeight + contentHeight + 'px';
+                } else {
+                    // Se estava fechado, força 60px
+                    nav.style.height = '60px';
+                }
+            }
+        });
+
+        // Roda a animação de entrada do desktop (se aplicável)
+        // Adiciona um pequeno delay para garantir que o CSS foi carregado
+        setTimeout(runDesktopEntryAnimation, 100);
     }
 
 }); // Fim do 'DOMContentLoaded'

@@ -12,7 +12,6 @@
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 105, 180, 0.2);
-    /* Cor Rosa para o Spotlight */
 }
 
 
@@ -33,26 +32,58 @@ body {
     background-color: var(--color-white);
     color: var(--color-text-dark);
     line-height: 1.6;
+    /* Adicionado para dar espaço ao header fixo */
+    padding-top: 80px;
 }
 
 
-/* ---- 1. Cabeçalho (Menu de Navegação) ---- */
+/* ============================================== */
+/* ==== 1. NOVO HEADER (Estilos CardNav) CORRIGIDO ==== */
+/* ============================================== */
 
-.navbar {
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
+.card-nav-container {
+    position: fixed;
+    top: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    /* Largura máxima como na imagem */
     z-index: 1000;
+    box-sizing: border-box;
 }
 
-.nav-container {
+.card-nav {
+    display: block;
+    padding: 0;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    will-change: height;
+    /* Altura inicial (Mobile) */
+    height: 60px;
+    transition: height 0.4s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.card-nav-top {
+    position: relative;
+    /* MUDADO para relative */
+    height: 60px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: space-between;
+    padding: 0 1rem;
+    /* Padding padrão mobile */
+    z-index: 2;
+}
+
+/* --- ESTILO MOBILE (Default) --- */
+.logo-container {
+    order: 1;
+    /* Logo na esquerda */
 }
 
 .nav-logo {
@@ -62,26 +93,124 @@ body {
     text-decoration: none;
 }
 
-.nav-menu a {
-    color: var(--color-text-light);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.nav-menu a:hover {
-    color: var(--color-text-dark);
-}
-
 .nav-icons {
-    font-size: 1.2rem;
+    order: 2;
+    /* Sacola no meio */
+}
+
+.hamburger-menu {
+    order: 3;
+    /* Hamburger na direita */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 6px;
+    padding: 0 10px;
+}
+
+.hamburger-line {
+    width: 28px;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    transform-origin: 50% 50%;
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+/* ------------------------------- */
+
+.card-nav-content {
+    padding: 0.75rem;
+    display: grid;
+    /* 1 coluna no mobile */
+    grid-template-columns: 1fr;
+    gap: 8px;
+    z-index: 1;
+    /* Oculto no mobile por padrão */
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Estado Aberto (Mobile) */
+.card-nav.open .card-nav-content {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-card {
+    border-radius: calc(0.75rem - 0.2rem);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 12px;
+    user-select: none;
+    min-height: 100px;
+    /* Altura mínima no mobile */
+    /* ESTADO INICIAL DA ANIMAÇÃO (para desktop) */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.nav-card-label {
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.nav-card-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-card-link {
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-card-link:hover {
+    opacity: 0.75;
+}
+
+.nav-card-link-icon {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.nav-card-link:hover .nav-card-link-icon {
+    transform: translateX(3px);
 }
 
 
-/* ---- 2. Seção Hero com Efeito Aurora ---- */
+/* ========================================================== */
+/* ==== 2. SEÇÃO HERO (Masonry e Carrossel de Texto) ==== */
+/* ========================================================== */
 
-.hero-aurora {
+.hero-masonry {
     position: relative;
     width: 100%;
     height: 90vh;
@@ -93,23 +222,134 @@ body {
     text-align: center;
 }
 
-.aurora-content {
+/* Fundo Masonry */
+.masonry-background {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    display: flex;
+    gap: 12px;
+    filter: grayscale(100%);
+    opacity: 0.15;
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.masonry-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 20%;
+}
+
+.masonry-column:nth-child(even) {
+    animation: scroll-up 80s linear infinite;
+}
+
+.masonry-column:nth-child(odd) {
+    animation: scroll-down 80s linear infinite;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.masonry-item {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Conteúdo Hero (Texto) */
+.hero-content {
     position: relative;
     z-index: 10;
     max-width: 600px;
+    background: rgba(255, 245, 247, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
-.aurora-content h2 {
+.hero-content h2 {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--color-text-dark);
 }
 
-.aurora-content p {
+.hero-content p {
     font-size: 1.2rem;
     color: var(--color-text-light);
     margin-bottom: 2rem;
+}
+
+/* Carrossel de Texto (CORRIGIDO) */
+.hero-text-slider {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    min-height: 130px;
+}
+
+.hero-text-slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.hero-text-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.hero-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: var(--color-text-dark);
 }
 
 .cta-button {
@@ -128,12 +368,9 @@ body {
 
 
 /* ---- 3. Seção Grade de Produtos (MODIFICADA) ---- */
-
 .product-grid-section {
-    /* Padding de 15% nas laterais, como pedido */
     padding: 4rem 15%;
     text-align: center;
-    /* Fundo branco, parallax removido */
     background-color: var(--color-white);
     max-width: 100%;
 }
@@ -144,12 +381,10 @@ body {
     margin-bottom: 3rem;
     color: var(--color-text-dark);
     text-shadow: none;
-    /* Sombra removida */
 }
 
 .product-grid {
     display: grid;
-    /* === LAYOUT PADRÃO (TABLET) MUDADO DE 3 PARA 2 COLUNAS === */
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
@@ -159,53 +394,23 @@ body {
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
-    /* Padding de volta */
     transition: box-shadow 0.3s ease;
     text-align: left;
     position: relative;
     overflow: hidden;
-    /* Essencial para o spotlight */
 }
-
-
-/* ==== CLASSE DA IMAGEM ADICIONADA DE VOLTA ==== */
 
 .product-image-placeholder {
     width: 100%;
     height: 250px;
     background-color: var(--color-light-pink);
-    /* Cor caso a imagem não carregue */
     border-radius: 8px;
     margin-bottom: 1rem;
     background-size: cover;
     background-position: center;
-}
-
-
-/* Classes antigas de imagem (não são mais necessárias se usar o style inline) */
-
-.img-1 {
-    background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500');
-}
-
-.img-2 {
-    background-image: url('https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=500');
-}
-
-.img-3 {
-    background-image: url('https://images.unsplash.com/photo-1545291764-c8d1b4c74068?w=500');
-}
-
-.img-4 {
-    background-image: url('https://images.unsplash.com/photo-1581338834612-2410838b80e8?w=500');
-}
-
-.img-5 {
-    background-image: url('https://images.unsplash.com/photo-1584998315015-2f13F1d9c025?w=500');
-}
-
-.img-6 {
-    background-image: url('https://images.unsplash.com/photo-1595777457583-4e439b13c393?w=500');
+    /* ADICIONADO */
+    position: relative;
+    overflow: hidden;
 }
 
 .product-card h3 {
@@ -217,9 +422,6 @@ body {
     color: var(--color-text-light);
 }
 
-
-/* Pseudo-elemento para o Efeito Spotlight */
-
 .product-card::before {
     content: '';
     position: absolute;
@@ -227,7 +429,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Gradiente radial que segue o mouse (com a cor rosa) */
     background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -235,24 +436,58 @@ body {
     z-index: 3;
 }
 
-
-/* Ativa o spotlight no hover */
-
 .product-card:hover::before {
     opacity: 0.6;
 }
 
+/* ==== NOVO BOTÃO LIQUID GLASS ==== */
+.liquid-button {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
 
-/* CSS do carrossel DENTRO do card foi REMOVIDO */
+    /* Estado Inicial (Oculto) */
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    /* Começa 10px abaixo */
+
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 2;
+    /* Fica abaixo do spotlight, mas acima da imagem */
+}
+
+/* Estado Visível (Hover) */
+.product-card:hover .liquid-button {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.liquid-button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
 
 
 /* ---- 4. Seção Carrossel de Produtos (Fundo Rosa) ---- */
-
+/* (Estilos mantidos como no original) */
 .product-carousel-section {
     padding: 4rem 0;
     text-align: center;
     background-color: var(--color-light-pink);
-    /* Fundo rosa */
 }
 
 .product-carousel-section h2 {
@@ -337,7 +572,7 @@ body {
 
 
 /* ---- 5. Seção Stepper (Fundo Bege) ---- */
-
+/* (Estilos mantidos como no original) */
 .stepper-section {
     padding: 4rem 5%;
     text-align: center;
@@ -383,9 +618,6 @@ body {
     width: 3em;
     height: 3em;
 }
-
-
-/* Lógica de cor do Stepper (sem fundo) */
 
 .stepper-indicator.inactive .icon-btn__front {
     background-color: hsla(0, 0%, 80%, 0.4);
@@ -523,7 +755,7 @@ body {
 
 
 /* ---- 6. Estilos do GlassIcon (MODIFICADO SEM FUNDO) ---- */
-
+/* (Estilos mantidos para o Stepper e Sacola) */
 .icon-btn {
     background-color: transparent;
     border: none;
@@ -547,9 +779,6 @@ body {
     transition: all 0.3s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-
-/* FUNDO REMOVIDO */
-
 .icon-btn__back {
     background: transparent;
     box-shadow: none;
@@ -558,7 +787,6 @@ body {
 
 .icon-btn__front {
     background-color: hsla(0, 0%, 100%, 0.15);
-    /* O "vidro" */
     box-shadow: 0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset;
     backdrop-filter: blur(0.75em);
     -webkit-backdrop-filter: blur(0.75em);
@@ -567,16 +795,12 @@ body {
     border: 1px solid hsla(0, 0%, 100%, 0.3);
 }
 
-
-/* COR DO ÍCONE MUDADA PARA ESCURO */
-
 .icon-btn__icon {
     margin: auto;
     width: 1.5em;
     height: 1.5em;
     font-size: 1.5em;
     color: var(--color-text-dark);
-    /* Ícone escuro */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -597,9 +821,6 @@ body {
     font-weight: 500;
 }
 
-
-/* Efeitos Hover (Desktop) */
-
 .icon-btn:hover .icon-btn__front {
     transform: translateZ(2em) scale(1.1);
     background-color: hsla(0, 0%, 100%, 0.3);
@@ -609,9 +830,6 @@ body {
     opacity: 1;
     transform: translateY(20%);
 }
-
-
-/* Modificador Pequeno (Header e Stepper) */
 
 .icon-btn--small {
     width: 3em;
@@ -635,109 +853,232 @@ body {
 }
 
 
-/* ---- 7. Dock de Navegação Móvel (MODIFICADO) ---- */
-
+/* ================================================== */
+/* ==== 7. NOVO DOCK MÓVEL (Liquid Glass) ==== */
+/* ================================================== */
 .mobile-dock {
-    display: none;
     position: fixed;
     bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    height: auto;
-    background-color: rgba(255, 255, 255, 0.8);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1001;
+    pointer-events: none;
+}
+
+.dock-panel {
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: fit-content;
+    gap: 0.75rem;
+    border-radius: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    z-index: 1001;
-    padding: 0.75rem;
-    gap: 0.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.6rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: 60px;
 }
 
 .dock-item {
-    text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.mobile-dock .icon-btn {
-    width: 4em;
-    height: 4em;
-}
-
-.mobile-dock .icon-btn__icon {
-    font-size: 1.3em;
-    color: var(--color-text-dark);
-}
-
-.mobile-dock .icon-btn__label {
-    opacity: 1;
     position: relative;
-    transform: none;
-    top: -5px;
-    font-size: 0.7rem;
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
     color: var(--color-text-dark);
+    width: 48px;
+    height: 48px;
+    transition: width 0.2s ease, height 0.2s ease;
 }
 
-.mobile-dock .icon-btn:hover .icon-btn__front {
-    transform: none;
+.dock-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transform-origin: bottom;
+    transition: transform 0.1s linear;
 }
 
-.dock-item.active {
-    transform: translateY(-8px) scale(1.1);
+.dock-label {
+    position: absolute;
+    top: -2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    white-space: pre;
+    border-radius: 0.375rem;
+    background-color: rgba(34, 34, 34, 0.8);
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.dock-item:active {
-    transform: scale(0.95);
+.dock-item:hover .dock-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 
-/* ---- 8. Responsividade (Regras para Celular) ---- */
+/* ================================================== */
+/* ==== 8. RESPONSIVIDADE (REESCRITO) ==== */
+/* ================================================== */
 
+/* --- MOBILE (Até 768px) --- */
 @media (max-width: 768px) {
-    .navbar {
-        display: none;
+    body {
+        padding-top: 70px;
     }
-    .mobile-dock {
-        display: flex;
+
+    .card-nav-container {
+        width: 95%;
+        top: 0.75em;
     }
-    .hero-aurora {
-        height: 80vh;
+
+    /* Hero */
+    .hero-masonry {
+        height: 85vh;
     }
-    /* MODIFICAÇÕES DA GRADE NO CELULAR */
+
+    .hero-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-text-slider {
+        min-height: 100px;
+    }
+
+    /* Masonry */
+    .masonry-background {
+        column-count: 3;
+        gap: 8px;
+    }
+
+    .masonry-column {
+        width: 33.33%;
+        gap: 8px;
+    }
+
+    /* Grade de Produtos */
     .product-grid-section {
         padding: 3rem 5%;
-        /* Padding menor no celular */
-        background-attachment: scroll;
-        /* Desativa parallax */
     }
+
     .product-grid {
-        /* 1 coluna no celular */
         grid-template-columns: 1fr;
     }
+
+    /* Carrossel */
     .product-carousel-section {
         padding: 3rem 0;
     }
+
     .carousel-button {
         display: none;
     }
+
     .product-carousel-track-container {
         padding: 0 5%;
         scroll-padding: 0 5%;
     }
+
     .contact-section {
         padding-bottom: 120px;
     }
 }
 
+/* --- DESKTOP (769px e acima) --- */
+@media (min-width: 769px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .card-nav {
+        /* Altura inicial (para animação) */
+        height: 60px;
+    }
+
+    .card-nav-top {
+        padding: 0 1.5rem;
+    }
+
+    .hamburger-menu {
+        display: none;
+        /* Esconde o hamburger */
+    }
+
+    .logo-container {
+        order: 0;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translate(-50%, -50%);
+    }
+
+    .nav-icons {
+        order: 0;
+        position: absolute;
+        right: 1.5rem;
+        top: 30px;
+        transform: translateY(-50%);
+    }
+
+    .card-nav-content {
+        visibility: visible;
+        pointer-events: auto;
+        /* Opacidade 1 para que os filhos (cards) possam fazer sua transição */
+        opacity: 1;
+        transform: translateY(0);
+
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+
+        grid-template-columns: repeat(3, 1fr);
+        height: 200px;
+        padding: 0 0.75rem 0.75rem;
+    }
+
+    .nav-card {
+        min-height: auto;
+        height: 100%;
+        /* O estado inicial já está definido (opacity 0, transform 30px) */
+    }
+
+    /* Oculta o dock móvel */
+    .mobile-dock {
+        display: none;
+    }
+}
+
 
 /* ---- 9. Seção de Contato ---- */
-
+/* (Estilos mantidos como no original) */
 .contact-section {
     background-color: var(--color-light-pink);
     padding: 5rem 5%;
@@ -809,7 +1150,6 @@ body {
 
 
 /* ---- 10. Rodapé ---- */
-
 .footer {
     text-align: center;
     padding: 2rem 5%;
@@ -821,58 +1161,38 @@ body {
 
 
 /* ---- 11. Estilos do Bento Grid (Adicionado) ---- */
-
-
-/* Nova estrutura de labels para os cards */
-
+/* (Estilos mantidos como no original) */
 .product-card-label {
     font-size: 0.9rem;
     color: var(--color-text-light);
     opacity: 0.8;
     margin-bottom: 0.25rem;
-    /* Espaçamento menor */
-}
-
-
-/* ===== ESTILOS ANTIGOS REMOVIDOS DAQUI ===== */
-
-
-/* Remove o aspect-ratio e min-height que eram para cards sem foto */
-
-#colecao .product-card {
-    /* Não precisa mais de flex, aspect-ratio ou min-height. */
-    /* O card flui naturalmente com a imagem. */
 }
 
 #colecao .product-card h3 {
     margin-bottom: 0.25rem;
 }
 
-
-/* Layout do Grid (Desktop - Bento) */
-
 @media (min-width: 1024px) {
     .product-grid {
         grid-template-columns: repeat(4, 1fr);
     }
-    /* Analytics (Card 1) - Padrão (1x1) */
-    /* Dashboard (Card 2) - Padrão (1x1) */
-    /* Collaboration (Card 3) - (2x2) */
+
     .product-grid .product-card:nth-child(3) {
         grid-column: span 2;
         grid-row: span 2;
     }
-    /* Automation (Card 4) - (2x2) */
+
     .product-grid .product-card:nth-child(4) {
         grid-column: 1 / span 2;
         grid-row: 2 / span 2;
     }
-    /* Integration (Card 5) - (1x1) */
+
     .product-grid .product-card:nth-child(5) {
         grid-column: 3;
         grid-row: 3;
     }
-    /* Security (Card 6) - (1x1) */
+
     .product-grid .product-card:nth-child(6) {
         grid-column: 4;
         grid-row: 3;
