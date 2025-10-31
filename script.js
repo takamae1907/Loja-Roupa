@@ -2,78 +2,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =================================================================
-    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) - EFEITO ROTATING ====
+    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) - REMOVIDA ====
     // =================================================================
-    const heroContent = document.querySelector('.hero-text-content');
-
-    if (heroContent) {
-        const staticWordEl = heroContent.querySelector('.static-word');
-        const rotatingWrapper = heroContent.querySelector('.rotating-word-wrapper');
-        const subtitleEl = heroContent.querySelector('.hero-animated-subtitle');
-        const dots = document.querySelectorAll('.dot');
-
-        const slidesData = [
-            { static: "Coleção", rotating: "Essencial", subtitle: "Elegância e conforto para o seu dia a dia." },
-            { static: "Moda", rotating: "Inverno", subtitle: "As peças mais quentes para a estação." },
-            { static: "Moda", rotating: "Verão", subtitle: "Leveza e estilo para aproveitar o sol." }
-        ];
-        let currentSlide = 0;
-        let slideInterval;
-
-        function showSlide(index) {
-            const slide = slidesData[index];
-
-            if (staticWordEl) {
-                staticWordEl.textContent = slide.static;
-            }
-
-            if (rotatingWrapper) {
-                const oldWord = rotatingWrapper.querySelector('.rotating-word');
-                if (oldWord) {
-                    oldWord.classList.add('exiting');
-                    oldWord.addEventListener('transitionend', () => {
-                        if (oldWord) oldWord.remove();
-                    }, { once: true });
-                }
-
-                const newWord = document.createElement('span');
-                newWord.className = 'rotating-word';
-                newWord.textContent = slide.rotating;
-                rotatingWrapper.appendChild(newWord);
-
-                void newWord.offsetWidth;
-                newWord.classList.add('entering');
-            }
-
-            if (subtitleEl) {
-                subtitleEl.textContent = slide.subtitle;
-            }
-
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slidesData.length;
-            showSlide(currentSlide);
-        }
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const newIndex = parseInt(dot.dataset.slide);
-                if (newIndex !== currentSlide) {
-                    currentSlide = newIndex;
-                    showSlide(currentSlide);
-                    clearInterval(slideInterval);
-                    slideInterval = setInterval(nextSlide, 5000);
-                }
-            });
-        });
-
-        showSlide(0);
-        slideInterval = setInterval(nextSlide, 5000);
-    }
+    // (Todo o código do texto rotativo foi removido)
 
 
     // =============================================
@@ -120,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ===================================================
-    // ==== 4. LÓGICA DO STEPPER (CORRIGIDA) ====
+    // ==== 4. LÓGICA DO STEPPER (MANTIDA) ====
     // ===================================================
     const stepper = document.querySelector('.stepper-outer-container');
 
@@ -129,8 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const contents = stepper.querySelectorAll('.stepper-content');
         const contentWrapper = stepper.querySelector('.stepper-content-wrapper');
 
-        // **** A CORREÇÃO ESTÁ AQUI ****
-        // Buscando botões por ID em vez de classe
         const nextBtn = document.getElementById('stepper-next');
         const backBtn = document.getElementById('stepper-back');
 
@@ -138,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentStep = 1;
         const totalSteps = contents.length;
 
-        // O restante da lógica do stepper (HTML dos ícones, etc.)
         const checkIconHTML = `
             <div class="icon-btn icon-btn--small">
                 <span class="icon-btn__back"></span>
@@ -234,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Adiciona event listeners APENAS se os botões existirem
         if (nextBtn && backBtn) {
             nextBtn.addEventListener('click', () => {
                 if (currentStep < totalSteps) {
@@ -298,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==================================================
-    // ==== 6. LÓGICA DO HEADER (CardNav) - AGORA FUNCIONANDO ====
+    // ==== 6. LÓGICA DO HEADER (CardNav) - CORRIGIDA ====
     // ==================================================
     const hamburger = document.getElementById('hamburger-menu');
     const nav = document.getElementById('card-nav');
@@ -306,9 +233,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const navCards = navContent.querySelectorAll('.nav-card');
 
     if (hamburger && nav && navContent && navCards.length > 0) {
-        let isNavOpen = false;
+        let isNavOpen = false; // Começa fechado por padrão
 
-        function getNavContentHeight() {
+        // Função para calcular a altura do conteúdo (usada apenas no mobile)
+        function getMobileNavContentHeight() {
             let height = 0;
             const gap = 8;
             navCards.forEach(card => {
@@ -320,63 +248,69 @@ document.addEventListener("DOMContentLoaded", () => {
             return height;
         }
 
-        hamburger.addEventListener('click', () => {
-            isNavOpen = !isNavOpen;
-            hamburger.classList.toggle('open', isNavOpen);
-            nav.classList.toggle('open', isNavOpen);
+        // Função para ABRIR ou FECHAR o menu
+        function setNavState(isOpen) {
+            isNavOpen = isOpen;
+            hamburger.classList.toggle('open', isOpen);
+            nav.classList.toggle('open', isOpen);
 
-            if (isNavOpen) {
+            if (isOpen) {
                 // ABRE O MENU
                 const topBarHeight = 60;
-                const contentHeight = getNavContentHeight();
+                let contentHeight;
+
+                if (window.innerWidth > 768) {
+                    contentHeight = 200; // Altura fixa no Desktop
+                } else {
+                    contentHeight = getMobileNavContentHeight(); // Altura calculada no Mobile
+                }
+
                 nav.style.height = topBarHeight + contentHeight + 'px';
                 nav.setAttribute('aria-hidden', 'false');
             } else {
-                // FECHA O MENU (A CORREÇÃO QUE VOCÊ PEDIU)
+                // FECHA O MENU
                 nav.style.height = '60px'; // Retorna à altura fina
                 nav.setAttribute('aria-hidden', 'true');
             }
+        }
+
+        // Evento de CLIQUE no Hamburger
+        hamburger.addEventListener('click', () => {
+            setNavState(!isNavOpen); // Inverte o estado atual
         });
 
+        // Evento de REDIMENSIONAR a tela
+        window.addEventListener('resize', () => {
+            // Se o menu estiver aberto, recalcula a altura
+            if (isNavOpen) {
+                const topBarHeight = 60;
+                let contentHeight;
+                if (window.innerWidth > 768) {
+                    contentHeight = 200;
+                } else {
+                    contentHeight = getMobileNavContentHeight();
+                }
+                nav.style.height = topBarHeight + contentHeight + 'px';
+            } else {
+                // Se estiver fechado, apenas garante que está 60px
+                nav.style.height = '60px';
+            }
+        });
+
+        // Função para animar a entrada no Desktop (MODIFICADA)
         function runDesktopEntryAnimation() {
             if (window.innerWidth > 768) {
-                nav.style.height = '260px';
+                // Força o menu a ABRIR no desktop ao carregar a página
+                setNavState(true);
+
+                // Aplica a animação de entrada escalonada (o CSS cuida da animação)
                 navCards.forEach((card, index) => {
                     card.style.transitionDelay = `${0.15 + index * 0.1}s`;
-                    card.style.transform = 'translateY(0)';
-                    card.style.opacity = '1';
                 });
             }
         }
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                nav.style.height = '260px';
-                navCards.forEach((card, index) => {
-                    card.style.transitionDelay = '0s';
-                    card.style.transform = 'translateY(0)';
-                    card.style.opacity = '1';
-                });
-                nav.classList.remove('open');
-                hamburger.classList.remove('open');
-                isNavOpen = false;
-            } else {
-                navCards.forEach(card => {
-                    card.style.transform = 'translateY(30px)';
-                    card.style.opacity = '0';
-                    card.style.transitionDelay = '0s';
-                });
-
-                if (isNavOpen) {
-                    const topBarHeight = 60;
-                    const contentHeight = getNavContentHeight();
-                    nav.style.height = topBarHeight + contentHeight + 'px';
-                } else {
-                    nav.style.height = '60px';
-                }
-            }
-        });
-
+        // Roda a animação de entrada do desktop (que agora abre o menu)
         setTimeout(runDesktopEntryAnimation, 100);
     }
 

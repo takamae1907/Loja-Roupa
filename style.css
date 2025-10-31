@@ -302,53 +302,54 @@ body {
 }
 
 
-/* ESTILOS PARA O HERO TEXT (ROTATIVO) */
+/* ESTILOS PARA O HERO TEXT (NOVO GRADIENTE) */
 
 .hero-text-content {
     position: relative;
     min-height: 130px;
+    /* Mantém a altura para consistência */
 }
 
-.hero-animated-title {
+
+/* Novo container para o texto em gradiente */
+
+.animated-gradient-container {
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--color-text-dark);
 }
 
-.static-word {
-    display: inline-block;
-    margin-right: 0.25em;
-}
 
-.rotating-word-wrapper {
+/* Texto em gradiente (adaptado do seu CSS) */
+
+.animated-gradient-text {
     display: inline-block;
     position: relative;
-    overflow: hidden;
-    height: 1.2em;
-    vertical-align: bottom;
-    color: var(--color-accent);
-    /* 1. COR DE DESTAQUE PADRÃO */
+    z-index: 2;
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    /* USANDO A PALETA DE CORES DO SEU SITE */
+    background-image: linear-gradient( to right, var(--color-accent), var(--color-dark-yellow), var(--color-accent), var(--color-dark-yellow), var(--color-accent));
+    /* Animação */
+    animation: gradient-animation 8s linear infinite;
 }
 
-.rotating-word {
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateY(110%);
-    opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease;
-}
 
-.rotating-word.entering {
-    transform: translateY(0);
-    opacity: 1;
-}
+/* Animação do Gradiente */
 
-.rotating-word.exiting {
-    transform: translateY(-110%);
-    opacity: 0;
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .hero-animated-subtitle {
@@ -356,26 +357,6 @@ body {
     color: var(--color-text-light);
     margin-bottom: 2rem;
     min-height: 40px;
-}
-
-.hero-slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 2rem;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.dot.active {
-    background: var(--color-text-dark);
 }
 
 
@@ -400,6 +381,8 @@ body {
     justify-content: center;
     gap: 0.5rem;
     z-index: 2;
+    /* CORREÇÃO: Impede que o texto do botão quebre em duas linhas */
+    white-space: nowrap;
 }
 
 .liquid-button:hover {
@@ -500,7 +483,7 @@ body {
     /* Fundo branco */
     border-radius: 8px;
     margin-bottom: 1rem;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -533,6 +516,36 @@ body {
     font-size: 0.9rem;
     color: var(--color-text-light);
     margin-bottom: 0.75rem;
+}
+
+
+/* NOVO: Estilos para os tamanhos */
+
+.product-sizes {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.size-option {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.size-option:hover {
+    background-color: var(--color-beige);
+    border-color: #ccc;
 }
 
 .product-colors {
@@ -1064,7 +1077,8 @@ body {
         width: 90%;
         padding: 1.5rem;
     }
-    .hero-animated-title {
+    /* Tamanho do novo texto gradiente no mobile */
+    .animated-gradient-container {
         font-size: 2.2rem;
     }
     .hero-animated-subtitle {
@@ -1113,41 +1127,64 @@ body {
         padding-top: 100px;
     }
     .card-nav {
-        height: 60px;
+        /* A altura será controlada pelo JS (60px ou 260px) */
     }
     .card-nav-top {
         padding: 0 1.5rem;
     }
+    /* CORREÇÃO HEADER DESKTOP: Hamburger visível e ordem ajustada */
     .hamburger-menu {
-        display: none;
-        /* Esconde o hamburger no desktop */
+        display: flex;
+        order: 1;
+        /* Primeiro item */
     }
     .logo-container {
-        order: 0;
-        position: absolute;
-        left: 50%;
-        top: 30px;
-        transform: translate(-50%, -50%);
+        order: 2;
+        /* Segundo item */
+        position: static;
+        transform: none;
+        flex-grow: 1;
+        text-align: center;
     }
     .nav-icons {
-        order: 0;
-        position: absolute;
-        right: 1.5rem;
-        top: 30px;
-        transform: translateY(-50%);
+        order: 3;
+        /* Terceiro item */
+        position: static;
+        transform: none;
     }
     .card-nav-content {
         visibility: visible;
         pointer-events: auto;
-        opacity: 1;
-        transform: translateY(0);
         position: absolute;
         top: 60px;
         left: 0;
         right: 0;
         grid-template-columns: repeat(3, 1fr);
         height: 200px;
+        /* Altura fixa do conteúdo dos cards */
         padding: 0 0.75rem 0.75rem;
+    }
+    /* Quando o nav NÃO está aberto no desktop, esconde os cards */
+    .card-nav:not(.open) .nav-card {
+        opacity: 0;
+        transform: translateY(30px);
+        pointer-events: none;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    /* Quando o nav ESTÁ aberto no desktop, mostra os cards */
+    .card-nav.open .nav-card {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Animação de entrada escalonada dos cards (só no estado .open) */
+    .card-nav.open .nav-card:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+    .card-nav.open .nav-card:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+    .card-nav.open .nav-card:nth-child(3) {
+        transition-delay: 0.2s;
     }
     .nav-card {
         min-height: auto;
