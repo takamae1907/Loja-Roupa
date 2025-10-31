@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Loja - Moda Feminina</title>
+    <title>Sua Marca - Moda Feminina</title>
+    <link rel="icon" href="fotos/favicon.png" type="image/png">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -14,7 +16,7 @@
     <header class="card-nav-container">
         <nav class="card-nav" id="card-nav">
             <div class="card-nav-top">
-                
+
                 <div class="logo-container">
                     <a href="#" class="nav-logo">Sua Marca</a>
                 </div>
@@ -40,12 +42,10 @@
                     <div class="nav-card-label">Navegação</div>
                     <div class="nav-card-links">
                         <a class="nav-card-link" href="#home">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
-                            Início
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Início
                         </a>
                         <a class="nav-card-link" href="#colecao">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
-                            Coleção
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Coleção
                         </a>
                     </div>
                 </div>
@@ -53,12 +53,10 @@
                     <div class="nav-card-label">Descubra</div>
                     <div class="nav-card-links">
                         <a class="nav-card-link" href="#destaques-carousel">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
-                            Destaques
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Destaques
                         </a>
                         <a class="nav-card-link" href="#novidades">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
-                            Novidades
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Novidades
                         </a>
                     </div>
                 </div>
@@ -66,8 +64,7 @@
                     <div class="nav-card-label">Contato</div>
                     <div class="nav-card-links">
                         <a class="nav-card-link" href="#contato">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i>
-                            Fale Conosco
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Fale Conosco
                         </a>
                     </div>
                 </div>
@@ -78,7 +75,7 @@
     <main>
 
         <section id="home" class="hero-masonry">
-            
+
             <div class="masonry-background">
                 <div class="masonry-column">
                     <div class="masonry-item"><img src="fotos/foto1.PNG" alt="Look 1"></div>
@@ -108,26 +105,22 @@
             </div>
 
             <div class="hero-content">
-                <div class="hero-text-slider">
-                    <div class="hero-text-slide active">
-                        <h2>Coleção Essencial</h2>
-                        <p>Elegância e conforto para o seu dia a dia.</p>
-                    </div>
-                    <div class="hero-text-slide">
-                        <h2>Moda Inverno</h2>
-                        <p>As peças mais quentes para a estação.</p>
-                    </div>
-                    <div class="hero-text-slide">
-                        <h2>Moda Verão</h2>
-                        <p>Leveza e estilo para aproveitar o sol.</p>
-                    </div>
+                <div class="hero-text-content">
+                    <h2 class="hero-animated-title">
+                        <span class="static-word"></span>
+                        <span class="rotating-word-wrapper">
+                            </span>
+                    </h2>
+                    <p class="hero-animated-subtitle">
+                    </p>
                 </div>
+
                 <div class="hero-slider-dots">
                     <span class="dot active" data-slide="0"></span>
                     <span class="dot" data-slide="1"></span>
                     <span class="dot" data-slide="2"></span>
                 </div>
-                <a href="#colecao" class="cta-button">Ver Agora</a>
+                <a href="#colecao" class="liquid-button dark">Ver Agora</a>
             </div>
         </section>
 
@@ -143,7 +136,11 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido alguma coisa</h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #8B4513;"></span>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto2.PNG');">
@@ -153,7 +150,12 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido de inverno</h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #9370DB;"></span>
+                        <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada2.jpg');">
@@ -163,7 +165,11 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestido de Verão</h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada.jpg');">
@@ -173,7 +179,11 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Vestidos para isso</h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto6.PNG');">
@@ -183,7 +193,12 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>vestidos para aquilo </h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #000000;"></span>
+                        <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span>
+                    </div>
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto7.PNG');">
@@ -193,7 +208,11 @@
                     </div>
                     <span class="product-card-label">alguma info</span>
                     <h3>Não sei pra que</h3>
-                    <p>$ 133,00</p>
+                    <p class="product-price">$ 133,00</p>
+                    <p class="product-installments">em até 3x de $ 44,33</p>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #FF1493;"></span>
+                    </div>
                 </div>
 
             </div>
@@ -227,6 +246,8 @@
                 </div>
                 <button class="carousel-button next" id="carousel-next">&gt;</button>
             </div>
+
+            <a href="#colecao" class="liquid-button cta-center">Veja Mais</a>
         </section>
 
 
@@ -253,8 +274,8 @@
                 </div>
                 <div class="stepper-footer">
                     <div class="stepper-nav">
-                        <button class="stepper-button-back" style="display: none;">Voltar</button>
-                        <button class="stepper-button-next">Próximo</button>
+                        <button class="liquid-button" style="display: none;" id="stepper-back">Voltar</button>
+                        <button class="liquid-button primary" id="stepper-next">Próximo</button>
                     </div>
                 </div>
             </div>
@@ -279,7 +300,7 @@
                         <label for="message">Mensagem</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="submit-button">Enviar Mensagem</button>
+                    <button type="submit" class="liquid-button dark">Enviar Mensagem</button>
                 </form>
             </div>
         </section>
@@ -302,11 +323,21 @@
         </div>
     </nav>
 
+    <div class="floating-social">
+        <a href="https://wa.me/SEUNUMERO" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/SEUUSUARIO" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
     <footer class="footer">
         <p>&copy; 2025 Sua Marca. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
+<script src="script.js"></script>
+<script src="RotatingText.js"></script>
 
 </html>

@@ -1,38 +1,78 @@
 // Espera o HTML carregar para rodar o script
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =============================================
-    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) ====
-    // =============================================
-    const textSlides = document.querySelectorAll('.hero-text-slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
+    // =================================================================
+    // ==== 1. LÓGICA DO CARROSSEL DE TEXTO (HERO) - EFEITO ROTATING ====
+    // =================================================================
+    const heroContent = document.querySelector('.hero-text-content');
 
-    function showSlide(index) {
-        textSlides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-    }
+    if (heroContent) {
+        const staticWordEl = heroContent.querySelector('.static-word');
+        const rotatingWrapper = heroContent.querySelector('.rotating-word-wrapper');
+        const subtitleEl = heroContent.querySelector('.hero-animated-subtitle');
+        const dots = document.querySelectorAll('.dot');
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % textSlides.length;
-        showSlide(currentSlide);
-    }
+        const slidesData = [
+            { static: "Coleção", rotating: "Essencial", subtitle: "Elegância e conforto para o seu dia a dia." },
+            { static: "Moda", rotating: "Inverno", subtitle: "As peças mais quentes para a estação." },
+            { static: "Moda", rotating: "Verão", subtitle: "Leveza e estilo para aproveitar o sol." }
+        ];
+        let currentSlide = 0;
+        let slideInterval;
 
-    // Navegação por bolinhas
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            currentSlide = parseInt(dot.dataset.slide);
+        function showSlide(index) {
+            const slide = slidesData[index];
+
+            if (staticWordEl) {
+                staticWordEl.textContent = slide.static;
+            }
+
+            if (rotatingWrapper) {
+                const oldWord = rotatingWrapper.querySelector('.rotating-word');
+                if (oldWord) {
+                    oldWord.classList.add('exiting');
+                    oldWord.addEventListener('transitionend', () => {
+                        if (oldWord) oldWord.remove();
+                    }, { once: true });
+                }
+
+                const newWord = document.createElement('span');
+                newWord.className = 'rotating-word';
+                newWord.textContent = slide.rotating;
+                rotatingWrapper.appendChild(newWord);
+
+                void newWord.offsetWidth;
+                newWord.classList.add('entering');
+            }
+
+            if (subtitleEl) {
+                subtitleEl.textContent = slide.subtitle;
+            }
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slidesData.length;
             showSlide(currentSlide);
-        });
-    });
+        }
 
-    // Troca automática
-    if (textSlides.length > 0) {
-        setInterval(nextSlide, 5000); // Troca a cada 5 segundos
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const newIndex = parseInt(dot.dataset.slide);
+                if (newIndex !== currentSlide) {
+                    currentSlide = newIndex;
+                    showSlide(currentSlide);
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, 5000);
+                }
+            });
+        });
+
+        showSlide(0);
+        slideInterval = setInterval(nextSlide, 5000);
     }
 
 
@@ -63,9 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextBtn = document.getElementById('carousel-next');
         const productCard = productTrack.querySelector('.product-carousel-card');
 
-        if (productCard) {
+        if (productCard && prevBtn && nextBtn) {
             const cardWidth = productCard.offsetWidth;
-            const gap = 16; // 1rem
+            const gap = 16;
             const scrollAmount = cardWidth + gap;
 
             nextBtn.addEventListener('click', () => {
@@ -80,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ===================================================
-    // ==== 4. LÓGICA DO STEPPER (MANTIDA) ====
+    // ==== 4. LÓGICA DO STEPPER (CORRIGIDA) ====
     // ===================================================
     const stepper = document.querySelector('.stepper-outer-container');
 
@@ -88,11 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const indicatorRow = stepper.querySelector('.stepper-indicator-row');
         const contents = stepper.querySelectorAll('.stepper-content');
         const contentWrapper = stepper.querySelector('.stepper-content-wrapper');
-        const nextBtn = stepper.querySelector('.stepper-button-next');
-        const backBtn = stepper.querySelector('.stepper-button-back');
+
+        // **** A CORREÇÃO ESTÁ AQUI ****
+        // Buscando botões por ID em vez de classe
+        const nextBtn = document.getElementById('stepper-next');
+        const backBtn = document.getElementById('stepper-back');
+
         const navContainer = stepper.querySelector('.stepper-nav');
         let currentStep = 1;
         const totalSteps = contents.length;
+
+        // O restante da lógica do stepper (HTML dos ícones, etc.)
         const checkIconHTML = `
             <div class="icon-btn icon-btn--small">
                 <span class="icon-btn__back"></span>
@@ -101,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
                 <span class="icon-btn__label">Feito</span>
             </div>`;
+
         function getNumberIconHTML(num) {
             return `
             <div class="icon-btn icon-btn--small">
@@ -111,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="icon-btn__label">Etapa ${num}</span>
             </div>`;
         }
+
         function getActiveIconHTML(num) {
             return `
             <div class="icon-btn icon-btn--small">
@@ -121,7 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="icon-btn__label">Etapa ${num}</span>
             </div>`;
         }
+
         function initializeIndicators() {
+            if (!indicatorRow) return;
             indicatorRow.innerHTML = '';
             for (let i = 1; i <= totalSteps; i++) {
                 const indicator = document.createElement('div');
@@ -143,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         }
+
         function updateStepper() {
             const indicators = stepper.querySelectorAll('.stepper-indicator');
             indicators.forEach((indicator, index) => {
@@ -168,29 +219,42 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (newContent) {
                 newContent.classList.add('active');
-                contentWrapper.style.height = newContent.offsetHeight + 'px';
+                if (contentWrapper) {
+                    contentWrapper.style.height = newContent.offsetHeight + 'px';
+                }
             }
-            backBtn.style.display = (currentStep === 1) ? 'none' : 'block';
-            navContainer.classList.toggle('end', currentStep === 1);
-            nextBtn.textContent = (currentStep === totalSteps) ? 'Finalizar' : 'Próximo';
+            if (backBtn) {
+                backBtn.style.display = (currentStep === 1) ? 'none' : 'inline-flex';
+            }
+            if (navContainer) {
+                navContainer.classList.toggle('end', currentStep === 1);
+            }
+            if (nextBtn) {
+                nextBtn.textContent = (currentStep === totalSteps) ? 'Finalizar' : 'Próximo';
+            }
         }
-        nextBtn.addEventListener('click', () => {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                updateStepper();
-            } else {
-                alert('Pedido Finalizado!');
-            }
-        });
-        backBtn.addEventListener('click', () => {
-            if (currentStep > 1) {
-                currentStep--;
-                updateStepper();
-            }
-        });
+
+        // Adiciona event listeners APENAS se os botões existirem
+        if (nextBtn && backBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepper();
+                } else {
+                    alert('Pedido Finalizado!');
+                }
+            });
+            backBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateStepper();
+                }
+            });
+        }
+
         initializeIndicators();
         const firstContent = stepper.querySelector(`.stepper-content[data-step="1"]`);
-        if (firstContent) {
+        if (firstContent && contentWrapper) {
             contentWrapper.style.height = firstContent.offsetHeight + 'px';
         }
     }
@@ -203,10 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dockItems = document.querySelectorAll('.dock-item');
 
     if (dockPanel && dockItems.length > 0) {
-        const baseSize = 48;
-        const maxMagnification = 1.6;
-        const magnificationRange = 100;
-
         dockPanel.addEventListener('mousemove', e => {
             const mouseX = e.pageX;
 
@@ -216,9 +276,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const distance = Math.abs(mouseX - itemCenter);
 
                 let scale = 1;
-                if (distance < magnificationRange) {
-                    const proximity = (magnificationRange - distance) / magnificationRange;
-                    scale = 1 + (maxMagnification - 1) * proximity;
+                if (distance < 100) { // magnificationRange
+                    const proximity = (100 - distance) / 100;
+                    scale = 1 + (1.6 - 1) * proximity; // maxMagnification
                 }
                 const icon = item.querySelector('.dock-icon');
                 if (icon) {
@@ -237,21 +297,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // =============================================
-    // ==== 6. LÓGICA DO HEADER (CardNav) COM ANIMAÇÃO ====
-    // =============================================
+    // ==================================================
+    // ==== 6. LÓGICA DO HEADER (CardNav) - AGORA FUNCIONANDO ====
+    // ==================================================
     const hamburger = document.getElementById('hamburger-menu');
     const nav = document.getElementById('card-nav');
     const navContent = document.getElementById('card-nav-content');
     const navCards = navContent.querySelectorAll('.nav-card');
 
-    if (hamburger && nav && navContent) {
+    if (hamburger && nav && navContent && navCards.length > 0) {
         let isNavOpen = false;
 
-        // Função para calcular a altura do conteúdo no mobile
         function getNavContentHeight() {
             let height = 0;
-            const gap = 8; // 8px gap
+            const gap = 8;
             navCards.forEach(card => {
                 height += card.offsetHeight;
             });
@@ -261,30 +320,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return height;
         }
 
-        // --- Lógica para Mobile (Click) ---
         hamburger.addEventListener('click', () => {
             isNavOpen = !isNavOpen;
             hamburger.classList.toggle('open', isNavOpen);
             nav.classList.toggle('open', isNavOpen);
 
             if (isNavOpen) {
+                // ABRE O MENU
                 const topBarHeight = 60;
                 const contentHeight = getNavContentHeight();
                 nav.style.height = topBarHeight + contentHeight + 'px';
                 nav.setAttribute('aria-hidden', 'false');
             } else {
-                nav.style.height = '60px';
+                // FECHA O MENU (A CORREÇÃO QUE VOCÊ PEDIU)
+                nav.style.height = '60px'; // Retorna à altura fina
                 nav.setAttribute('aria-hidden', 'true');
             }
         });
 
-        // --- Lógica para Desktop (Animação de Entrada) ---
         function runDesktopEntryAnimation() {
             if (window.innerWidth > 768) {
-                // 1. Anima a altura do container
                 nav.style.height = '260px';
-
-                // 2. Anima os cards com delay
                 navCards.forEach((card, index) => {
                     card.style.transitionDelay = `${0.15 + index * 0.1}s`;
                     card.style.transform = 'translateY(0)';
@@ -293,13 +349,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // --- Lógica de Redimensionamento ---
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
-                // Ao redimensionar PARA desktop
-                nav.style.height = '260px'; // Garante que fique aberto
+                nav.style.height = '260px';
                 navCards.forEach((card, index) => {
-                    card.style.transitionDelay = '0s'; // Remove delay para reajuste
+                    card.style.transitionDelay = '0s';
                     card.style.transform = 'translateY(0)';
                     card.style.opacity = '1';
                 });
@@ -307,8 +361,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 hamburger.classList.remove('open');
                 isNavOpen = false;
             } else {
-                // Ao redimensionar PARA mobile
-                // Reseta estilos dos cards para o estado inicial (oculto)
                 navCards.forEach(card => {
                     card.style.transform = 'translateY(30px)';
                     card.style.opacity = '0';
@@ -316,19 +368,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (isNavOpen) {
-                    // Se estava aberto, recalcula a altura
                     const topBarHeight = 60;
                     const contentHeight = getNavContentHeight();
                     nav.style.height = topBarHeight + contentHeight + 'px';
                 } else {
-                    // Se estava fechado, força 60px
                     nav.style.height = '60px';
                 }
             }
         });
 
-        // Roda a animação de entrada do desktop (se aplicável)
-        // Adiciona um pequeno delay para garantir que o CSS foi carregado
         setTimeout(runDesktopEntryAnimation, 100);
     }
 
