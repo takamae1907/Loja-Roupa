@@ -1,8 +1,5 @@
 /*
  * SCRIPT DA LOJA (loja-script.js)
- *
- * Contém a lógica do script.js principal (Menu, Dock, Spotlight, Abrir/Fechar Sacola)
- * MAIS a lógica de adicionar/remover/atualizar itens da sacola.
  */
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -106,22 +103,16 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==== SEÇÃO 2: LÓGICA DA SACOLA (Combinada e Corrigida) ==== */
     /* ======================================================== */
 
-    // Seletores (do script.js principal e do loja.html)
     const openCartBtn = document.getElementById('open-cart-btn');
     const closeCartBtn = document.getElementById('cart-close-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
-    
-    // Seletores (APENAS da loja.html)
     const addCartButtons = document.querySelectorAll('.btn-add-cart');
-    const cartBody = document.getElementById('cart-items-list'); // É o .cart-body
+    const cartBody = document.getElementById('cart-items-list'); 
     const cartCountBadge = document.getElementById('cart-count-badge');
     const emptyMessageHTML = '<p class="cart-empty-message">Sua sacola está vazia.</p>';
-
-    // Pega o carrinho salvo no navegador ou cria um array vazio
     let cart = JSON.parse(localStorage.getItem('lojaCart')) || [];
 
-    // --- Funções de Abrir/Fechar (do script.js principal) ---
     function openCart() {
         if (cartSidebar) cartSidebar.classList.add('open');
         if (cartOverlay) cartOverlay.classList.add('open');
@@ -132,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (cartOverlay) cartOverlay.classList.remove('open');
     }
 
-    // --- Funções de Lógica do Carrinho (NOVAS) ---
     function saveCart() {
         localStorage.setItem('lojaCart', JSON.stringify(cart));
         updateCartUI();
@@ -146,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cart.push(item); 
         }
         saveCart();
-        openCart(); // Abre a sacola ao adicionar
+        openCart(); 
     }
 
     function removeItemFromCart(itemId) {
@@ -156,15 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCartUI() {
         if (!cartBody || !cartCountBadge) return; 
-
-        // 1. Limpa a lista atual
         cartBody.innerHTML = '';
-        
-        // 2. Verifica se o carrinho está vazio
         if (cart.length === 0) {
             cartBody.innerHTML = emptyMessageHTML;
         } else {
-            // 3. Adiciona cada item do carrinho ao HTML
             cart.forEach(item => {
                 const itemHTML = `
                     <div class="cart-item" data-id="${item.id}">
@@ -183,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         
-        // 4. Atualiza o contador (badge)
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         if (totalItems > 0) {
             cartCountBadge.textContent = totalItems;
@@ -193,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cartCountBadge.textContent = '0';
         }
         
-        // 5. Adiciona listeners aos botões "Remover"
         addRemoveListeners();
     }
     
@@ -207,12 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Inicialização da Sacola ---
     if (openCartBtn) openCartBtn.addEventListener('click', openCart);
     if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
     if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
 
-    // Listeners para Adicionar ao Carrinho
     if (addCartButtons.length > 0) {
         addCartButtons.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -229,7 +210,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Inicializa a UI da sacola ao carregar a página
     updateCartUI();
+    
+    
+    /* ======================================================== */
+    /* ==== SEÇÃO 5: LÓGICA DE FILTRO DE TABS (NOVO) ==== */
+    /* ======================================================== */
+    
+    const filterTabs = document.querySelectorAll('.filter-tab-btn');
+    const productCards = document.querySelectorAll('.product-grid .product-card');
+
+    function filterProducts(category, activeTab) {
+        // 1. Gerencia o estado ativo da aba
+        filterTabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        activeTab.classList.add('active');
+
+        // 2. Filtra os cards
+        productCards.forEach(card => {
+            const cardCategories = card.dataset.category || 'destaques';
+
+            // O card deve ser mostrado se:
+            // 1. A categoria for 'destaques' (mostra todos)
+            // 2. As categorias do card incluírem a categoria do filtro
+            if (category === 'destaques' || cardCategories.includes(category)) {
+                card.style.display = 'flex'; // 'flex' é o display original do card
+            } else {
+                card.style.display = 'none'; // Esconde o card
+            }
+        });
+    }
+
+    // Adiciona o clique em cada aba
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.dataset.filter;
+            filterProducts(category, tab);
+        });
+    });
+
 
 }); // Fim do 'DOMContentLoaded'

@@ -83,10 +83,19 @@
     <main>
         <section id="loja" class="product-grid-section">
             <h2>Nossa Loja</h2>
-            
+
+            <div class="filter-tabs" id="filter-tabs">
+                <button class="filter-tab-btn active" data-filter="destaques">Destaques</button>
+                <button class="filter-tab-btn" data-filter="vestidos">Vestidos</button>
+                <button class="filter-tab-btn" data-filter="conjuntos">Conjuntos</button>
+                <button class="filter-tab-btn" data-filter="saias">Saias</button>
+                <button class="filter-tab-btn" data-filter="plus">Plus</button>
+                <button class="filter-tab-btn" data-filter="plissado">Vestido Plissado</button>
+            </div>
+
             <div class="product-grid">
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques conjuntos">
                     <div class="product-image-placeholder" style="background-image: url('fotos/04.jpg');">
                         <button class="liquid-button btn-add-cart" 
                                 data-id="0801" 
@@ -110,13 +119,12 @@
                                 <span class="color-swatch" style="background-color: #F08080;"></span>
                                 <span class="color-swatch" style="background-color: #98FB98;"></span>
                                 <span class="color-swatch" style="background-color: #000000;"></span>
-                                <span class="color-swatch" style="background-color: #E6E0D4;"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques vestidos plissado">
                     <div class="product-image-placeholder" style="background-image: url('fotos/02.jpg');">
                          <button class="liquid-button btn-add-cart" 
                                 data-id="0755" 
@@ -138,15 +146,13 @@
                             <div class="product-colors">
                                 <span class="color-swatch" style="background-color: #B2DFDB;"></span>
                                 <span class="color-swatch" style="background-color: #D2B48C;"></span>
-                                <span class="color-swatch" style="background-color: #89CFF0;"></span>
                                 <span class="color-swatch" style="background-color: #FFC0CB;"></span>
-                                <span class="color-swatch" style="background-color: #C3B1E1;"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques vestidos">
                     <div class="product-image-placeholder" style="background-image: url('fotos/03.jpg');">
                          <button class="liquid-button btn-add-cart" 
                                 data-id="0853" 
@@ -167,15 +173,13 @@
                             </div>
                             <div class="product-colors">
                                 <span class="color-swatch" style="background-color: #FFFFE0;"></span>
-                                <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd"></span>
                                 <span class="color-swatch" style="background-color: #ADD8E6;"></span>
-                                <span class="color-swatch" style="background-color: #FFC0CB;"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques vestidos">
                     <div class="product-image-placeholder" style="background-image: url('fotos/01.jpg');">
                          <button class="liquid-button btn-add-cart" 
                                 data-id="0803" 
@@ -197,13 +201,12 @@
                             <div class="product-colors">
                                 <span class="color-swatch" style="background-color: #F5F5DC;"></span>
                                 <span class="color-swatch" style="background-color: #DC143C;"></span>
-                                <span class="color-swatch" style="background-color: #90EE90;"></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques vestidos plus">
                     <div class="product-image-placeholder" style="background-image: url('fotos/16.jpg');">
                          <button class="liquid-button btn-add-cart" 
                                 data-id="0651" 
@@ -229,7 +232,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-category="destaques vestidos">
                     <div class="product-image-placeholder" style="background-image: url('fotos/17.jpg');">
                          <button class="liquid-button btn-add-cart" 
                                 data-id="0700" 
@@ -255,6 +258,60 @@
                     </div>
                 </div>
                 
+                <div class="product-card" data-category="destaques vestidos">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/07.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0757" 
+                                data-name="Vestido Valéria" 
+                                data-price="179.90" 
+                                data-image="fotos/07.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód 0757</span>
+                        <h3>Vestido Valéria</h3>
+                        <p class="product-price">R$ 179,90</p>
+                        <p class="product-installments">em até 3x de R$ 59,96</p>
+                        <div class="product-card-footer">
+                            <div class="product-sizes">
+                                <span class="size-option" aria-label="Tamanho Único">U</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-swatch" style="background-color: #AFEEEE;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="destaques conjuntos plus saias">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/10.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="1051" 
+                                data-name="Conjunto Saia e Blusa" 
+                                data-price="209.90" 
+                                data-image="fotos/10.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód 1051</span>
+                        <h3>Conjunto Saia e Blusa</h3>
+                        <p class="product-price">R$ 209,90</p>
+                        <p class="product-installments">em até 3x de R$ 69,96</p>
+                        <div class="product-card-footer">
+                            <div class="product-sizes">
+                                <span class="size-option" aria-label="Tamanho M">M</span>
+                                <span class="size-option" aria-label="Tamanho G1">G1</span>
+                                <span class="size-option" aria-label="Tamanho G2">G2</span>
+                            </div>
+                            <div class="product-colors">
+                                <span class="color-swatch" style="background-color: #F5F5DC;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>

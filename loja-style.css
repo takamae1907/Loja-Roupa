@@ -356,11 +356,10 @@ body {
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease; /* Transição para filtro */
     text-align: left;
     position: relative;
     overflow: hidden;
-    /* CORREÇÃO: Alinhamento vertical */
     display: flex;
     flex-direction: column;
 }
@@ -376,11 +375,10 @@ body {
     position: relative;
     overflow: hidden;
 }
-/* CORREÇÃO: Conteúdo do card para alinhamento */
 .product-card-content {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Ocupa espaço restante */
+    flex-grow: 1; 
 }
 .product-card h3 {
     font-size: 1.2rem;
@@ -405,9 +403,8 @@ body {
     color: var(--color-text-light);
     margin-bottom: 0.75rem;
 }
-/* CORREÇÃO: Footer do card para empurrar para baixo */
 .product-card-footer {
-    margin-top: auto; /* Empurra para o fim */
+    margin-top: auto; 
 }
 .product-sizes {
     display: flex;
@@ -887,7 +884,7 @@ body {
         gap: 8px;
     }
     .product-grid-section { padding: 3rem 5%; }
-    .product-grid { grid-template-columns: 1fr; } /* MODIFICADO: Loja sempre 1 col no mobile */
+    .product-grid { grid-template-columns: 1fr; } 
     .product-carousel-section { padding: 3rem 0; }
     .carousel-button { display: none; }
     .product-carousel-track-container {
@@ -895,7 +892,16 @@ body {
         scroll-padding: 0 5%;
     }
     .contact-section { padding-bottom: 120px; }
-    body { padding-bottom: 120px; } /* Padding para o dock */
+    body { padding-bottom: 120px; }
+    
+    .filter-tabs {
+        flex-wrap: wrap; /* Permite que as abas quebrem a linha */
+        justify-content: center;
+    }
+    .filter-tab-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
 }
 
 /* --- DESKTOP (769px e acima) --- */
@@ -948,10 +954,10 @@ body {
     }
     .mobile-dock { display: none; }
     
-    /* MODIFICAÇÃO: Layout do Grid */
     @media (min-width: 1024px) {
         
         /* O grid da #colecao E #loja terá 4 colunas */
+        /* Isso vai criar a grade 4x2 com 8 produtos */
         #colecao.product-grid-section .product-grid,
         #loja.product-grid-section .product-grid {
              grid-template-columns: repeat(4, 1fr);
@@ -1124,7 +1130,7 @@ body {
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -100%; /* Começa fora da tela */
+    right: -100%;
     width: 90%;
     max-width: 400px;
     height: 100%;
@@ -1158,7 +1164,7 @@ body {
     color: var(--color-text-light);
     cursor: pointer;
     line-height: 1;
-    padding: 0; /* Correção */
+    padding: 0;
 }
 .cart-body {
     flex-grow: 1;
@@ -1176,7 +1182,6 @@ body {
     background-color: var(--color-beige);
 }
 
-/* ADICIONADO: Estilos dos itens da sacola e badge */
 .cart-item {
     display: flex;
     gap: 1rem;
@@ -1235,4 +1240,39 @@ body {
 }
 #cart-count-badge.visible {
     transform: scale(1);
+}
+
+/* ============================================== */
+/* ==== 13. ESTILOS DAS ABAS DE FILTRO (NOVO) ==== */
+/* ============================================== */
+.filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    overflow-x: auto; /* Permite rolar no mobile */
+    padding-bottom: 10px; /* Espaço para a barra de rolagem */
+    justify-content: center;
+}
+.filter-tab-btn {
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    background-color: var(--color-white);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap; /* Impede que o texto quebre */
+}
+.filter-tab-btn:hover {
+    background-color: var(--color-beige);
+    border-color: #ddd;
+}
+.filter-tab-btn.active {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    border-color: var(--color-text-dark);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
