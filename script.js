@@ -12,10 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (rotatingTextContainer) {
             new RotatingText(rotatingTextContainer, {
                 texts: [
-                    'Coleção Essencial',
-                    'Coleção de Inverno',
-                    'Coleção de Verão',
-                    'Coleção de Outono'
+                    ' Inverno',
+                    ' Verão',
+                    ' Outono'
                 ],
                 rotationInterval: 3000, // Intervalo de 3 segundos
                 splitBy: 'characters', // Animar por letras

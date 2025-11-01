@@ -7,11 +7,8 @@
     --color-text-light: #555555;
     --color-border: #EAEAEA;
     --color-beige: #FAF7F2;
-    /* 1. PALETA DE CORES PADRONIZADA */
     --color-accent: #FF69B4;
-    /* Rosa (Hotpink) para detalhes */
     --color-dark-yellow: #FACC15;
-    /* Amarelo escuro (mantido do seu pedido) */
     --color-whatsapp: #25D366;
     --color-instagram: #E4405F;
     --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -43,11 +40,7 @@ body {
 
 
 /* ============================================== */
-
-
 /* ==== 1. NOVO HEADER (Estilos CardNav) ==== */
-
-
 /* ============================================== */
 
 .card-nav-container {
@@ -100,7 +93,6 @@ body {
     color: var(--color-text-dark);
     text-decoration: none;
     
-    /* MODIFICADO: Alinha imagem e texto */
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -175,6 +167,15 @@ body {
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
+/* * CORREÇÃO DO MENU CELULAR: 
+ * Esta regra agora está no lugar certo (fora do @media query)
+ */
+.card-nav.open .nav-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 .nav-card-label {
     font-weight: 500;
     font-size: 20px;
@@ -214,11 +215,7 @@ body {
 
 
 /* ========================================================== */
-
-
 /* ==== 2. SEÇÃO HERO (Masonry e Carrossel de Texto) ==== */
-
-
 /* ========================================================== */
 
 .hero-masonry {
@@ -226,7 +223,6 @@ body {
     width: 100%;
     height: 90vh;
     background-color: var(--color-light-pink);
-    /* 1. COR PADRÃO */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -254,26 +250,28 @@ body {
     width: 20%;
 }
 
+/* CORREÇÃO: Animação mais rápida (50s) */
 .masonry-column:nth-child(even) {
-    animation: scroll-up 80s linear infinite;
+    animation: scroll-up 50s linear infinite;
 }
 
 .masonry-column:nth-child(odd) {
-    animation: scroll-down 80s linear infinite;
+    animation: scroll-down 50s linear infinite;
 }
 
+/* CORREÇÃO: Animação de loop contínuo (-50%) */
 @keyframes scroll-up {
     0% {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(-100%);
+        transform: translateY(-50%);
     }
 }
 
 @keyframes scroll-down {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(-50%);
     }
     100% {
         transform: translateY(0);
@@ -286,11 +284,11 @@ body {
     overflow: hidden;
 }
 
+/* CORREÇÃO: Proporção natural "em pé" */
 .masonry-item img {
     width: 100%;
-    height: auto;
+    height: auto; /* Deixa a altura ser automática */
     display: block;
-    object-fit: cover;
 }
 
 .hero-content {
@@ -308,55 +306,51 @@ body {
 
 
 /* ESTILOS PARA O HERO TEXT (NOVO GRADIENTE) */
-
 .hero-text-content {
     position: relative;
     min-height: 130px;
-    /* Mantém a altura para consistência */
 }
 
+/* * MODIFICAÇÃO: 
+ * Wrapper para alinhar "Coleção de" + texto rotativo 
+ */
+.hero-title-wrapper {
+    display: flex; /* Alinha o H1 e o texto rotativo */
+    flex-wrap: wrap; /* Permite quebrar a linha em telas pequenas */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; /* Espaço entre "Coleção de" e o resto */
+    margin-bottom: 1rem;
+    min-height: 50px; /* Altura do texto rotativo */
+}
 
-/* **** MODIFICADO **** */
+/* NOVO: Estilo para o H1 "Coleção de" */
+.hero-static-title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin: 0; /* Reseta margem do H1 */
+    padding: 0; /* Reseta padding do H1 */
+}
 
-
-/* Classes antigas removidas */
-
-
-/* .animated-gradient-container { ... } */
-
-
-/* .animated-gradient-text { ... } */
-
-
-/* Estilo para o NOVO container de texto rotativo */
-
+/* MODIFICADO: Ajustado para o wrapper */
 #hero-rotating-text {
     font-size: 3rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0; /* Removido, o wrapper cuida disso */
     color: var(--color-text-dark);
-    min-height: 50px;
-    /* Altura aprox. de uma linha */
+    min-height: 50px; 
 }
-
-
-/* Aplica o gradiente animado aos SPANs internos criados pelo script */
 
 #hero-rotating-text span[aria-hidden="true"]>span {
     display: inline-block;
-    /* Garante que a animação funcione */
-    /* USANDO A PALETA DE CORES DO SEU SITE */
     background-image: linear-gradient( to right, var(--color-accent), var(--color-dark-yellow), var(--color-accent), var(--color-dark-yellow), var(--color-accent));
     background-size: 300% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    /* Animação */
     animation: gradient-animation 8s linear infinite;
 }
-
-
-/* Animação do Gradiente (Mantida) */
 
 @keyframes gradient-animation {
     0% {
@@ -379,7 +373,6 @@ body {
 
 
 /* ESTILO DE BOTÃO LIQUID-GLASS GENÉRICO */
-
 .liquid-button {
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
@@ -399,7 +392,6 @@ body {
     justify-content: center;
     gap: 0.5rem;
     z-index: 2;
-    /* CORREÇÃO: Impede que o texto do botão quebre em duas linhas */
     white-space: nowrap;
 }
 
@@ -407,9 +399,6 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
-
-
-/* Variações de cor para botões */
 
 .liquid-button.primary {
     background-color: rgba(59, 130, 246, 0.3);
@@ -431,9 +420,6 @@ body {
     background-color: rgba(34, 34, 34, 0.5);
 }
 
-
-/* Reset de estilos antigos */
-
 .cta-button,
 .stepper-button-next,
 .stepper-button-back,
@@ -443,9 +429,6 @@ body {
     color: inherit;
     font-size: inherit;
 }
-
-
-/* Ajuste para o botão 'Voltar' do stepper */
 
 #stepper-back {
     background-color: rgba(100, 100, 100, 0.2);
@@ -459,12 +442,10 @@ body {
 
 
 /* ---- 3. Seção Grade de Produtos (MODIFICADA) ---- */
-
 .product-grid-section {
     padding: 4rem 15%;
     text-align: center;
     background-color: var(--color-beige);
-    /* 1. COR PADRÃO */
     max-width: 100%;
 }
 
@@ -484,7 +465,6 @@ body {
 
 .product-card {
     background-color: var(--color-white);
-    /* 1. COR PADRÃO (removido aleatório) */
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
@@ -498,7 +478,6 @@ body {
     width: 100%;
     height: 250px;
     background-color: var(--color-white);
-    /* Fundo branco */
     border-radius: 8px;
     margin-bottom: 1rem;
     background-size: cover;
@@ -535,9 +514,6 @@ body {
     color: var(--color-text-light);
     margin-bottom: 0.75rem;
 }
-
-
-/* NOVO: Estilos para os tamanhos */
 
 .product-sizes {
     display: flex;
@@ -616,7 +592,6 @@ body {
     padding: 4rem 0;
     text-align: center;
     background-color: var(--color-light-pink);
-    /* 1. COR PADRÃO */
 }
 
 .product-carousel-section h2 {
@@ -671,18 +646,14 @@ body {
     display: block;
 }
 
-/* MUDANÇA: Aplicado efeito "Liquid Glass" nos botões do carrossel */
 .carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
-    /* EFEITO GLASS APLICADO */
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -717,7 +688,6 @@ body {
     padding: 4rem 5%;
     text-align: center;
     background-color: var(--color-beige);
-    /* 1. COR PADRÃO */
 }
 
 .stepper-section h2 {
@@ -872,7 +842,6 @@ body {
 
 
 /* ---- 6. Estilos do GlassIcon (Mantido) ---- */
-
 .icon-btn {
     background-color: transparent;
     border: none;
@@ -971,13 +940,8 @@ body {
 
 
 /* ================================================== */
-
-
 /* ==== 7. NOVO DOCK MÓVEL (Liquid Glass) ==== */
-
-
 /* ================================================== */
-
 .mobile-dock {
     position: fixed;
     bottom: 0.5rem;
@@ -1058,16 +1022,10 @@ body {
 
 
 /* ================================================== */
-
-
 /* ==== 8. RESPONSIVIDADE (REESCRITO) ==== */
-
-
 /* ================================================== */
 
-
 /* --- MOBILE (Até 768px) --- */
-
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -1076,7 +1034,6 @@ body {
         width: 95%;
         top: 0.75em;
     }
-    /* Correção Header Mobile */
     .logo-container {
         position: static;
         transform: none;
@@ -1091,9 +1048,7 @@ body {
     .hamburger-menu {
         order: 3;
         display: flex;
-        /* Garante que o hamburger seja visível no mobile */
     }
-    /* Hero */
     .hero-masonry {
         height: 85vh;
     }
@@ -1101,20 +1056,22 @@ body {
         width: 90%;
         padding: 1.5rem;
     }
-    /* **** MODIFICADO **** */
-    /* Tamanho do novo texto rotativo no mobile */
+    
+    /* MODIFICAÇÃO: Ajusta H1 e Texto Rotativo no mobile */
+    .hero-static-title {
+        font-size: 2.2rem;
+    }
     #hero-rotating-text {
         font-size: 2.2rem;
         min-height: 40px;
-        /* Altura mobile */
     }
+
     .hero-animated-subtitle {
         font-size: 1rem;
     }
     .hero-text-content {
         min-height: 100px;
     }
-    /* Masonry */
     .masonry-background {
         column-count: 3;
         gap: 8px;
@@ -1123,14 +1080,12 @@ body {
         width: 33.33%;
         gap: 8px;
     }
-    /* Grade de Produtos */
     .product-grid-section {
         padding: 3rem 5%;
     }
     .product-grid {
         grid-template-columns: 1fr;
     }
-    /* Carrossel */
     .product-carousel-section {
         padding: 3rem 0;
     }
@@ -1144,30 +1099,27 @@ body {
     .contact-section {
         padding-bottom: 120px;
     }
+    
+    body {
+        padding-bottom: 120px;
+    }
 }
 
 
 /* --- DESKTOP (769px e acima) --- */
-
 @media (min-width: 769px) {
     body {
         padding-top: 100px;
     }
-    .card-nav {
-        /* A altura será controlada pelo JS (60px ou 260px) */
-    }
     .card-nav-top {
         padding: 0 1.5rem;
     }
-    /* CORREÇÃO HEADER DESKTOP: Hamburger visível e ordem ajustada */
     .hamburger-menu {
         display: flex;
         order: 1;
-        /* Primeiro item */
     }
     .logo-container {
         order: 2;
-        /* Segundo item */
         position: static;
         transform: none;
         flex-grow: 1;
@@ -1175,7 +1127,6 @@ body {
     }
     .nav-icons {
         order: 3;
-        /* Terceiro item */
         position: static;
         transform: none;
     }
@@ -1188,22 +1139,16 @@ body {
         right: 0;
         grid-template-columns: repeat(3, 1fr);
         height: 200px;
-        /* Altura fixa do conteúdo dos cards */
         padding: 0 0.75rem 0.75rem;
     }
-    /* Quando o nav NÃO está aberto no desktop, esconde os cards */
     .card-nav:not(.open) .nav-card {
         opacity: 0;
         transform: translateY(30px);
         pointer-events: none;
         transition: transform 0.4s ease, opacity 0.4s ease;
     }
-    /* Quando o nav ESTÁ aberto no desktop, mostra os cards */
-    .card-nav.open .nav-card {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    /* Animação de entrada escalonada dos cards (só no estado .open) */
+    
+    /* Animação escalonada SÓ no desktop */
     .card-nav.open .nav-card:nth-child(1) {
         transition-delay: 0.1s;
     }
@@ -1213,6 +1158,7 @@ body {
     .card-nav.open .nav-card:nth-child(3) {
         transition-delay: 0.2s;
     }
+
     .nav-card {
         min-height: auto;
         height: 100%;
@@ -1220,7 +1166,6 @@ body {
     .mobile-dock {
         display: none;
     }
-    /* Grid de produtos Bento no desktop */
     @media (min-width: 1024px) {
         .product-grid {
             grid-template-columns: repeat(4, 1fr);
@@ -1246,10 +1191,8 @@ body {
 
 
 /* ---- 9. Seção de Contato ---- */
-
 .contact-section {
     background-color: var(--color-light-pink);
-    /* 1. COR PADRÃO */
     padding: 5rem 5%;
     text-align: center;
 }
@@ -1303,7 +1246,6 @@ body {
 
 
 /* ---- 10. Rodapé ---- */
-
 .footer {
     text-align: center;
     padding: 2rem 5%;
@@ -1315,7 +1257,6 @@ body {
 
 
 /* 6. ESTILOS PARA BOTÕES FLUTUANTES */
-
 .floating-social {
     position: fixed;
     bottom: 1.5rem;
@@ -1353,13 +1294,9 @@ body {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-
-/* Esconde botões flutuantes no mobile se o Dock estiver visível */
-
 @media (max-width: 768px) {
     .floating-social {
         bottom: 5.5rem;
-        /* Sobe para não colidir com o dock */
         right: 1rem;
     }
 }
@@ -1368,12 +1305,10 @@ body {
 /* ============================================== */
 /* ==== 11. ESTILOS DA LOGO (Crismon Modas) ==== */
 /* ============================================== */
-
-/* O link <a> agora é um container flex */
 .nav-logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem; /* Espaço entre imagem e texto */
+    gap: 0.5rem;
     text-decoration: none;
 }
 
@@ -1382,13 +1317,9 @@ body {
     width: auto;
     object-fit: contain;
     display: block;
-    /* margin: 0 auto; (Removido daqui, o .logo-container cuida da centralização no desktop) */
-    
-    /* Filtro mantido */
     filter: brightness(95%) saturate(140%) contrast(105%);
 }
 
-/* Novo estilo para o texto */
 .nav-logo-text {
     font-size: 1.5rem;
     font-weight: 600;
@@ -1396,13 +1327,10 @@ body {
     display: none; /* Escondido no mobile por padrão */
 }
 
-/* Media Queries (Ajustes) */
-
 @media (max-width: 768px) {
     .nav-logo img {
-        margin: 0; /* Garante alinhamento esquerdo no mobile */
+        margin: 0;
     }
-
     .logo-container {
         flex-grow: 1;
         display: flex;
@@ -1411,10 +1339,6 @@ body {
 }
 
 @media (min-width: 769px) {
-    /* O .logo-container (em 8. RESPONSIVIDADE) já tem 'text-align: center',
-       o que vai centralizar o '.nav-logo' (que é inline-flex) */
-
-    /* Mostra o texto da logo no desktop */
     .nav-logo-text {
         display: block;
     }
@@ -1424,7 +1348,6 @@ body {
 /* ============================================== */
 /* ==== 12. ESTILOS DA SACOLA (NOVO) ==== */
 /* ============================================== */
-
 .cart-overlay {
     position: fixed;
     top: 0;
@@ -1455,7 +1378,6 @@ body {
     flex-direction: column;
 }
 
-/* Estado aberto */
 .cart-sidebar.open {
     right: 0;
 }
@@ -1505,7 +1427,6 @@ body {
     background-color: var(--color-beige);
 }
 
-/* (Estilos para item de carrinho - opcional) */
 .cart-item {
     display: flex;
     gap: 1rem;
