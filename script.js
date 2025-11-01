@@ -334,5 +334,31 @@ document.addEventListener("DOMContentLoaded", () => {
         // Roda a animação de entrada do desktop (que agora abre o menu)
         setTimeout(runDesktopEntryAnimation, 100);
     }
+    
+    
+    // =============================================
+    // ==== 7. LÓGICA DA SACOLA (NOVO) ====
+    // =============================================
+    const openCartBtn = document.getElementById('open-cart-btn');
+    const closeCartBtn = document.getElementById('cart-close-btn');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartOverlay = document.getElementById('cart-overlay');
+
+    if (openCartBtn && closeCartBtn && cartSidebar && cartOverlay) {
+        
+        function openCart() {
+            cartSidebar.classList.add('open');
+            cartOverlay.classList.add('open');
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('open');
+            cartOverlay.classList.remove('open');
+        }
+
+        openCartBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+    }
 
 }); // Fim do 'DOMContentLoaded'

@@ -99,6 +99,11 @@ body {
     font-weight: 600;
     color: var(--color-text-dark);
     text-decoration: none;
+    
+    /* MODIFICADO: Alinha imagem e texto */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-icons {
@@ -666,12 +671,18 @@ body {
     display: block;
 }
 
+/* MUDANÇA: Aplicado efeito "Liquid Glass" nos botões do carrossel */
 .carousel-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid var(--color-border);
+    
+    /* EFEITO GLASS APLICADO */
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -683,7 +694,7 @@ body {
 }
 
 .carousel-button:hover {
-    background-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .carousel-button.prev {
@@ -1351,4 +1362,172 @@ body {
         /* Sobe para não colidir com o dock */
         right: 1rem;
     }
+}
+
+
+/* ============================================== */
+/* ==== 11. ESTILOS DA LOGO (Crismon Modas) ==== */
+/* ============================================== */
+
+/* O link <a> agora é um container flex */
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaço entre imagem e texto */
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    /* margin: 0 auto; (Removido daqui, o .logo-container cuida da centralização no desktop) */
+    
+    /* Filtro mantido */
+    filter: brightness(95%) saturate(140%) contrast(105%);
+}
+
+/* Novo estilo para o texto */
+.nav-logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    display: none; /* Escondido no mobile por padrão */
+}
+
+/* Media Queries (Ajustes) */
+
+@media (max-width: 768px) {
+    .nav-logo img {
+        margin: 0; /* Garante alinhamento esquerdo no mobile */
+    }
+
+    .logo-container {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (min-width: 769px) {
+    /* O .logo-container (em 8. RESPONSIVIDADE) já tem 'text-align: center',
+       o que vai centralizar o '.nav-logo' (que é inline-flex) */
+
+    /* Mostra o texto da logo no desktop */
+    .nav-logo-text {
+        display: block;
+    }
+}
+
+
+/* ============================================== */
+/* ==== 12. ESTILOS DA SACOLA (NOVO) ==== */
+/* ============================================== */
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Começa fora da tela */
+    width: 90%;
+    max-width: 400px;
+    height: 100%;
+    background-color: var(--color-white);
+    z-index: 2001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s cubic-bezier(0.83, 0, 0.17, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estado aberto */
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cart-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.cart-body {
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.cart-empty-message {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-top: 2rem;
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-beige);
+}
+
+/* (Estilos para item de carrinho - opcional) */
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cart-item img {
+    width: 70px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-details p {
+    margin: 0;
+}
+
+.cart-item-details p:first-child {
+    font-weight: 500;
+}
+
+.cart-item-details p:last-child {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
 }

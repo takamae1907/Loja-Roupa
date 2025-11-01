@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja - Sua Marca</title>
+    <link rel="icon" href="fotos/favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="RotatingText.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="card-nav-container">
+        <nav class="card-nav" id="card-nav">
+            <div class="card-nav-top">
+
+                <div class="hamburger-menu" id="hamburger-menu" role="button" aria-label="Abrir menu" tabIndex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <div class="logo-container">
+                    <a href="index.html" class="nav-logo">Sua Marca</a> </div>
+
+                <div class="nav-icons">
+                    <div class="icon-btn icon-btn--small" id="open-cart-btn" style="position: relative;">
+                        <span class="icon-btn__back"></span>
+                        <span class="icon-btn__front">
+                            <span class="icon-btn__icon"><i class="fas fa-shopping-bag"></i></span>
+                        </span>
+                        <span class="icon-btn__label">Sacola</span>
+                        <span id="cart-count-badge">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-nav-content" id="card-nav-content" aria-hidden="true">
+                <div class="nav-card" style="background-color: var(--color-light-pink); color: var(--color-text-dark);">
+                    <div class="nav-card-label">Navegação</div>
+                    <div class="nav-card-links">
+                         <a class="nav-card-link" href="index.html">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Início
+                        </a>
+                        <a class="nav-card-link" href="index.html#colecao">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Coleção
+                        </a>
+                        <a class="nav-card-link" href="loja.html">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> **Loja Principal**
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color: var(--color-beige); color: var(--color-text-dark);">
+                    <div class="nav-card-label">Descubra</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="index.html#destaques-carousel">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Destaques
+                        </a>
+                        <a class="nav-card-link" href="index.html#novidades">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Novidades
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-card" style="background-color: var(--color-text-dark); color: var(--color-white);">
+                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="index.html#contato">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Fale Conosco
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="loja" class="product-grid-section">
+            <h2>Nossa Loja</h2>
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/04.jpg');">
+                        <button class="liquid-button btn-add-cart" 
+                                data-id="0801" 
+                                data-name="Macacão Brenda" 
+                                data-price="219.90" 
+                                data-image="fotos/04.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0801</span>
+                    <h3>Macacão Brenda</h3>
+                    <p class="product-price">R$ 219,90</p>
+                    <p class="product-installments">em até 3x de R$ 73,30</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho M">M</span>
+                        <span class="size-option" aria-label="Tamanho G">G</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #F08080;"></span>
+                        <span class="color-swatch" style="background-color: #98FB98;"></span>
+                        <span class="color-swatch" style="background-color: #000000;"></span>
+                        <span class="color-swatch" style="background-color: #E6E0D4;"></span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/02.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0755" 
+                                data-name="Vestido com cinto e plissado" 
+                                data-price="249.90" 
+                                data-image="fotos/02.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0755</span>
+                    <h3>Vestido com cinto e plissado</h3>
+                    <p class="product-price">R$ 249,90</p>
+                    <p class="product-installments">em até 3x de R$ 83,30</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho Único">U</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #B2DFDB;"></span>
+                        <span class="color-swatch" style="background-color: #D2B48C;"></span>
+                        <span class="color-swatch" style="background-color: #89CFF0;"></span>
+                        <span class="color-swatch" style="background-color: #FFC0CB;"></span>
+                        <span class="color-swatch" style="background-color: #C3B1E1;"></span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/03.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0853" 
+                                data-name="Vestido com cinto" 
+                                data-price="199.90" 
+                                data-image="fotos/03.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0853</span>
+                    <h3>Vestido com cinto</h3>
+                    <p class="product-price">R$ 199,90</p>
+                    <p class="product-installments">em até 3x de R$ 66,63</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho Único">U</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #FFFFE0;"></span>
+                        <span class="color-swatch" style="background-color: #FFFFFF; border: 1px solid #ddd"></span>
+                        <span class="color-swatch" style="background-color: #ADD8E6;"></span>
+                        <span class="color-swatch" style="background-color: #FFC0CB;"></span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/01.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0803" 
+                                data-name="Vestido Longo" 
+                                data-price="229.90" 
+                                data-image="fotos/01.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0803</span>
+                    <h3>Vestido Longo</h3>
+                    <p class="product-price">R$ 229,90</p>
+                    <p class="product-installments">em até 3x de R$ 76,63</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho Único">U</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #F5F5DC;"></span>
+                        <span class="color-swatch" style="background-color: #DC143C;"></span>
+                        <span class="color-swatch" style="background-color: #90EE90;"></span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/16.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0651" 
+                                data-name="Vestido plus Midi" 
+                                data-price="189.90" 
+                                data-image="fotos/16.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0651</span>
+                    <h3>Vestido plus Midi</h3>
+                    <p class="product-price">R$ 189,90</p>
+                    <p class="product-installments">em até 3x de R$ 63,30</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho Plus">G1</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #000000;"></span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-placeholder" style="background-image: url('fotos/17.jpg');">
+                         <button class="liquid-button btn-add-cart" 
+                                data-id="0700" 
+                                data-name="Vestido Estampado" 
+                                data-price="199.90" 
+                                data-image="fotos/17.jpg">
+                            <i class="fas fa-plus"></i> Adicionar à Sacola
+                        </button>
+                    </div>
+                    <span class="product-card-label">Cód 0700</span>
+                    <h3>Vestido Estampado</h3>
+                    <p class="product-price">R$ 199,90</p>
+                    <p class="product-installments">em até 3x de R$ 66,63</p>
+                    <div class="product-sizes">
+                        <span class="size-option" aria-label="Tamanho Único">U</span>
+                    </div>
+                    <div class="product-colors">
+                        <span class="color-swatch" style="background-color: #FF4500;"></span>
+                    </div>
+                </div>
+                
+                </div>
+        </section>
+    </main>
+
+    <div id="cart-overlay"></div>
+    <div id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Minha Sacola</h3>
+            <button id="cart-close-btn" class="liquid-button">&times;</button>
+        </div>
+        <div id="cart-items-list">
+            </div>
+        <div class="cart-footer">
+            <button class="liquid-button dark" style="width: 100%;">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <nav class="mobile-dock" id="mobile-dock">
+        <div class="dock-panel" id="dock-panel">
+            <a href="index.html" class="dock-item" data-label="Início">
+                <span class="dock-icon"><i class="fas fa-home"></i></span>
+                <span class="dock-label">Início</span>
+            </a>
+            <a href="index.html#colecao" class="dock-item" data-label="Coleção">
+                <span class="dock-icon"><i class="fas fa-box-archive"></i></span>
+                <span class="dock-label">Coleção</span>
+            </a>
+            <a href="loja.html" class="dock-item" data-label="Loja">
+                <span class="dock-icon"><i class="fas fa-store"></i></span>
+                <span class="dock-label">Loja</span>
+            </a>
+            <a href="index.html#contato" class="dock-item" data-label="Contato">
+                <span class="dock-icon"><i class="fas fa-user"></i></span>
+                <span class="dock-label">Contato</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="floating-social">
+        <a href="https://wa.me/SEUNUMERO" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/SEUUSUARIO" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Sua Marca. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+<script src="RotatingText.js"></script>
+<script src="script.js"></script> </html>

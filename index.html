@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua Marca - Moda Feminina</title>
+    <title>Crismon Modas - Moda Feminina</title>
     <link rel="icon" href="fotos/favicon.png" type="image/png">
 
     <link rel="stylesheet" href="style.css">
@@ -24,11 +24,14 @@
                 </div>
 
                 <div class="logo-container">
-                    <a href="#" class="nav-logo">Sua Marca</a>
+                    <a href="#" class="nav-logo">
+                        <img src="fotos/logo-removebg-preview.png" alt="Crismon Modas Logo">
+                        <span class="nav-logo-text">Crismon Modas</span>
+                    </a>
                 </div>
 
                 <div class="nav-icons">
-                    <div class="icon-btn icon-btn--small">
+                    <div class="icon-btn icon-btn--small" id="open-cart-btn" role="button" aria-label="Abrir sacola">
                         <span class="icon-btn__back"></span>
                         <span class="icon-btn__front">
                             <span class="icon-btn__icon"><i class="fas fa-shopping-bag"></i></span>
@@ -47,6 +50,9 @@
                         </a>
                         <a class="nav-card-link" href="#colecao">
                             <i class="fas fa-arrow-right nav-card-link-icon"></i> Coleção
+                        </a>
+                        <a class="nav-card-link" href="loja.html">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Nossa Loja
                         </a>
                     </div>
                 </div>
@@ -115,7 +121,7 @@
                     </p>
                 </div>
 
-                <a href="#colecao" class="liquid-button dark">Ver Agora</a>
+                <a href="loja.html" class="liquid-button dark">Ver Agora</a>
             </div>
         </section>
 
@@ -125,7 +131,7 @@
 
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto1.PNG');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -144,7 +150,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto2.PNG');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -162,7 +168,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada2.jpg');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -180,7 +186,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto-deitada.jpg');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -197,7 +203,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto6.PNG');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -216,7 +222,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image-placeholder" style="background-image: url('fotos/foto7.PNG');">
-                        <a href="#" class="liquid-button">
+                        <a href="loja.html" class="liquid-button">
                             <i class="fas fa-eye"></i> Veja Mais
                         </a>
                     </div>
@@ -266,7 +272,7 @@
                 <button class="carousel-button next" id="carousel-next">&gt;</button>
             </div>
 
-            <a href="#colecao" class="liquid-button cta-center">Veja Mais</a>
+            <a href="loja.html" class="liquid-button cta-center">Veja Mais</a>
         </section>
 
 
@@ -352,10 +358,23 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Sua Marca. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Crismon Modas. Todos os direitos reservados.</p>
     </footer>
 
-</body>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Minha Sacola</h3>
+            <button class="cart-close-btn" id="cart-close-btn" aria-label="Fechar sacola">&times;</button>
+        </div>
+        <div class="cart-body">
+            <p class="cart-empty-message">Sua sacola está vazia.</p>
+            </div>
+        <div class="cart-footer">
+            <a href="#" class="liquid-button primary" style="width: 100%;">Finalizar Compra</a>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+    </body>
 <script src="RotatingText.js"></script>
 <script src="script.js"></script>
 
