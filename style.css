@@ -215,7 +215,7 @@ body {
 
 
 /* ========================================================== */
-/* ==== 2. SEÇÃO HERO (Masonry e Carrossel de Texto) ==== */
+/* ==== 2. SEÇÃO HERO (ATUALIZADA para ChromaGrid) ==== */
 /* ========================================================== */
 
 .hero-masonry {
@@ -230,67 +230,142 @@ body {
     text-align: center;
 }
 
-.masonry-background {
+/* * ESTILOS DO CHROMA-GRID (Substituindo .masonry-background)
+ * Baseado no seu CSS e adaptado para o layout do hero
+*/
+.chroma-grid {
     position: absolute;
     top: -10%;
     left: -10%;
     width: 120%;
     height: 120%;
-    display: flex;
+    display: grid; /* Layout em grade */
+    grid-template-columns: repeat(5, 1fr); /* 5 colunas estáticas */
     gap: 12px;
-    filter: grayscale(100%);
-    opacity: 0.15;
     transform: rotate(-10deg) scale(1.1);
+
+    /* Variáveis para o JS controlar o efeito */
+    --x: 50%;
+    --y: 50%;
+    --r: 300px; /* Raio do efeito (do seu JSX) */
 }
 
-.masonry-column {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 20%;
-}
-
-/* CORREÇÃO: Animação mais rápida (50s) */
-.masonry-column:nth-child(even) {
-    animation: scroll-up 50s linear infinite;
-}
-
-.masonry-column:nth-child(odd) {
-    animation: scroll-down 50s linear infinite;
-}
-
-/* CORREÇÃO: Animação de loop contínuo (-50%) */
-@keyframes scroll-up {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-50%);
-    }
-}
-
-@keyframes scroll-down {
-    0% {
-        transform: translateY(-50%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.masonry-item {
+/* Estilo do Card (Substituindo .masonry-item) */
+.chroma-card {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
+    position: relative; /* Para o spotlight do card */
+    
+    /* Variáveis para o spotlight do card */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --spotlight-color: rgba(255, 255, 255, 0.3);
 }
 
-/* CORREÇÃO: Proporção natural "em pé" */
-.masonry-item img {
+/* Spotlight do Card (do seu ChromaGrid.css) */
+.chroma-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+}
+
+.chroma-card:hover::before {
+    opacity: 1;
+}
+
+/* Wrapper da Imagem (do seu ChromaGrid.css) */
+.chroma-img-wrapper {
     width: 100%;
-    height: auto; /* Deixa a altura ser automática */
+    height: 100%;
+}
+
+.chroma-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o card */
     display: block;
 }
 
+/* * Overlays do ChromaGrid (do seu ChromaGrid.css)
+ * Isso cria o efeito de "preto e branco" que é "cortado" pelo mouse
+*/
+.chroma-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    backdrop-filter: grayscale(1) brightness(0.78);
+    -webkit-backdrop-filter: grayscale(1) brightness(0.78);
+    background: rgba(0, 0, 0, 0.001);
+
+    mask-image: radial-gradient(
+        circle var(--r) at var(--x) var(--y),
+        transparent 0%,
+        transparent 15%,
+        rgba(0, 0, 0, 0.1) 30%,
+        rgba(0, 0, 0, 0.22) 45%,
+        rgba(0, 0, 0, 0.35) 60%,
+        rgba(0, 0, 0, 0.5) 75%,
+        rgba(0, 0, 0, 0.68) 88%,
+        white 100%
+    );
+    -webkit-mask-image: radial-gradient(
+        circle var(--r) at var(--x) var(--y),
+        transparent 0%,
+        transparent 15%,
+        rgba(0, 0, 0, 0.1) 30%,
+        rgba(0, 0, 0, 0.22) 45%,
+        rgba(0, 0, 0, 0.35) 60%,
+        rgba(0, 0, 0, 0.5) 75%,
+        rgba(0, 0, 0, 0.68) 88%,
+        white 100%
+    );
+}
+
+.chroma-fade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    backdrop-filter: grayscale(1) brightness(0.78);
+    -webkit-backdrop-filter: grayscale(1) brightness(0.78);
+    background: rgba(0, 0, 0, 0.001);
+
+    mask-image: radial-gradient(
+        circle var(--r) at var(--x) var(--y),
+        white 0%,
+        white 15%,
+        rgba(255, 255, 255, 0.9) 30%,
+        rgba(255, 255, 255, 0.78) 45%,
+        rgba(255, 255, 255, 0.65) 60%,
+        rgba(255, 255, 255, 0.5) 75%,
+        rgba(255, 255, 255, 0.32) 88%,
+        transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+        circle var(--r) at var(--x) var(--y),
+        white 0%,
+        white 15%,
+        rgba(255, 255, 255, 0.9) 30%,
+        rgba(255, 255, 255, 0.78) 45%,
+        rgba(255, 255, 255, 0.65) 60%,
+        rgba(255, 255, 255, 0.5) 75%,
+        rgba(255, 255, 255, 0.32) 88%,
+        transparent 100%
+    );
+
+    opacity: 1; /* Começa visível */
+    transition: opacity 0.6s ease; /* Transição para sumir (do seu fadeOut=0.6) */
+}
+
+
+/* Conteúdo do Hero (Intocado) */
 .hero-content {
     position: relative;
     z-index: 10;
@@ -1072,14 +1147,12 @@ body {
     .hero-text-content {
         min-height: 100px;
     }
-    .masonry-background {
-        column-count: 3;
+    /* Adapta o ChromaGrid para mobile */
+    .chroma-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas no mobile */
         gap: 8px;
     }
-    .masonry-column {
-        width: 33.33%;
-        gap: 8px;
-    }
+    
     .product-grid-section {
         padding: 3rem 5%;
     }
