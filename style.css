@@ -222,7 +222,7 @@ body {
     position: relative;
     width: 100%;
     height: 90vh;
-    background-color: var(--color-light-pink);
+    background-color: var(--color-light-pink); /* Este é o fundo rosado */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -230,8 +230,10 @@ body {
     text-align: center;
 }
 
-/* * ESTILOS DO CHROMA-GRID (Substituindo .masonry-background)
- * Baseado no seu CSS e adaptado para o layout do hero
+/* * ESTILOS DO CHROMA-GRID (MODIFICADO)
+ * Efeito de hover removido. 
+ * Aplicado filtro estático de grayscale + opacidade 
+ * para deixar o fundo rosado da .hero-masonry aparecer.
 */
 .chroma-grid {
     position: absolute;
@@ -239,15 +241,15 @@ body {
     left: -10%;
     width: 120%;
     height: 120%;
-    display: grid; /* Layout em grade */
-    grid-template-columns: repeat(5, 1fr); /* 5 colunas estáticas */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
     transform: rotate(-10deg) scale(1.1);
 
-    /* Variáveis para o JS controlar o efeito */
-    --x: 50%;
-    --y: 50%;
-    --r: 300px; /* Raio do efeito (do seu JSX) */
+    /* FILTRO ROSADO ESTÁTICO APLICADO AQUI */
+    filter: grayscale(100%);
+    opacity: 0.15;
+    /* As variáveis --x, --y e --r e os overlays foram removidos */
 }
 
 /* Estilo do Card (Substituindo .masonry-item) */
@@ -255,29 +257,17 @@ body {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    position: relative; /* Para o spotlight do card */
+    position: relative;
     
-    /* Variáveis para o spotlight do card */
+    /* Variáveis do spotlight removidas */
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Spotlight do Card (do seu ChromaGrid.css) */
-.chroma-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 2;
-}
+/* Spotlight do Card (REMOVIDO) */
+/* .chroma-card::before { ... } */
 
-.chroma-card:hover::before {
-    opacity: 1;
-}
 
 /* Wrapper da Imagem (do seu ChromaGrid.css) */
 .chroma-img-wrapper {
@@ -292,77 +282,9 @@ body {
     display: block;
 }
 
-/* * Overlays do ChromaGrid (do seu ChromaGrid.css)
- * Isso cria o efeito de "preto e branco" que é "cortado" pelo mouse
-*/
-.chroma-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 3;
-    backdrop-filter: grayscale(1) brightness(0.78);
-    -webkit-backdrop-filter: grayscale(1) brightness(0.78);
-    background: rgba(0, 0, 0, 0.001);
-
-    mask-image: radial-gradient(
-        circle var(--r) at var(--x) var(--y),
-        transparent 0%,
-        transparent 15%,
-        rgba(0, 0, 0, 0.1) 30%,
-        rgba(0, 0, 0, 0.22) 45%,
-        rgba(0, 0, 0, 0.35) 60%,
-        rgba(0, 0, 0, 0.5) 75%,
-        rgba(0, 0, 0, 0.68) 88%,
-        white 100%
-    );
-    -webkit-mask-image: radial-gradient(
-        circle var(--r) at var(--x) var(--y),
-        transparent 0%,
-        transparent 15%,
-        rgba(0, 0, 0, 0.1) 30%,
-        rgba(0, 0, 0, 0.22) 45%,
-        rgba(0, 0, 0, 0.35) 60%,
-        rgba(0, 0, 0, 0.5) 75%,
-        rgba(0, 0, 0, 0.68) 88%,
-        white 100%
-    );
-}
-
-.chroma-fade {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 4;
-    backdrop-filter: grayscale(1) brightness(0.78);
-    -webkit-backdrop-filter: grayscale(1) brightness(0.78);
-    background: rgba(0, 0, 0, 0.001);
-
-    mask-image: radial-gradient(
-        circle var(--r) at var(--x) var(--y),
-        white 0%,
-        white 15%,
-        rgba(255, 255, 255, 0.9) 30%,
-        rgba(255, 255, 255, 0.78) 45%,
-        rgba(255, 255, 255, 0.65) 60%,
-        rgba(255, 255, 255, 0.5) 75%,
-        rgba(255, 255, 255, 0.32) 88%,
-        transparent 100%
-    );
-    -webkit-mask-image: radial-gradient(
-        circle var(--r) at var(--x) var(--y),
-        white 0%,
-        white 15%,
-        rgba(255, 255, 255, 0.9) 30%,
-        rgba(255, 255, 255, 0.78) 45%,
-        rgba(255, 255, 255, 0.65) 60%,
-        rgba(255, 255, 255, 0.5) 75%,
-        rgba(255, 255, 255, 0.32) 88%,
-        transparent 100%
-    );
-
-    opacity: 1; /* Começa visível */
-    transition: opacity 0.6s ease; /* Transição para sumir (do seu fadeOut=0.6) */
-}
+/* Overlays do ChromaGrid (REMOVIDOS) */
+/* .chroma-overlay { ... } */
+/* .chroma-fade { ... } */
 
 
 /* Conteúdo do Hero (Intocado) */

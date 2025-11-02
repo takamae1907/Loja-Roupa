@@ -361,62 +361,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================================================
-    // ==== 8. LÓGICA DO HERO CHROMA-GRID (NOVO) ====
+    // ==== 8. LÓGICA DO HERO CHROMA-GRID (REMOVIDA) ====
     // ========================================================
-    // Este bloco traduz a lógica do ChromaGrid.jsx para JS puro
-    try {
-        const heroGrid = document.getElementById('hero-chroma-grid'); 
-        const heroFade = document.getElementById('hero-chroma-fade'); 
-        const heroCards = document.querySelectorAll('#hero-chroma-grid .chroma-card');
-
-        if (heroGrid && heroFade && heroCards.length > 0) {
-            
-            // Define a posição inicial do mouse (centro)
-            // Atraso leve para garantir que as dimensões estão corretas
-            setTimeout(() => {
-                const { width, height } = heroGrid.getBoundingClientRect();
-                heroGrid.style.setProperty('--x', `${width / 2}px`);
-                heroGrid.style.setProperty('--y', `${height / 2}px`);
-            }, 100);
-
-
-            // 1. Lógica do Spotlight Principal (handleMove e handleLeave)
-            heroGrid.addEventListener('pointermove', (e) => {
-                const rect = heroGrid.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Atualiza as variáveis CSS para a máscara principal
-                heroGrid.style.setProperty('--x', `${x}px`);
-                heroGrid.style.setProperty('--y', `${y}px`);
-                
-                // Esconde o 'fade' (baseado em fadeOut=0.6 e ease)
-                heroFade.style.transition = 'opacity 0.25s ease';
-                heroFade.style.opacity = '0';
-            });
-
-            heroGrid.addEventListener('pointerleave', () => {
-                // Mostra o 'fade' (baseado em fadeOut=0.6 e ease)
-                heroFade.style.transition = 'opacity 0.6s ease';
-                heroFade.style.opacity = '1';
-            });
-
-            // 2. Lógica do Spotlight do Card (handleCardMove)
-            heroCards.forEach(card => {
-                card.addEventListener('pointermove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    // Atualiza as variáveis CSS do card individual
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        }
-    } catch (e) {
-        console.error("Falha ao iniciar o ChromaGrid do Hero:", e);
-    }
+    // A lógica que estava aqui foi removida para desativar o efeito.
 
 
 }); // Fim do 'DOMContentLoaded'
