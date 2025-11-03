@@ -100,6 +100,9 @@ body {
 
 .nav-icons {
     order: 2;
+    /* Conteúdo (sacola) removido */
+    /* Adiciona um espaço mínimo para manter o layout com o hamburger */
+    min-width: 40px; 
 }
 
 .hamburger-menu {
@@ -496,60 +499,18 @@ body {
     margin-bottom: 0.25rem;
 }
 
+/* Itens removidos (preço, parcelas, tamanhos, cores) */
 #colecao .product-card h3 {
     margin-bottom: 0.25rem;
 }
 
-.product-price {
-    color: var(--color-text-dark);
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-.product-installments {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    margin-bottom: 0.75rem;
-}
-
-.product-sizes {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.size-option {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-text-light);
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.size-option:hover {
-    background-color: var(--color-beige);
-    border-color: #ccc;
-}
-
+.product-price,
+.product-installments,
+.product-sizes,
 .product-colors {
-    display: flex;
-    gap: 0.5rem;
+    display: none; /* Oculta os elementos */
 }
 
-.color-swatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
 
 .product-card::before {
     content: '';
@@ -576,6 +537,12 @@ body {
     opacity: 0;
     transform: translate(-50%, 10px);
 }
+
+/* Modificado para também aplicar ao .fab (ícone do WhatsApp) */
+.product-image-placeholder .liquid-button .fab {
+    font-size: 1.1rem; /* Ajusta o ícone do zap */
+}
+
 
 .product-card:hover .liquid-button {
     opacity: 1;
@@ -814,6 +781,7 @@ body {
 }
 
 .stepper-input {
+    /* O input foi removido do HTML, mas mantemos o estilo caso seja reutilizado */
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--color-border);
@@ -839,6 +807,7 @@ body {
 
 
 /* ---- 6. Estilos do GlassIcon (Mantido) ---- */
+/* Este estilo é usado pelos indicadores do stepper, então deve ser mantido */
 .icon-btn {
     background-color: transparent;
     border: none;
@@ -1341,109 +1310,6 @@ body {
 
 
 /* ============================================== */
-/* ==== 12. ESTILOS DA SACOLA (NOVO) ==== */
+/* ==== 12. ESTILOS DA SACOLA (REMOVIDO) ==== */
 /* ============================================== */
-.cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Começa fora da tela */
-    width: 90%;
-    max-width: 400px;
-    height: 100%;
-    background-color: var(--color-white);
-    z-index: 2001;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.83, 0, 0.17, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-sidebar.open {
-    right: 0;
-}
-
-.cart-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.cart-header h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.cart-close-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--color-text-light);
-    cursor: pointer;
-    line-height: 1;
-}
-
-.cart-body {
-    flex-grow: 1;
-    padding: 1.5rem;
-    overflow-y: auto;
-}
-
-.cart-empty-message {
-    text-align: center;
-    color: var(--color-text-light);
-    margin-top: 2rem;
-}
-
-.cart-footer {
-    padding: 1.5rem;
-    border-top: 1px solid var(--color-border);
-    background-color: var(--color-beige);
-}
-
-.cart-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.cart-item img {
-    width: 70px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cart-item-details p {
-    margin: 0;
-}
-
-.cart-item-details p:first-child {
-    font-weight: 500;
-}
-
-.cart-item-details p:last-child {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-}
+/* Todos os estilos do .cart-overlay, .cart-sidebar, etc., foram removidos */
