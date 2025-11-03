@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Carregando... - Crismon Modas</title>
+    
+    <link rel="icon" href="fotos/favicon.png" type="image/png">
+    
+    <link rel="stylesheet" href="loja-style.css">
+    <link rel="stylesheet" href="produto.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="card-nav-container">
+        <nav class="card-nav" id="card-nav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" id="hamburger-menu" role="button" aria-label="Abrir menu" tabIndex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+                <div class="logo-container">
+                    <a href="index.html" class="nav-logo">
+                        <img src="fotos/logo-removebg-preview.png" alt="Logo Crismon Modas">
+                        <span class="nav-logo-text">Crismon Modas</span>
+                    </a>
+                </div>
+                <div class="nav-icons">
+                    <a href="https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q" target="_blank" class="liquid-button-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Fale Conosco</span>
+                    </a>
+                </div>
+            </div>
+            <div class="card-nav-content" id="card-nav-content" aria-hidden="true">
+                </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pdp-section">
+            <div class="pdp-container" id="pdp-container">
+                
+                <div class="pdp-gallery-container">
+                    <div class="pdp-thumbnails" id="pdp-thumbnails">
+                        </div>
+                    <div class="pdp-main-image" id="pdp-main-image">
+                        </div>
+                </div>
+
+                <div class="pdp-info-container">
+                    <span class="pdp-cod" id="pdp-cod">Cód...</span>
+                    <h1 class="pdp-title" id="pdp-title">Carregando nome do produto...</h1>
+                    
+                    <p class="pdp-price" id="pdp-price">R$ ...</p>
+                    <p class="pdp-installments" id="pdp-installments">...</p>
+
+                    <div class="pdp-options-group">
+                        <label>Tamanhos Disponíveis:</label>
+                        <div class="pdp-sizes" id="pdp-sizes">
+                            </div>
+                    </div>
+
+                    <div class="pdp-options-group">
+                        <label>Cores:</label>
+                        <div class="pdp-colors" id="pdp-colors">
+                            </div>
+                    </div>
+
+                    <a id="pdp-whatsapp-button" href="#" target="_blank" class="pdp-whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+                    </a>
+                    <p class="pdp-help-text">
+                        <i class="fas fa-info-circle"></i>
+                        Ficou com dúvida? Chame no WhatsApp para um atendimento exclusivo!
+                    </p>
+                </div>
+            </div>
+            
+            <div id="pdp-error" class="pdp-error-container" style="display: none;">
+                <h2>Oops! Produto não encontrado.</h2>
+                <p>O produto que você está procurando não existe ou foi removido.</p>
+                <a href="loja.html" class="liquid-button primary">Ver todos os produtos</a>
+            </div>
+        </section>
+    </main>
+    
+    <nav class="mobile-dock" id="mobile-dock">
+        </nav>
+
+    <div class="floating-social">
+        <a href="https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/crismon.modas?igsh=NzAxeHhoNjlqeTE1" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Crismon Modas. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="loja-script.js"></script> <script src="produtos-db.js"></script> <script src="produto-script.js"></script> </body>
+</html>

@@ -1,0 +1,220 @@
+/* ============================================== */
+/* ==== ESTILOS DA PÁGINA DE PRODUTO (PDP) ==== */
+/* ============================================== */
+.pdp-section {
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.pdp-container {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* --- Coluna da Esquerda (Galeria) --- */
+.pdp-gallery-container {
+    flex: 6; /* Ocupa 60% */
+    display: flex;
+    gap: 1rem;
+}
+
+.pdp-thumbnails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.pdp-thumbnail-img {
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid var(--color-border);
+    cursor: pointer;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+    aspect-ratio: 3 / 4; /* Mantém proporção */
+    object-fit: cover;
+}
+
+.pdp-thumbnail-img:hover {
+    border-color: var(--color-text-light);
+}
+
+.pdp-thumbnail-img.active {
+    border-color: var(--color-accent);
+}
+
+.pdp-main-image {
+    flex: 5;
+}
+
+.pdp-main-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+
+/* --- Coluna da Direita (Info) --- */
+.pdp-info-container {
+    flex: 4; /* Ocupa 40% */
+    display: flex;
+    flex-direction: column;
+}
+
+.pdp-cod {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+}
+
+.pdp-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.pdp-price {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 0.25rem;
+}
+
+.pdp-installments {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+}
+
+.pdp-options-group {
+    margin-bottom: 1.5rem;
+}
+
+.pdp-options-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.pdp-sizes, .pdp-colors {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Reutilizando os estilos de .size-option e .color-swatch do loja-style.css */
+/* Adicionamos apenas um estilo de "selecionado" */
+.pdp-sizes .size-option.selected {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    border-color: var(--color-text-dark);
+}
+
+.pdp-colors .color-swatch.selected {
+    box-shadow: 0 0 0 3px var(--color-white), 0 0 0 5px var(--color-accent);
+}
+
+
+/* --- Botão Principal --- */
+.pdp-whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.pdp-whatsapp-button:hover {
+    background-color: #1DA851;
+    transform: scale(1.02);
+}
+
+.pdp-whatsapp-button .fab {
+    font-size: 1.2rem;
+}
+
+.pdp-help-text {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-top: 1rem;
+}
+.pdp-help-text i {
+    color: var(--color-accent);
+}
+
+/* --- Mensagem de Erro --- */
+.pdp-error-container {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+.pdp-error-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.pdp-error-container p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+
+/* --- Responsividade (Mobile) --- */
+@media (max-width: 768px) {
+    .pdp-container {
+        flex-direction: column; /* Empilha as colunas */
+    }
+
+    .pdp-gallery-container {
+        flex-direction: column-reverse; /* Coloca a miniatura embaixo */
+    }
+
+    .pdp-thumbnails {
+        flex-direction: row; /* Miniaturas na horizontal */
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .pdp-thumbnail-img {
+        width: 60px;
+        height: 80px;
+        flex-shrink: 0; /* Impede que diminuam */
+    }
+
+    .pdp-main-image img {
+        aspect-ratio: 1 / 1; /* Imagem quadrada no mobile */
+    }
+
+    .pdp-info-container {
+        padding: 0 5%;
+    }
+
+    .pdp-title {
+        font-size: 1.6rem;
+    }
+
+    .pdp-price {
+        font-size: 1.5rem;
+    }
+}

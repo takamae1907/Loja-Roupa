@@ -8,7 +8,7 @@
     --color-border: #EAEAEA;
     --color-beige: #FAF7F2;
     --color-accent: #FF69B4;
-    --color-dark-yellow: #FACC15;
+    --color-dark-yellow: #EAB308; /* <-- COR AJUSTADA (Mais escura) */
     --color-whatsapp: #25D366;
     --color-instagram: #E4405F;
     --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -100,6 +100,11 @@ body {
 
 .nav-icons {
     order: 2;
+    /* NOVO: Garante espaço para o botão */
+    min-width: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .hamburger-menu {
@@ -112,6 +117,7 @@ body {
     cursor: pointer;
     gap: 6px;
     padding: 0 10px;
+    margin-left: 0.5rem; /* NOVO: Espaço entre botão e menu */
 }
 
 .hamburger-line {
@@ -167,9 +173,6 @@ body {
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* * CORREÇÃO DO MENU CELULAR: 
- * Esta regra agora está no lugar certo (fora do @media query)
- */
 .card-nav.open .nav-card {
     opacity: 1;
     transform: translateY(0);
@@ -222,7 +225,7 @@ body {
     position: relative;
     width: 100%;
     height: 90vh;
-    background-color: var(--color-light-pink); /* Este é o fundo rosado */
+    background-color: var(--color-light-pink);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -230,11 +233,6 @@ body {
     text-align: center;
 }
 
-/* * ESTILOS DO CHROMA-GRID (MODIFICADO)
- * Efeito de hover removido. 
- * Aplicado filtro estático de grayscale + opacidade 
- * para deixar o fundo rosado da .hero-masonry aparecer.
-*/
 .chroma-grid {
     position: absolute;
     top: -10%;
@@ -245,31 +243,20 @@ body {
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
     transform: rotate(-10deg) scale(1.1);
-
-    /* FILTRO ROSADO ESTÁTICO APLICADO AQUI */
     filter: grayscale(100%);
     opacity: 0.15;
-    /* As variáveis --x, --y e --r e os overlays foram removidos */
 }
 
-/* Estilo do Card (Substituindo .masonry-item) */
 .chroma-card {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    
-    /* Variáveis do spotlight removidas */
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Spotlight do Card (REMOVIDO) */
-/* .chroma-card::before { ... } */
-
-
-/* Wrapper da Imagem (do seu ChromaGrid.css) */
 .chroma-img-wrapper {
     width: 100%;
     height: 100%;
@@ -278,16 +265,10 @@ body {
 .chroma-img-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem cubra o card */
+    object-fit: cover;
     display: block;
 }
 
-/* Overlays do ChromaGrid (REMOVIDOS) */
-/* .chroma-overlay { ... } */
-/* .chroma-fade { ... } */
-
-
-/* Conteúdo do Hero (Intocado) */
 .hero-content {
     position: relative;
     z-index: 10;
@@ -301,40 +282,33 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
-
-/* ESTILOS PARA O HERO TEXT (NOVO GRADIENTE) */
 .hero-text-content {
     position: relative;
     min-height: 130px;
 }
 
-/* * MODIFICAÇÃO: 
- * Wrapper para alinhar "Coleção de" + texto rotativo 
- */
 .hero-title-wrapper {
-    display: flex; /* Alinha o H1 e o texto rotativo */
-    flex-wrap: wrap; /* Permite quebrar a linha em telas pequenas */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem; /* Espaço entre "Coleção de" e o resto */
+    gap: 0.5rem;
     margin-bottom: 1rem;
-    min-height: 50px; /* Altura do texto rotativo */
+    min-height: 50px;
 }
 
-/* NOVO: Estilo para o H1 "Coleção de" */
 .hero-static-title {
     font-size: 3rem;
     font-weight: 600;
     color: var(--color-text-dark);
-    margin: 0; /* Reseta margem do H1 */
-    padding: 0; /* Reseta padding do H1 */
+    margin: 0;
+    padding: 0;
 }
 
-/* MODIFICADO: Ajustado para o wrapper */
 #hero-rotating-text {
     font-size: 3rem;
     font-weight: 600;
-    margin-bottom: 0; /* Removido, o wrapper cuida disso */
+    margin-bottom: 0;
     color: var(--color-text-dark);
     min-height: 50px; 
 }
@@ -369,7 +343,9 @@ body {
 }
 
 
-/* ESTILO DE BOTÃO LIQUID-GLASS GENÉRICO */
+/* ============================================== */
+/* ==== BOTÕES (Liquid e Novo WhatsApp) ==== */
+/* ============================================== */
 .liquid-button {
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
@@ -417,6 +393,33 @@ body {
     background-color: rgba(34, 34, 34, 0.5);
 }
 
+/* NOVO: Botão WhatsApp do Header */
+.liquid-button-whatsapp {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+.liquid-button-whatsapp:hover {
+    background-color: #1DA851; /* Mais escuro no hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.liquid-button-whatsapp .fab {
+    font-size: 0.9rem;
+}
+
+
 .cta-button,
 .stepper-button-next,
 .stepper-button-back,
@@ -438,7 +441,7 @@ body {
 }
 
 
-/* ---- 3. Seção Grade de Produtos (MODIFICADA) ---- */
+/* ---- 3. Seção Grade de Produtos ---- */
 .product-grid-section {
     padding: 4rem 15%;
     text-align: center;
@@ -577,6 +580,11 @@ body {
     transform: translate(-50%, 10px);
 }
 
+.product-image-placeholder .liquid-button .fab {
+    font-size: 1.1rem;
+}
+
+
 .product-card:hover .liquid-button {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -679,12 +687,95 @@ body {
 }
 
 
-/* ---- 5. Seção Stepper ---- */
+/* ============================================== */
+/* ==== 5. NOVAS SEÇÕES (Depoimentos, Sobre) ==== */
+/* ============================================== */
 
-.stepper-section {
+/* --- Seção de Depoimentos --- */
+.testimonial-section {
     padding: 4rem 5%;
     text-align: center;
     background-color: var(--color-beige);
+}
+.testimonial-section h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--color-text-dark);
+}
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.testimonial-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+.testimonial-card i {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+.testimonial-card p {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+.testimonial-card span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+/* --- Seção Sobre Mim --- */
+.about-section {
+    padding: 4rem 5%;
+    text-align: center;
+    background-color: var(--color-white);
+}
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.about-content img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-light-pink);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.about-content h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+
+/* ---- Seção Stepper ---- */
+.stepper-section {
+    padding: 4rem 5%;
+    text-align: center;
+    background-color: var(--color-light-pink); /* Trocado com depoimentos */
 }
 
 .stepper-section h2 {
@@ -1031,6 +1122,34 @@ body {
         width: 95%;
         top: 0.75em;
     }
+    .card-nav-top {
+        padding: 0 0.75rem; /* Ajuste para caber botão */
+    }
+
+    /* NOVO: Ajuste Botão Header Mobile */
+    .liquid-button-whatsapp {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .liquid-button-whatsapp .fab {
+         display: none; /* Esconde ícone (só texto) */
+    }
+    .liquid-button-whatsapp span {
+        display: none; /* Esconde texto (só ícone) */
+    }
+    .liquid-button-whatsapp .fab {
+        display: inline-block; /* Mostra ícone */
+        font-size: 1rem;
+        margin: 0;
+    }
+     .liquid-button-whatsapp {
+        padding: 0.5rem;
+        width: 38px; /* Botão redondo */
+        height: 38px;
+        justify-content: center;
+    }
+
+
     .logo-container {
         position: static;
         transform: none;
@@ -1054,7 +1173,6 @@ body {
         padding: 1.5rem;
     }
     
-    /* MODIFICAÇÃO: Ajusta H1 e Texto Rotativo no mobile */
     .hero-static-title {
         font-size: 2.2rem;
     }
@@ -1069,9 +1187,8 @@ body {
     .hero-text-content {
         min-height: 100px;
     }
-    /* Adapta o ChromaGrid para mobile */
     .chroma-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas no mobile */
+        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
     
@@ -1091,6 +1208,16 @@ body {
         padding: 0 5%;
         scroll-padding: 0 5%;
     }
+    
+    /* NOVO: Ajuste Seções Mobile */
+    .testimonial-grid {
+        grid-template-columns: 1fr; /* Coluna única */
+    }
+    .about-content img {
+        width: 100px;
+        height: 100px;
+    }
+
     .contact-section {
         padding-bottom: 120px;
     }
@@ -1112,6 +1239,7 @@ body {
     .hamburger-menu {
         display: flex;
         order: 1;
+        margin-left: 0; /* Reseta margem */
     }
     .logo-container {
         order: 2;
@@ -1143,7 +1271,6 @@ body {
         transition: transform 0.4s ease, opacity 0.4s ease;
     }
     
-    /* Animação escalonada SÓ no desktop */
     .card-nav.open .nav-card:nth-child(1) {
         transition-delay: 0.1s;
     }
@@ -1187,7 +1314,7 @@ body {
 
 /* ---- 9. Seção de Contato ---- */
 .contact-section {
-    background-color: var(--color-light-pink);
+    background-color: var(--color-beige); /* Trocado com Sobre */
     padding: 5rem 5%;
     text-align: center;
 }
@@ -1251,7 +1378,7 @@ body {
 }
 
 
-/* 6. ESTILOS PARA BOTÕES FLUTUANTES */
+/* 11. ESTILOS PARA BOTÕES FLUTUANTES */
 .floating-social {
     position: fixed;
     bottom: 1.5rem;
@@ -1298,7 +1425,7 @@ body {
 
 
 /* ============================================== */
-/* ==== 11. ESTILOS DA LOGO (Crismon Modas) ==== */
+/* ==== 12. ESTILOS DA LOGO (Crismon Modas) ==== */
 /* ============================================== */
 .nav-logo {
     display: inline-flex;
@@ -1341,109 +1468,6 @@ body {
 
 
 /* ============================================== */
-/* ==== 12. ESTILOS DA SACOLA (NOVO) ==== */
+/* ==== 13. ESTILOS DA SACOLA (REMOVIDO) ==== */
 /* ============================================== */
-.cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Começa fora da tela */
-    width: 90%;
-    max-width: 400px;
-    height: 100%;
-    background-color: var(--color-white);
-    z-index: 2001;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.83, 0, 0.17, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-sidebar.open {
-    right: 0;
-}
-
-.cart-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.cart-header h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.cart-close-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--color-text-light);
-    cursor: pointer;
-    line-height: 1;
-}
-
-.cart-body {
-    flex-grow: 1;
-    padding: 1.5rem;
-    overflow-y: auto;
-}
-
-.cart-empty-message {
-    text-align: center;
-    color: var(--color-text-light);
-    margin-top: 2rem;
-}
-
-.cart-footer {
-    padding: 1.5rem;
-    border-top: 1px solid var(--color-border);
-    background-color: var(--color-beige);
-}
-
-.cart-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.cart-item img {
-    width: 70px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cart-item-details p {
-    margin: 0;
-}
-
-.cart-item-details p:first-child {
-    font-weight: 500;
-}
-
-.cart-item-details p:last-child {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-}
+/* Todos os estilos do .cart-overlay, .cart-sidebar, etc., foram removidos */
