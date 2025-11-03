@@ -1,92 +1,107 @@
-/* ============================================== */
-/* ==== SCRIPT DA PÁGINA DE PRODUTO (PDP) ==== */
-/* ============================================== */
+/* =================================================== */
+/* ==== SCRIPT DA PÁGINA DE PRODUTO (produto-script.js) ==== */
+/* =================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Pegar o ID do produto da URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-
-    // 2. Encontrar o produto no "Banco de Dados" (catalogo)
-    //    (A variável 'catalogo' vem do arquivo 'produtos-db.js')
-    const product = catalogo[productId];
-
-    // 3. Selecionar os elementos "placeholder" da página
-    const container = document.getElementById('pdp-container');
-    const errorContainer = document.getElementById('pdp-error');
     
-    if (!product) {
-        // 4. Se o produto NÃO for encontrado, mostra o erro
-        container.style.display = 'none';
-        errorContainer.style.display = 'block';
-        return; // Para a execução
+    // 1. Encontrar o ID do produto na URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+
+    // 2. Buscar o produto no "banco de dados" (catalogo)
+    // (O 'catalogo' vem do arquivo 'produtos-db.js' carregado antes)
+    const produto = catalogo[productId];
+
+    // 3. Se o produto não existir, volta para a loja
+    if (!produto) {
+        console.error("Produto não encontrado!");
+        window.location.href = "loja.html";
+        return;
     }
 
-    // 5. Se o produto FOI encontrado, preenche a página
+    // 4. Preencher as informações na página
     
-    // --- Preenche Informações Básicas ---
-    document.title = `${product.nome} - Crismon Modas`;
-    document.getElementById('pdp-cod').textContent = `Cód ${product.cod}`;
-    document.getElementById('pdp-title').textContent = product.nome;
-    document.getElementById('pdp-price').textContent = product.preco;
-    document.getElementById('pdp-installments').textContent = product.installments;
+    // Título e Código
+    document.title = `${produto.nome} - Crismon Modas`;
+    document.getElementById("pdp-label-codigo").innerText = `Cód. ${productId}`;
+    document.getElementById("pdp-title").innerText = produto.nome;
+    
+    // Preço
+    document.getElementById("pdp-price").innerText = produto.preco;
+    document.getElementById("pdp-installments").innerText = produto.parcelas;
 
-    // --- Preenche o Botão WhatsApp ---
-    // (Link fixo para o grupo, já que não podemos pré-preencher)
-    const whatsappButton = document.getElementById('pdp-whatsapp-button');
-    whatsappButton.href = "https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q";
+    // Link do Botão WhatsApp (mantendo o link do grupo)
+    const whatsappButton = document.getElementById("pdp-whatsapp-button");
+    const whatsappLink = "https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q";
+    whatsappButton.href = whatsappLink;
+
+    // Imagem Principal (carrega a primeira foto)
+    const mainImage = document.getElementById("pdp-gallery-main");
+    mainImage.src = produto.fotos[0];
+    mainImage.alt = `Foto principal do ${produto.nome}`;
+
+    // Galeria de Miniaturas
+    const thumbnailsContainer = document.getElementById("pdp-gallery-thumbnails");
+    thumbnailsContainer.innerHTML = produto.fotos.map((foto, index) => {
+        // Marca a primeira miniatura como 'ativa'
+        const activeClass = (index === 0) ? 'active' : ''; 
+        return `
+            <div class="pdp-gallery-thumbnail-item ${activeClass}" 
+                 style="background-image: url('${foto}')"
+                 data-image-src="${foto}">
+            </div>
+        `;
+    }).join('');
+
+    // Tamanhos
+    const sizesContainer = document.getElementById("pdp-sizes");
+    sizesContainer.innerHTML = produto.tamanhos.map(tamanho => {
+        return `<div class="pdp-size-option">${tamanho}</div>`;
+    }).join('');
+
+    // Cores
+    const colorsContainer = document.getElementById("pdp-colors");
+    // Verifica se 'corNomes' existe, senão usa um array vazio
+    const corNomes = produto.corNomes || []; 
+    colorsContainer.innerHTML = produto.cores.map((cor, index) => {
+        // Pega o nome da cor (ou usa 'Cor' como padrão)
+        const nomeCor = corNomes[index] || 'Cor'; 
+        return `
+            <div class="pdp-color-swatch" 
+                 style="background-color: ${cor}"
+                 data-tooltip="${nomeCor}">
+            </div>
+        `;
+    }).join('');
 
 
-    // --- Preenche a Galeria de Fotos ---
-    const mainImageContainer = document.getElementById('pdp-main-image');
-    const thumbnailsContainer = document.getElementById('pdp-thumbnails');
-
-    // Cria a imagem principal (com a primeira foto)
-    const mainImage = document.createElement('img');
-    mainImage.src = product.photos[0];
-    mainImage.alt = product.nome;
-    mainImageContainer.appendChild(mainImage);
-
-    // Cria as miniaturas (thumbnails)
-    product.photos.forEach((photoSrc, index) => {
-        const thumb = document.createElement('img');
-        thumb.src = photoSrc;
-        thumb.alt = `Miniatura ${index + 1} de ${product.nome}`;
-        thumb.classList.add('pdp-thumbnail-img');
-        
-        // Marca a primeira como "ativa"
-        if (index === 0) {
-            thumb.classList.add('active');
-        }
-
-        // Adiciona o clique para trocar a imagem principal
-        thumb.addEventListener('click', () => {
-            mainImage.src = photoSrc; // Troca a imagem
+    // 5. Adicionar Interatividade
+    
+    // Clique nas Miniaturas
+    const thumbnails = document.querySelectorAll(".pdp-gallery-thumbnail-item");
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener("click", () => {
+            // Remove 'active' de todas
+            thumbnails.forEach(t => t.classList.remove("active"));
             
-            // Atualiza qual thumbnail está "ativa"
-            thumbnailsContainer.querySelector('.active').classList.remove('active');
-            thumb.classList.add('active');
+            // Adiciona 'active' na clicada
+            thumb.classList.add("active");
+            
+            // Troca a imagem principal
+            mainImage.src = thumb.dataset.imageSrc;
         });
-
-        thumbnailsContainer.appendChild(thumb);
     });
 
-    // --- Preenche os Tamanhos ---
-    const sizesContainer = document.getElementById('pdp-sizes');
-    product.sizes.forEach(size => {
-        const sizeSpan = document.createElement('span');
-        sizeSpan.className = 'size-option'; // Reutiliza o estilo do loja-style.css
-        sizeSpan.textContent = size;
-        sizesContainer.appendChild(sizeSpan);
-    });
-
-    // --- Preenche as Cores ---
-    const colorsContainer = document.getElementById('pdp-colors');
-    product.colors.forEach(colorHex => {
-        const colorSpan = document.createElement('span');
-        colorSpan.className = 'color-swatch'; // Reutiliza o estilo do loja-style.css
-        colorSpan.style.backgroundColor = colorHex;
-        colorsContainer.appendChild(colorSpan);
+    // Clique nos Tamanhos
+    const sizeOptions = document.querySelectorAll(".pdp-size-option");
+    sizeOptions.forEach(option => {
+        option.addEventListener("click", () => {
+            // Remove 'active' de todas
+            sizeOptions.forEach(opt => opt.classList.remove("active"));
+            
+            // Adiciona 'active' na clicada
+            option.classList.add("active");
+        });
     });
 
 });

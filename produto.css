@@ -1,0 +1,286 @@
+/* ============================================== */
+/* ==== CSS DA PÁGINA DE PRODUTO (produto.css) ==== */
+/* ============================================== */
+
+/* Ajusta o 'main' para a página de produto */
+.pdp-main-content {
+    background-color: var(--color-white);
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 5%;
+}
+
+.pdp-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+/* --- Coluna da Esquerda (Galeria) --- */
+.pdp-gallery-column {
+    flex: 6; /* Ocupa 60% do espaço */
+    display: flex;
+    gap: 1rem;
+}
+
+.pdp-gallery-thumbnails {
+    flex: 1; /* Ocupa 1 parte */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 600px; /* Altura máxima para as miniaturas */
+    overflow-y: auto; /* Adiciona scroll se tiver muitas fotos */
+}
+
+.pdp-gallery-thumbnail-item {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Proporção das miniaturas */
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: border-color 0.2s ease;
+    opacity: 0.7;
+}
+
+.pdp-gallery-thumbnail-item:hover {
+    border-color: var(--color-text-light);
+    opacity: 1;
+}
+
+.pdp-gallery-thumbnail-item.active {
+    border-color: var(--color-text-dark);
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.pdp-gallery-main-wrapper {
+    flex: 5; /* Ocupa 5 partes */
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    height: fit-content; /* Ajusta altura ao conteúdo */
+}
+
+#pdp-gallery-main {
+    width: 100%;
+    display: block;
+}
+
+
+/* --- Coluna da Direita (Informações) --- */
+.pdp-info-column {
+    flex: 4; /* Ocupa 40% do espaço */
+    padding-left: 1rem;
+}
+
+.pdp-label-codigo {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.pdp-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.pdp-price-block {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.pdp-price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    display: block;
+}
+
+.pdp-installments {
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+.pdp-options-block {
+    margin-bottom: 1.5rem;
+}
+
+.pdp-options-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+/* Opções de Cores */
+.pdp-colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.pdp-color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.pdp-color-swatch:hover {
+    transform: scale(1.1);
+}
+
+/* Tooltip com o nome da cor */
+.pdp-color-swatch::after {
+    content: attr(data-tooltip); /* Pega o texto do atributo 'data-tooltip' */
+    position: absolute;
+    bottom: 120%; /* Aparece acima */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+.pdp-color-swatch:hover::after {
+    opacity: 1;
+}
+
+
+/* Opções de Tamanho */
+.pdp-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.pdp-size-option {
+    min-width: 45px;
+    height: 45px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pdp-size-option:hover {
+    background-color: var(--color-beige);
+    border-color: #ccc;
+}
+
+.pdp-size-option.active {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
+    border-color: var(--color-text-dark);
+}
+
+/* Botão Principal (WhatsApp) */
+.pdp-whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.pdp-whatsapp-button:hover {
+    background-color: #1DA851;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.pdp-whatsapp-button .fab {
+    font-size: 1.3rem;
+}
+
+/* Link de Voltar */
+.pdp-back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    text-decoration: none;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.pdp-back-link:hover {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+}
+
+
+/* ============================================== */
+/* ==== RESPONSIVIDADE (Mobile) ==== */
+/* ============================================== */
+@media (max-width: 768px) {
+    .pdp-main-content {
+        margin: 1rem auto; /* Menos margem no topo */
+    }
+    
+    .pdp-layout {
+        flex-direction: column; /* Empilha as colunas */
+    }
+
+    .pdp-gallery-column {
+        flex-direction: column-reverse; /* Coloca as miniaturas embaixo */
+        gap: 0.75rem;
+    }
+
+    .pdp-gallery-thumbnails {
+        flex-direction: row; /* Miniaturas em linha */
+        overflow-x: auto; /* Scroll horizontal */
+        overflow-y: hidden;
+        padding-bottom: 0.5rem; /* Espaço para o scrollbar */
+        max-height: none;
+    }
+    
+    .pdp-gallery-thumbnail-item {
+        flex: 0 0 65px; /* Tamanho fixo para as miniaturas */
+        height: 80px;
+    }
+    
+    .pdp-info-column {
+        padding-left: 0;
+    }
+    
+    .pdp-title {
+        font-size: 1.8rem;
+    }
+    
+    .pdp-price {
+        font-size: 1.7rem;
+    }
+}
