@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ===================================================
-    // ==== 4. LÓGICA DO STEPPER (MANTIDA) ====
+    // ==== 4. LÓGICA DO STEPPER (MODIFICADA) ====
     // ===================================================
     const stepper = document.querySelector('.stepper-outer-container');
 
@@ -168,7 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (newContent) {
                 newContent.classList.add('active');
                 if (contentWrapper) {
-                    contentWrapper.style.height = newContent.offsetHeight + 'px';
+                    // Recalcula a altura caso o conteúdo tenha mudado (ex: remoção do input)
+                    contentWrapper.style.height = 'auto';
+                    const newHeight = newContent.offsetHeight;
+                    contentWrapper.style.height = newHeight + 'px';
                 }
             }
             if (backBtn) {
@@ -178,17 +181,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 navContainer.classList.toggle('end', currentStep === 1);
             }
             if (nextBtn) {
-                nextBtn.textContent = (currentStep === totalSteps) ? 'Finalizar' : 'Próximo';
+                // MODIFICADO: Muda o texto do botão final
+                nextBtn.textContent = (currentStep === totalSteps) ? 'Chamar Agora' : 'Próximo';
             }
         }
 
         if (nextBtn && backBtn) {
             nextBtn.addEventListener('click', () => {
+                // MODIFICADO: Ação do botão final
                 if (currentStep < totalSteps) {
                     currentStep++;
                     updateStepper();
                 } else {
-                    alert('Pedido Finalizado!');
+                    // Ação final: Abrir o WhatsApp
+                    window.open('https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q', '_blank');
                 }
             });
             backBtn.addEventListener('click', () => {
@@ -204,6 +210,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (firstContent && contentWrapper) {
             contentWrapper.style.height = firstContent.offsetHeight + 'px';
         }
+        
+        // Adiciona um listener de resize para ajustar a altura do stepper
+        window.addEventListener('resize', () => {
+             const activeContent = stepper.querySelector('.stepper-content.active');
+             if(activeContent && contentWrapper) {
+                contentWrapper.style.height = 'auto'; // Reseta
+                const newHeight = activeContent.offsetHeight;
+                contentWrapper.style.height = newHeight + 'px'; // Aplica nova altura
+             }
+        });
     }
 
 
@@ -250,115 +266,98 @@ document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById('hamburger-menu');
     const nav = document.getElementById('card-nav');
     const navContent = document.getElementById('card-nav-content');
-    const navCards = navContent.querySelectorAll('.nav-card');
+    
+    if (hamburger && nav && navContent) {
+        const navCards = navContent.querySelectorAll('.nav-card');
+        if (navCards.length > 0) {
+            let isNavOpen = false; // Começa fechado por padrão
 
-    if (hamburger && nav && navContent && navCards.length > 0) {
-        let isNavOpen = false; // Começa fechado por padrão
-
-        // Função para calcular a altura do conteúdo (usada apenas no mobile)
-        function getMobileNavContentHeight() {
-            let height = 0;
-            const gap = 8;
-            navCards.forEach(card => {
-                height += card.offsetHeight;
-            });
-            height += (navCards.length - 1) * gap;
-            const contentStyle = getComputedStyle(navContent);
-            height += parseFloat(contentStyle.paddingTop) + parseFloat(contentStyle.paddingBottom);
-            return height;
-        }
-
-        // Função para ABRIR ou FECHAR o menu
-        function setNavState(isOpen) {
-            isNavOpen = isOpen;
-            hamburger.classList.toggle('open', isOpen);
-            nav.classList.toggle('open', isOpen);
-
-            if (isOpen) {
-                // ABRE O MENU
-                const topBarHeight = 60;
-                let contentHeight;
-
-                if (window.innerWidth > 768) {
-                    contentHeight = 200; // Altura fixa no Desktop
-                } else {
-                    contentHeight = getMobileNavContentHeight(); // Altura calculada no Mobile
-                }
-
-                nav.style.height = topBarHeight + contentHeight + 'px';
-                nav.setAttribute('aria-hidden', 'false');
-            } else {
-                // FECHA O MENU
-                nav.style.height = '60px'; // Retorna à altura fina
-                nav.setAttribute('aria-hidden', 'true');
-            }
-        }
-
-        // Evento de CLIQUE no Hamburger
-        hamburger.addEventListener('click', () => {
-            setNavState(!isNavOpen); // Inverte o estado atual
-        });
-
-        // Evento de REDIMENSIONAR a tela
-        window.addEventListener('resize', () => {
-            // Se o menu estiver aberto, recalcula a altura
-            if (isNavOpen) {
-                const topBarHeight = 60;
-                let contentHeight;
-                if (window.innerWidth > 768) {
-                    contentHeight = 200;
-                } else {
-                    contentHeight = getMobileNavContentHeight();
-                }
-                nav.style.height = topBarHeight + contentHeight + 'px';
-            } else {
-                // Se estiver fechado, apenas garante que está 60px
-                nav.style.height = '60px';
-            }
-        });
-
-        // Função para animar a entrada no Desktop (MODIFICADA)
-        function runDesktopEntryAnimation() {
-            if (window.innerWidth > 768) {
-                // Força o menu a ABRIR no desktop ao carregar a spágina
-                setNavState(true);
-
-                // Aplica a animação de entrada escalonada (o CSS cuida da animação)
-                navCards.forEach((card, index) => {
-                    card.style.transitionDelay = `${0.15 + index * 0.1}s`;
+            // Função para calcular a altura do conteúdo (usada apenas no mobile)
+            function getMobileNavContentHeight() {
+                let height = 0;
+                const gap = 8;
+                navCards.forEach(card => {
+                    height += card.offsetHeight;
                 });
+                height += (navCards.length - 1) * gap;
+                const contentStyle = getComputedStyle(navContent);
+                height += parseFloat(contentStyle.paddingTop) + parseFloat(contentStyle.paddingBottom);
+                return height;
             }
-        }
 
-        // Roda a animação de entrada do desktop (que agora abre o menu)
-        setTimeout(runDesktopEntryAnimation, 100);
+            // Função para ABRIR ou FECHAR o menu
+            function setNavState(isOpen) {
+                isNavOpen = isOpen;
+                hamburger.classList.toggle('open', isOpen);
+                nav.classList.toggle('open', isOpen);
+
+                if (isOpen) {
+                    // ABRE O MENU
+                    const topBarHeight = 60;
+                    let contentHeight;
+
+                    if (window.innerWidth > 768) {
+                        contentHeight = 200; // Altura fixa no Desktop
+                    } else {
+                        contentHeight = getMobileNavContentHeight(); // Altura calculada no Mobile
+                    }
+
+                    nav.style.height = topBarHeight + contentHeight + 'px';
+                    nav.setAttribute('aria-hidden', 'false');
+                } else {
+                    // FECHA O MENU
+                    nav.style.height = '60px'; // Retorna à altura fina
+                    nav.setAttribute('aria-hidden', 'true');
+                }
+            }
+
+            // Evento de CLIQUE no Hamburger
+            hamburger.addEventListener('click', () => {
+                setNavState(!isNavOpen); // Inverte o estado atual
+            });
+
+            // Evento de REDIMENSIONAR a tela
+            window.addEventListener('resize', () => {
+                // Se o menu estiver aberto, recalcula a altura
+                if (isNavOpen) {
+                    const topBarHeight = 60;
+                    let contentHeight;
+                    if (window.innerWidth > 768) {
+                        contentHeight = 200;
+                    } else {
+                        contentHeight = getMobileNavContentHeight();
+                    }
+                    nav.style.height = topBarHeight + contentHeight + 'px';
+                } else {
+                    // Se estiver fechado, apenas garante que está 60px
+                    nav.style.height = '60px';
+                }
+            });
+
+            // Função para animar a entrada no Desktop (MODIFICADA)
+            function runDesktopEntryAnimation() {
+                if (window.innerWidth > 768) {
+                    // Força o menu a ABRIR no desktop ao carregar a spágina
+                    setNavState(true);
+
+                    // Aplica a animação de entrada escalonada (o CSS cuida da animação)
+                    navCards.forEach((card, index) => {
+                        card.style.transitionDelay = `${0.15 + index * 0.1}s`;
+                    });
+                }
+            }
+
+            // Roda a animação de entrada do desktop (que agora abre o menu)
+            setTimeout(runDesktopEntryAnimation, 100);
+        }
     }
     
     
     // =============================================
-    // ==== 7. LÓGICA DA SACOLA (NOVO) ====
+    // ==== 7. LÓGICA DA SACOLA (REMOVIDA) ====
     // =============================================
-    const openCartBtn = document.getElementById('open-cart-btn');
-    const closeCartBtn = document.getElementById('cart-close-btn');
-    const cartSidebar = document.getElementById('cart-sidebar');
-    const cartOverlay = document.getElementById('cart-overlay');
+    // Todo o bloco de código da sacola foi removido.
 
-    if (openCartBtn && closeCartBtn && cartSidebar && cartOverlay) {
-        
-        function openCart() {
-            cartSidebar.classList.add('open');
-            cartOverlay.classList.add('open');
-        }
-
-        function closeCart() {
-            cartSidebar.classList.remove('open');
-            cartOverlay.classList.remove('open');
-        }
-
-        openCartBtn.addEventListener('click', openCart);
-        closeCartBtn.addEventListener('click', closeCart);
-        cartOverlay.addEventListener('click', closeCart);
-    }
 
     // ========================================================
     // ==== 8. LÓGICA DO HERO CHROMA-GRID (REMOVIDA) ====

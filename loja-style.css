@@ -86,6 +86,9 @@ body {
 }
 .nav-icons {
     order: 2;
+    /* Conteúdo (sacola) removido */
+    /* Adiciona um espaço mínimo para manter o layout com o hamburger */
+    min-width: 40px;
 }
 .hamburger-menu {
     order: 3;
@@ -175,105 +178,9 @@ body {
 }
 
 /* ========================================================== */
-/* ==== 2. SEÇÃO HERO (Masonry e Carrossel de Texto) ==== */
+/* ==== 2. SEÇÃO HERO (Estilos não usados aqui) ==== */
 /* ========================================================== */
-.hero-masonry {
-    position: relative;
-    width: 100%;
-    height: 90vh;
-    background-color: var(--color-light-pink);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-.masonry-background {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    display: flex;
-    gap: 12px;
-    filter: grayscale(100%);
-    opacity: 0.15;
-    transform: rotate(-10deg) scale(1.1);
-}
-.masonry-column {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 20%;
-}
-.masonry-column:nth-child(even) {
-    animation: scroll-up 80s linear infinite;
-}
-.masonry-column:nth-child(odd) {
-    animation: scroll-down 80s linear infinite;
-}
-@keyframes scroll-up {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-100%); }
-}
-@keyframes scroll-down {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(0); }
-}
-.masonry-item {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.masonry-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-.hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 600px;
-    background: rgba(255, 245, 247, 0.4);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-}
-.hero-text-content {
-    position: relative;
-    min-height: 130px;
-}
-#hero-rotating-text {
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--color-text-dark);
-    min-height: 50px;
-}
-#hero-rotating-text span[aria-hidden="true"]>span {
-    display: inline-block;
-    background-image: linear-gradient( to right, var(--color-accent), var(--color-dark-yellow), var(--color-accent), var(--color-dark-yellow), var(--color-accent));
-    background-size: 300% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: gradient-animation 8s linear infinite;
-}
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-.hero-animated-subtitle {
-    font-size: 1.2rem;
-    color: var(--color-text-light);
-    margin-bottom: 2rem;
-    min-height: 40px;
-}
+
 
 /* ESTILO DE BOTÃO LIQUID-GLASS GENÉRICO */
 .liquid-button {
@@ -390,56 +297,18 @@ body {
     opacity: 0.8;
     margin-bottom: 0.25rem;
 }
-#colecao .product-card h3 {
+#colecao .product-card h3,
+#loja .product-card h3 {
     margin-bottom: 0.25rem;
 }
-.product-price {
-    color: var(--color-text-dark);
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-.product-installments {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    margin-bottom: 0.75rem;
-}
+
+/* Itens removidos (preço, parcelas, etc.) */
+.product-price,
+.product-installments,
 .product-card-footer {
-    margin-top: auto; 
+    display: none; /* Oculta os elementos */
 }
-.product-sizes {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-}
-.size-option {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-text-light);
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-.size-option:hover {
-    background-color: var(--color-beige);
-    border-color: #ccc;
-}
-.product-colors {
-    display: flex;
-    gap: 0.5rem;
-}
-.color-swatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
+
 .product-card::before {
     content: '';
     position: absolute;
@@ -463,222 +332,24 @@ body {
     opacity: 0;
     transform: translate(-50%, 10px);
 }
+/* Modificado para também aplicar ao .fab (ícone do WhatsApp) */
+.product-image-placeholder .liquid-button .fab {
+    font-size: 1.1rem;
+}
+
 .product-card:hover .liquid-button {
     opacity: 1;
     transform: translate(-50%, 0);
 }
 
-/* ---- 4. Seção Carrossel de Produtos ---- */
-.product-carousel-section {
-    padding: 4rem 0;
-    text-align: center;
-    background-color: var(--color-light-pink);
-}
-.product-carousel-section h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: var(--color-text-dark);
-}
-.carousel-wrapper {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-.product-carousel-track-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 0 1rem;
-}
-.product-carousel-track {
-    display: flex;
-    gap: 1rem;
-    scroll-behavior: smooth;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.product-carousel-track::-webkit-scrollbar {
-    display: none;
-}
-.product-carousel-card {
-    flex: 0 0 auto;
-    width: 280px;
-    scroll-snap-align: start;
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-.product-carousel-card img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
-}
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    color: var(--color-text-dark);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 10;
-}
-.carousel-button:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-}
-.carousel-button.prev { left: 2%; }
-.carousel-button.next { right: 2%; }
-.cta-center {
-    margin: 2.5rem auto 0;
-    display: table;
-}
+/* ---- 4. Seção Carrossel de Produtos (Não usada em loja.html) ---- */
 
-/* ---- 5. Seção Stepper ---- */
-.stepper-section {
-    padding: 4rem 5%;
-    text-align: center;
-    background-color: var(--color-beige);
-}
-.stepper-section h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--color-text-dark);
-}
-.stepper-section p {
-    font-size: 1.1rem;
-    color: var(--color-text-light);
-    margin-bottom: 2.5rem;
-}
-.stepper-outer-container {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 28rem;
-    border-radius: 2rem;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-}
-.stepper-indicator-row {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    padding: 2rem;
-}
-.stepper-indicator {
-    position: relative;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3em;
-    height: 3em;
-}
-.stepper-indicator.inactive .icon-btn__front {
-    background-color: hsla(0, 0%, 80%, 0.4);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: none;
-}
-.stepper-indicator.inactive .icon-btn__icon {
-    color: var(--color-text-light);
-}
-.stepper-indicator.active .icon-btn__front {
-    background-color: hsla(223, 90%, 50%, 0.2);
-}
-.stepper-indicator.active .icon-btn__icon {
-    color: #3B82F6;
-}
-.stepper-indicator.complete .icon-btn__front {
-    background-color: hsla(123, 90%, 40%, 0.2);
-}
-.stepper-indicator.complete .icon-btn__icon {
-    color: hsl(123, 90%, 40%);
-}
-.stepper-connector {
-    position: relative;
-    margin: 0 0.5rem;
-    height: 0.125rem;
-    flex: 1;
-    border-radius: 0.25rem;
-    background-color: #EEE;
-}
-.stepper-connector-inner {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0;
-    background-color: #3B82F6;
-    transition: width 0.4s ease;
-}
-.stepper-indicator.complete+.stepper-connector .stepper-connector-inner {
-    width: 100%;
-}
-.stepper-content-wrapper {
-    position: relative;
-    overflow: hidden;
-    padding: 0 2rem;
-    text-align: left;
-    transition: height 0.4s ease;
-}
-.stepper-content {
-    width: 100%;
-    display: none;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.4s ease;
-}
-.stepper-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-}
-.stepper-content.exiting {
-    display: block;
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    transform: translateX(20px);
-}
-.stepper-content h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-.stepper-input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-family: var(--font-family);
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-.stepper-footer { padding: 2rem; }
-.stepper-nav {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-}
-.stepper-nav.end {
-    justify-content: flex-end;
-}
+
+/* ---- 5. Seção Stepper (Não usada em loja.html) ---- */
+
 
 /* ---- 6. Estilos do GlassIcon (Mantido) ---- */
+/* Usado pelo (removido) ícone da sacola, mas pode ser usado por outros elementos */
 .icon-btn {
     background-color: transparent;
     border: none;
@@ -864,34 +535,10 @@ body {
         order: 3;
         display: flex;
     }
-    .hero-masonry { height: 85vh; }
-    .hero-content {
-        width: 90%;
-        padding: 1.5rem;
-    }
-    #hero-rotating-text {
-        font-size: 2.2rem;
-        min-height: 40px;
-    }
-    .hero-animated-subtitle { font-size: 1rem; }
-    .hero-text-content { min-height: 100px; }
-    .masonry-background {
-        column-count: 3;
-        gap: 8px;
-    }
-    .masonry-column {
-        width: 33.33%;
-        gap: 8px;
-    }
+
     .product-grid-section { padding: 3rem 5%; }
     .product-grid { grid-template-columns: 1fr; } 
-    .product-carousel-section { padding: 3rem 0; }
-    .carousel-button { display: none; }
-    .product-carousel-track-container {
-        padding: 0 5%;
-        scroll-padding: 0 5%;
-    }
-    .contact-section { padding-bottom: 120px; }
+
     body { padding-bottom: 120px; }
     
     .filter-tabs {
@@ -983,50 +630,8 @@ body {
     }
 }
 
-/* ---- 9. Seção de Contato ---- */
-.contact-section {
-    background-color: var(--color-light-pink);
-    padding: 5rem 5%;
-    text-align: center;
-}
-.contact-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-.contact-content h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-.contact-content p {
-    font-size: 1.1rem;
-    color: var(--color-text-light);
-    margin-bottom: 2.5rem;
-}
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--color-text-light);
-}
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-family: var(--font-family);
-    font-size: 1rem;
-    background-color: var(--color-white);
-}
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-text-dark);
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-}
+/* ---- 9. Seção de Contato (Não usada em loja.html) ---- */
+
 
 /* ---- 10. Rodapé ---- */
 .footer {
@@ -1111,136 +716,10 @@ body {
 }
 
 /* ============================================== */
-/* ==== 12. ESTILOS DA SACOLA (COMPLETO) ==== */
+/* ==== 12. ESTILOS DA SACOLA (REMOVIDO) ==== */
 /* ============================================== */
-.cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 90%;
-    max-width: 400px;
-    height: 100%;
-    background-color: var(--color-white);
-    z-index: 2001;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.83, 0, 0.17, 1);
-    display: flex;
-    flex-direction: column;
-}
-.cart-sidebar.open { right: 0; }
-.cart-overlay.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-}
-.cart-header h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-.cart-close-btn {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--color-text-light);
-    cursor: pointer;
-    line-height: 1;
-    padding: 0;
-}
-.cart-body {
-    flex-grow: 1;
-    padding: 1.5rem;
-    overflow-y: auto;
-}
-.cart-empty-message {
-    text-align: center;
-    color: var(--color-text-light);
-    margin-top: 2rem;
-}
-.cart-footer {
-    padding: 1.5rem;
-    border-top: 1px solid var(--color-border);
-    background-color: var(--color-beige);
-}
+/* Todos os estilos do .cart-overlay, .cart-sidebar, etc., foram removidos */
 
-.cart-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-.cart-item img {
-    width: 80px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-}
-.cart-item-details {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.cart-item-details p { margin: 0; }
-.cart-item-name {
-    font-weight: 500;
-    color: var(--color-text-dark);
-}
-.cart-item-price, .cart-item-quantity {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-}
-.cart-item-remove {
-    font-size: 0.8rem;
-    color: var(--color-accent);
-    cursor: pointer;
-    text-decoration: underline;
-    background: none; border: none; padding: 0;
-    text-align: left;
-    margin-top: 4px;
-}
-.cart-item-remove:hover { color: var(--color-text-dark); }
-            
-#cart-count-badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: var(--color-accent);
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    border: 2px solid white;
-    transform: scale(0);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-#cart-count-badge.visible {
-    transform: scale(1);
-}
 
 /* ============================================== */
 /* ==== 13. ESTILOS DAS ABAS DE FILTRO (NOVO) ==== */
