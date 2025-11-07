@@ -19,33 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // LÓGICA DO DOCK MÓVEL (Seção 5 do script.js)
-    const dockPanel = document.getElementById('dock-panel');
-    const dockItems = document.querySelectorAll('.dock-item');
-    if (dockPanel && dockItems.length > 0) {
-        dockPanel.addEventListener('mousemove', e => {
-            const mouseX = e.pageX;
-            dockItems.forEach(item => {
-                const itemRect = item.getBoundingClientRect();
-                const itemCenter = itemRect.left + window.scrollX + itemRect.width / 2;
-                const distance = Math.abs(mouseX - itemCenter);
-                let scale = 1;
-                if (distance < 100) {
-                    const proximity = (100 - distance) / 100;
-                    scale = 1 + (1.6 - 1) * proximity;
-                }
-                const icon = item.querySelector('.dock-icon');
-                if (icon) icon.style.transform = `scale(${scale})`;
-            });
-        });
-        dockPanel.addEventListener('mouseleave', () => {
-            dockItems.forEach(item => {
-                const icon = item.querySelector('.dock-icon');
-                if (icon) icon.style.transform = 'scale(1)';
-            });
-        });
-    }
-
     // LÓGICA DO HEADER/NAV (Seção 6 do script.js)
     const hamburger = document.getElementById('hamburger-menu');
     const nav = document.getElementById('card-nav');
@@ -103,152 +76,134 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ==== SEÇÃO 2: LÓGICA DA SACOLA (Combinada e Corrigida) ==== */
     /* ======================================================== */
 
+    // (Esta seção é opcional, mas está aqui caso você a tenha)
     const openCartBtn = document.getElementById('open-cart-btn');
     const closeCartBtn = document.getElementById('cart-close-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartOverlay = document.getElementById('cart-overlay');
-    const addCartButtons = document.querySelectorAll('.btn-add-cart');
-    const cartBody = document.getElementById('cart-items-list'); 
-    const cartCountBadge = document.getElementById('cart-count-badge');
-    const emptyMessageHTML = '<p class="cart-empty-message">Sua sacola está vazia.</p>';
-    let cart = JSON.parse(localStorage.getItem('lojaCart')) || [];
-
-    function openCart() {
-        if (cartSidebar) cartSidebar.classList.add('open');
-        if (cartOverlay) cartOverlay.classList.add('open');
-    }
-
-    function closeCart() {
-        if (cartSidebar) cartSidebar.classList.remove('open');
-        if (cartOverlay) cartOverlay.classList.remove('open');
-    }
-
-    function saveCart() {
-        localStorage.setItem('lojaCart', JSON.stringify(cart));
-        updateCartUI();
-    }
-
-    function addItemToCart(item) {
-        const existingItem = cart.find(cartItem => cartItem.id === item.id);
-        if (existingItem) {
-            existingItem.quantity += 1; 
-        } else {
-            cart.push(item); 
-        }
-        saveCart();
-        openCart(); 
-    }
-
-    function removeItemFromCart(itemId) {
-        cart = cart.filter(item => item.id !== itemId);
-        saveCart();
-    }
-
-    function updateCartUI() {
-        if (!cartBody || !cartCountBadge) return; 
-        cartBody.innerHTML = '';
-        if (cart.length === 0) {
-            cartBody.innerHTML = emptyMessageHTML;
-        } else {
-            cart.forEach(item => {
-                const itemHTML = `
-                    <div class="cart-item" data-id="${item.id}">
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div>
-                                <p class="cart-item-name">${item.name}</p>
-                                <p class="cart-item-price">R$ ${item.price.toFixed(2)}</p>
-                                <p class="cart-item-quantity">Quantidade: ${item.quantity}</p>
-                            </div>
-                            <button class="cart-item-remove" data-id="${item.id}">Remover</button>
-                        </div>
-                    </div>
-                `;
-                cartBody.innerHTML += itemHTML;
-            });
-        }
-        
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        if (totalItems > 0) {
-            cartCountBadge.textContent = totalItems;
-            cartCountBadge.classList.add('visible');
-        } else {
-            cartCountBadge.classList.remove('visible');
-            cartCountBadge.textContent = '0';
-        }
-        
-        addRemoveListeners();
-    }
     
-    function addRemoveListeners() {
-        const removeButtons = cartBody.querySelectorAll('.cart-item-remove');
-        removeButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const itemId = e.target.dataset.id;
-                removeItemFromCart(itemId);
-            });
-        });
+    if(openCartBtn && cartSidebar && cartOverlay){
+        function openCart() {
+            if (cartSidebar) cartSidebar.classList.add('open');
+            if (cartOverlay) cartOverlay.classList.add('open');
+        }
+
+        function closeCart() {
+            if (cartSidebar) cartSidebar.classList.remove('open');
+            if (cartOverlay) cartOverlay.classList.remove('open');
+        }
+        
+        openCartBtn.addEventListener('click', openCart);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
     }
-
-    if (openCartBtn) openCartBtn.addEventListener('click', openCart);
-    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
-    if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
-
-    if (addCartButtons.length > 0) {
-        addCartButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const productData = e.currentTarget.dataset;
-                const item = {
-                    id: productData.id,
-                    name: productData.name,
-                    price: parseFloat(productData.price),
-                    image: productData.image,
-                    quantity: 1
-                };
-                addItemToCart(item);
-            });
-        });
-    }
-
-    updateCartUI();
     
     
     /* ======================================================== */
-    /* ==== SEÇÃO 5: LÓGICA DE FILTRO DE TABS (NOVO) ==== */
+    /* ==== SEÇÃO 5: LÓGICA DE FILTRO (BUSCA + TABS + SIDEBAR) ==== */
     /* ======================================================== */
     
-    const filterTabs = document.querySelectorAll('.filter-tab-btn');
-    const productCards = document.querySelectorAll('.product-grid .product-card');
+    const filterTabsContainer = document.getElementById('filter-tabs');
+    const productGrid = document.getElementById('product-grid');
+    const searchBar = document.getElementById('search-bar'); // Pega a barra de busca
+    
+    if (filterTabsContainer && productGrid) {
+        const filterTabs = filterTabsContainer.querySelectorAll('.filter-tab-btn');
+        const productCards = productGrid.querySelectorAll('.product-card');
+        const sidebarCheckboxes = document.querySelectorAll('.sub-filter-checkbox');
 
-    function filterProducts(category, activeTab) {
-        // 1. Gerencia o estado ativo da aba
+        function filterProducts() {
+            // 1. Get o termo de busca (NOVO)
+            const searchTerm = searchBar ? searchBar.value.toLowerCase() : '';
+
+            // 2. Get o filtro principal (Abas)
+            const activeTab = filterTabsContainer.querySelector('.filter-tab-btn.active');
+            const mainCategory = activeTab ? activeTab.dataset.filter : 'destaques';
+
+            // 3. Get os sub-filtros (Sidebar Checkboxes)
+            const activeSubFilters = [];
+            sidebarCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    activeSubFilters.push(checkbox.value);
+                }
+            });
+
+            // 4. Itera sobre os cards e aplica a lógica
+            productCards.forEach(card => {
+                const cardCategories = card.dataset.category || 'destaques';
+                
+                // Pega o texto do card para a busca (NOVO)
+                const productName = (card.querySelector('h3 a') ? card.querySelector('h3 a').textContent : '').toLowerCase();
+                const productCode = (card.querySelector('.product-card-label') ? card.querySelector('.product-card-label').textContent : '').toLowerCase();
+
+                // Lógica do Filtro Principal
+                const showsMain = (mainCategory === 'destaques') || cardCategories.includes(mainCategory);
+                
+                // Lógica do Sub-Filtro
+                const showsSub = (activeSubFilters.length === 0) || activeSubFilters.some(sub => cardCategories.includes(sub));
+
+                // Lógica da Busca (NOVO)
+                const showsSearch = (searchTerm === '') || productName.includes(searchTerm) || productCode.includes(searchTerm);
+
+                // 5. Mostra ou esconde o card
+                if (showsMain && showsSub && showsSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Adiciona o clique em cada aba principal
         filterTabs.forEach(tab => {
-            tab.classList.remove('active');
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                filterProducts();
+            });
         });
-        activeTab.classList.add('active');
 
-        // 2. Filtra os cards
-        productCards.forEach(card => {
-            const cardCategories = card.dataset.category || 'destaques';
-
-            // O card deve ser mostrado se:
-            // 1. A categoria for 'destaques' (mostra todos)
-            // 2. As categorias do card incluírem a categoria do filtro
-            if (category === 'destaques' || cardCategories.includes(category)) {
-                card.style.display = 'flex'; // 'flex' é o display original do card
-            } else {
-                card.style.display = 'none'; // Esconde o card
-            }
+        // Adiciona o clique em cada checkbox da sidebar
+        sidebarCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                filterProducts();
+            });
         });
+
+        // Adiciona o listener para a barra de busca (NOVO)
+        if (searchBar) {
+            searchBar.addEventListener('input', () => {
+                filterProducts();
+            });
+        }
+
+        // Roda o filtro uma vez no carregamento
+        filterProducts();
     }
 
-    // Adiciona o clique em cada aba
-    filterTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const category = tab.dataset.filter;
-            filterProducts(category, tab);
-        });
-    });
+
+    /* ======================================================== */
+    /* ==== SEÇÃO 6: LÓGICA DA SIDEBAR DE FILTRO (NOVA) ==== */
+    /* ======================================================== */
+    
+    const openSubFilterBtn = document.getElementById('open-subfilter-btn');
+    const closeSubFilterBtn = document.getElementById('sub-filter-close-btn');
+    const subFilterSidebar = document.getElementById('sub-filter-sidebar');
+    const subFilterOverlay = document.getElementById('sub-filter-overlay');
+
+    function openSubFilter() {
+        if (subFilterSidebar) subFilterSidebar.classList.add('open');
+        if (subFilterOverlay) subFilterOverlay.classList.add('open');
+    }
+
+    function closeSubFilter() {
+        if (subFilterSidebar) subFilterSidebar.classList.remove('open');
+        if (subFilterOverlay) subFilterOverlay.classList.remove('open');
+    }
+
+    if (openSubFilterBtn) openSubFilterBtn.addEventListener('click', openSubFilter);
+    if (closeSubFilterBtn) closeSubFilterBtn.addEventListener('click', closeSubFilter);
+    if (subFilterOverlay) subFilterOverlay.addEventListener('click', closeSubFilter);
 
 
 }); // Fim do 'DOMContentLoaded'

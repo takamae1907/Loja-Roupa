@@ -851,3 +851,224 @@ a.product-card-link {
     border-color: var(--color-text-dark);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+/* ============================================== */
+/* ==== 15. ESTILOS DA SIDEBAR DE FILTRO ==== */
+/* ============================================== */
+
+/* --- Botão de Abrir Filtro --- */
+.loja-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem; /* Ajusta o espaço para os tabs */
+}
+
+.loja-header h2 {
+    margin-bottom: 0; /* Remove a margem do H2 */
+}
+
+.filter-sidebar-btn {
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    background-color: var(--color-white);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-sidebar-btn:hover {
+    background-color: var(--color-beige);
+    border-color: #ddd;
+}
+
+.filter-sidebar-btn i {
+    font-size: 0.8rem;
+}
+
+/* --- Overlay (Fundo) --- */
+.sub-filter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1010;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sub-filter-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Sidebar (Painel) --- */
+.sub-filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-color: var(--color-white);
+    z-index: 1011;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-filter-sidebar.open {
+    transform: translateX(0);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.sub-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sub-filter-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.sub-filter-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.sub-filter-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.sub-filter-group {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+}
+
+.sub-filter-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.sub-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sub-filter-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.sub-filter-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Ajuste no mobile */
+@media (max-width: 768px) {
+    .loja-header {
+        margin-bottom: 1.5rem;
+    }
+    .filter-sidebar-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .sub-filter-sidebar {
+        width: 280px; /* Um pouco mais estreito no mobile */
+    }
+}
+/* ============================================== */
+/* ==== 16. ESTILOS DO CAMPO DE BUSCA ==== */
+/* ============================================== */
+
+/* Ajuste no header para a busca */
+.loja-header {
+    gap: 1.5rem; /* Adiciona espaço entre os itens */
+}
+
+.loja-header h2 {
+    flex-shrink: 0; /* Impede que o título encolha */
+}
+
+/* --- Estilos do Campo de Busca --- */
+.search-container {
+    position: relative;
+    flex-grow: 1; /* Faz o campo crescer */
+    max-width: 500px; /* Limite de largura */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+#search-bar {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.5rem; /* Espaço à esquerda para o ícone */
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    font-family: var(--font-family);
+    background-color: var(--color-white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+/* --- Responsividade da Busca --- */
+@media (max-width: 768px) {
+    .loja-header {
+        flex-wrap: wrap; /* Permite quebrar a linha */
+        gap: 1rem;
+    }
+    .search-container {
+        order: 3; /* Joga a busca para baixo */
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+    .loja-header h2 {
+        order: 1;
+    }
+    .filter-sidebar-btn {
+        order: 2;
+    }
+}

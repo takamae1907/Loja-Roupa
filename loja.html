@@ -14,6 +14,31 @@
 
 <body>
 
+    <div class="sub-filter-overlay" id="sub-filter-overlay"></div>
+    <nav class="sub-filter-sidebar" id="sub-filter-sidebar">
+        <div class="sub-filter-header">
+            <h3>Refinar Busca</h3>
+            <button class="sub-filter-close-btn" id="sub-filter-close-btn">&times;</button>
+        </div>
+        
+        <div class="sub-filter-body">
+            <div class="sub-filter-group">
+                <h4 class="sub-filter-title">Tipo de Saia</h4>
+                <div class="sub-filter-options">
+                    <label class="sub-filter-label">
+                        <input type="checkbox" class="sub-filter-checkbox" value="mid"> Mid Size
+                    </label>
+                    <label class="sub-filter-label">
+                        <input type="checkbox" class="sub-filter-checkbox" value="longa"> Longas / Midi
+                    </label>
+                    <label class="sub-filter-label">
+                        <input type="checkbox" class="sub-filter-checkbox" value="plus"> Plus Size
+                    </label>
+                </div>
+            </div>
+
+            </div>
+    </nav>
     <header class="card-nav-container">
         <nav class="card-nav" id="card-nav">
             <div class="card-nav-top">
@@ -78,374 +103,194 @@
 
     <main>
         <section id="loja" class="product-grid-section">
-            <h2>Nossa Loja</h2>
+            
+            <div class="loja-header">
+                <h2>Nossa Loja</h2>
 
+                <div class="search-container">
+                    <input type="text" id="search-bar" placeholder="Buscar por nome ou cód...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <button class="filter-sidebar-btn" id="open-subfilter-btn">
+                    <i class="fas fa-filter"></i> Refinar
+                </button>
+            </div>
             <div class="filter-tabs" id="filter-tabs">
                 <button class="filter-tab-btn active" data-filter="destaques">Destaques</button>
                 <button class="filter-tab-btn" data-filter="saias">Saias</button>
-                <button class="filter-tab-btn" data-filter="saias-midi">Saias Longas e Midi</button>
                 <button class="filter-tab-btn" data-filter="vestidos">Vestidos</button>
                 <button class="filter-tab-btn" data-filter="blusas">Blusas</button>
                 <button class="filter-tab-btn" data-filter="calcas">Calças</button>
                 <button class="filter-tab-btn" data-filter="fardamentos">Fardamentos</button>
-                <button class="filter-tab-btn" data-filter="plus">Plus Size</button>
             </div>
 
-            <div class="product-grid">
+            <div class="product-grid" id="product-grid">
 
                 <div class="product-card" data-category="destaques">
                     <a href="produto.html?id=0801" class="product-card-link" aria-label="Ver detalhes do Macacão Brenda">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/04.jpg');">
-                            </div>
+                        <div class="product-image-placeholder" style="background-image: url('fotos/04.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0801</span>
-                        <h3>
-                            <a href="produto.html?id=0801" class="product-card-link">Macacão Brenda</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0801" class="product-card-link">Macacão Brenda</a></h3>
                         <p class="product-price">R$ 219,90</p>
                         <p class="product-installments">em até 3x de R$ 73,30</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho M">M</span>
-                                <span class="size-option" aria-label="Tamanho G">G</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #F08080;"></span>
-                                <span class="color-swatch" style="background-color: #98FB98;"></span>
-                                <span class="color-swatch" style="background-color: #000000;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="destaques vestidos">
-                    <a href="produto.html?id=0755" class="product-card-link" aria-label="Ver detalhes do Vestido com cinto e plissado">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/02.jpg');">
-                             </div>
+                    <a href="produto.html?id=0755" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/02.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0755</span>
-                        <h3>
-                            <a href="produto.html?id=0755" class="product-card-link">Vestido com cinto e plissado</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0755" class="product-card-link">Vestido com cinto e plissado</a></h3>
                         <p class="product-price">R$ 249,90</p>
                         <p class="product-installments">em até 3x de R$ 83,30</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Único">U</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #B2DFDB;"></span>
-                                <span class="color-swatch" style="background-color: #D2B48C;"></span>
-                                <span class="color-swatch" style="background-color: #FFC0CB;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="destaques vestidos">
-                    <a href="produto.html?id=0853" class="product-card-link" aria-label="Ver detalhes do Vestido com cinto">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/03.jpg');">
-                             </div>
+                    <a href="produto.html?id=0853" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/03.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0853</span>
-                        <h3>
-                            <a href="produto.html?id=0853" class="product-card-link">Vestido com cinto</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0853" class="product-card-link">Vestido com cinto</a></h3>
                         <p class="product-price">R$ 199,90</p>
                         <p class="product-installments">em até 3x de R$ 66,63</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Único">U</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #FFFFE0;"></span>
-                                <span class="color-swatch" style="background-color: #ADD8E6;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card" data-category="destaques vestidos">
-                    <a href="produto.html?id=0803" class="product-card-link" aria-label="Ver detalhes do Vestido Longo">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/01.jpg');">
-                             </div>
+                    <a href="produto.html?id=0803" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/01.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0803</span>
-                        <h3>
-                            <a href="produto.html?id=0803" class="product-card-link">Vestido Longo</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0803" class="product-card-link">Vestido Longo</a></h3>
                         <p class="product-price">R$ 229,90</p>
                         <p class="product-installments">em até 3x de R$ 76,63</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Único">U</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #F5F5DC;"></span>
-                                <span class="color-swatch" style="background-color: #DC143C;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="destaques vestidos plus">
-                    <a href="produto.html?id=0651" class="product-card-link" aria-label="Ver detalhes do Vestido plus Midi">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/16.jpg');">
-                             </div>
+                    <a href="produto.html?id=0651" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/16.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0651</span>
-                        <h3>
-                            <a href="produto.html?id=0651" class="product-card-link">Vestido plus Midi</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0651" class="product-card-link">Vestido plus Midi</a></h3>
                         <p class="product-price">R$ 189,90</p>
                         <p class="product-installments">em até 3x de R$ 63,30</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Plus">G1</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #000000;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="product-card" data-category="destaques vestidos">
-                    <a href="produto.html?id=0700" class="product-card-link" aria-label="Ver detalhes do Vestido Estampado">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/17.jpg');">
-                             </div>
+                    <a href="produto.html?id=0700" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/17.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0700</span>
-                        <h3>
-                            <a href="produto.html?id=0700" class="product-card-link">Vestido Estampado</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0700" class="product-card-link">Vestido Estampado</a></h3>
                         <p class="product-price">R$ 199,90</p>
                         <p class="product-installments">em até 3x de R$ 66,63</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Único">U</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #FF4500;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card" data-category="destaques vestidos">
-                    <a href="produto.html?id=0757" class="product-card-link" aria-label="Ver detalhes do Vestido Valéria">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/07.jpg');">
-                             </div>
+                    <a href="produto.html?id=0757" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/07.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 0757</span>
-                        <h3>
-                            <a href="produto.html?id=0757" class="product-card-link">Vestido Valéria</a>
-                        </h3>
+                        <h3><a href="produto.html?id=0757" class="product-card-link">Vestido Valéria</a></h3>
                         <p class="product-price">R$ 179,90</p>
                         <p class="product-installments">em até 3x de R$ 59,96</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho Único">U</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #AFEEEE;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card" data-category="destaques plus saias">
-                    <a href="produto.html?id=1051" class="product-card-link" aria-label="Ver detalhes do Conjunto Saia e Blusa">
-                        <div class="product-image-placeholder" style="background-image: url('fotos/10.jpg');">
-                             </div>
+                <div class="product-card" data-category="destaques saias blusas plus">
+                    <a href="produto.html?id=1051" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('fotos/10.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód 1051</span>
-                        <h3>
-                            <a href="produto.html?id=1051" class="product-card-link">Conjunto Saia e Blusa</a>
-                        </h3>
+                        <h3><a href="produto.html?id=1051" class="product-card-link">Conjunto Saia e Blusa</a></h3>
                         <p class="product-price">R$ 209,90</p>
                         <p class="product-installments">em até 3x de R$ 69,96</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho M">M</span>
-                                <span class="size-option" aria-label="Tamanho G1">G1</span>
-                                <span class="size-option" aria-label="Tamanho G2">G2</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #F5F5DC;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card" data-category="destaques saias saias-midi plus">
-                    <a href="produto.html?id=S001" class="product-card-link" aria-label="Ver detalhes da Saia Midi Plus Size Listrada">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaPlus1.jpg');">
-                             </div>
+                <div class="product-card" data-category="destaques saias plus longa">
+                    <a href="produto.html?id=S001" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaPlus1.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S001</span>
-                        <h3>
-                            <a href="produto.html?id=S001" class="product-card-link">Saia Midi Plus Size Listrada</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S001" class="product-card-link">Saia Midi Plus Size Listrada</a></h3>
                         <p class="product-price">R$ 135,00</p>
                         <p class="product-installments">em até 3x de R$ 45,00</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho G1">G1</span>
-                                <span class="size-option" aria-label="Tamanho G2">G2</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #4D4D4D;"></span>
-                                <span class="color-swatch" style="background-color: #8B4513;"></span>
-                                <span class="color-swatch" style="background-color: #4682B4;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card" data-category="saias saias-midi plus">
-                    <a href="produto.html?id=S002" class="product-card-link" aria-label="Ver detalhes da Saia Midi Plus com Botões">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi17.jpg');">
-                             </div>
+                <div class="product-card" data-category="saias plus longa">
+                    <a href="produto.html?id=S002" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi17.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S002</span>
-                        <h3>
-                            <a href="produto.html?id=S002" class="product-card-link">Saia Midi Plus com Botões</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S002" class="product-card-link">Saia Midi Plus com Botões</a></h3>
                         <p class="product-price">R$ 135,00</p>
                         <p class="product-installments">em até 3x de R$ 45,00</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho G1">G1</span>
-                                <span class="size-option" aria-label="Tamanho G2">G2</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #000000;"></span>
-                                <span class="color-swatch" style="background-color: #8B0000;"></span>
-                                <span class="color-swatch" style="background-color: #FF4500;"></span>
-                                <span class="color-swatch" style="background-color: #D2B48C;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="destaques saias saias-midi">
-                    <a href="produto.html?id=S003" class="product-card-link" aria-label="Ver detalhes da Saia Midi com Cinto Redondo">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi10.jpg');">
-                             </div>
+                <div class="product-card" data-category="destaques saias mid longa">
+                    <a href="produto.html?id=S003" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi10.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S003</span>
-                        <h3>
-                            <a href="produto.html?id=S003" class="product-card-link">Saia Midi com Cinto Redondo</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S003" class="product-card-link">Saia Midi com Cinto Redondo</a></h3>
                         <p class="product-price">R$ 125,00</p>
                         <p class="product-installments">em até 3x de R$ 41,67</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho P">P</span>
-                                <span class="size-option" aria-label="Tamanho M">M</span>
-                                <span class="size-option" aria-label="Tamanho G">G</span>
-                                <span class="size-option" aria-label="Tamanho GG">GG</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #556B2F;"></span>
-                                <span class="color-swatch" style="background-color: #800000;"></span>
-                                <span class="color-swatch" style="background-color: #8B4513;"></span>
-                                <span class="color-swatch" style="background-color: #FF0000;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="saias saias-midi">
-                    <a href="produto.html?id=S004" class="product-card-link" aria-label="Ver detalhes da Saia Midi com Cinto Fino">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi1.jpg');">
-                             </div>
+                <div class="product-card" data-category="saias mid longa">
+                    <a href="produto.html?id=S004" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi1.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S004</span>
-                        <h3>
-                            <a href="produto.html?id=S004" class="product-card-link">Saia Midi com Cinto Fino</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S004" class="product-card-link">Saia Midi com Cinto Fino</a></h3>
                         <p class="product-price">R$ 125,00</p>
                         <p class="product-installments">em até 3x de R$ 41,67</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho P">P</span>
-                                <span class="size-option" aria-label="Tamanho M">M</span>
-                                <span class="size-option" aria-label="Tamanho G">G</span>
-                                <span class="size-option" aria-label="Tamanho GG">GG</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #FF4500;"></span>
-                                <span class="color-swatch" style="background-color: #8B4513;"></span>
-                                <span class="color-swatch" style="background-color: #F5DEB3;"></span>
-                                <span class="color-swatch" style="background-color: #ADD8E6;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card" data-category="saias saias-midi">
-                    <a href="produto.html?id=S005" class="product-card-link" aria-label="Ver detalhes da Saia Midi com Amarração">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi18.jpg');">
-                             </div>
+                <div class="product-card" data-category="saias mid longa">
+                    <a href="produto.html?id=S005" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi18.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S005</span>
-                        <h3>
-                            <a href="produto.html?id=S005" class="product-card-link">Saia Midi com Amarração</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S005" class="product-card-link">Saia Midi com Amarração</a></h3>
                         <p class="product-price">R$ 125,00</p>
                         <p class="product-installments">em até 3x de R$ 41,67</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho P">P</span>
-                                <span class="size-option" aria-label="Tamanho M">M</span>
-                                <span class="size-option" aria-label="Tamanho G">G</span>
-                                <span class="size-option" aria-label="Tamanho GG">GG</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #D2B48C;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
-                <div class="product-card" data-category="saias saias-midi plus">
-                    <a href="produto.html?id=S006" class="product-card-link" aria-label="Ver detalhes da Saia Midi Plus Lisa">
-                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi20.jpg');">
-                             </div>
+                <div class="product-card" data-category="saias plus longa">
+                    <a href="produto.html?id=S006" class="product-card-link">
+                        <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi20.jpg');"></div>
                     </a>
                     <div class="product-card-content">
                         <span class="product-card-label">Cód S006</span>
-                        <h3>
-                            <a href="produto.html?id=S006" class="product-card-link">Saia Midi Plus Lisa</a>
-                        </h3>
+                        <h3><a href="produto.html?id=S006" class="product-card-link">Saia Midi Plus Lisa</a></h3>
                         <p class="product-price">R$ 135,00</p>
                         <p class="product-installments">em até 3x de R$ 45,00</p>
-                        <div class="product-card-footer">
-                            <div class="product-sizes">
-                                <span class="size-option" aria-label="Tamanho G1">G1</span>
-                                <span class="size-option" aria-label="Tamanho G2">G2</span>
-                            </div>
-                            <div class="product-colors">
-                                <span class="color-swatch" style="background-color: #DC143C;"></span>
-                                <span class="color-swatch" style="background-color: #FF4500;"></span>
-                                <span class="color-swatch" style="background-color: #000080;"></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
