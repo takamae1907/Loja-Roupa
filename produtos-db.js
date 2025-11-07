@@ -118,5 +118,98 @@ const catalogo = {
         tamanhos: ["M", "G1", "G2"],
         cores: ["#F5F5DC"],
         corNomes: ["Bege com Vinho"]
+    },
+
+    /* ============================================== */
+    /* ==== NOVOS PRODUTOS (SAIAS) ==== */
+    /* ============================================== */
+
+    "S001": {
+        nome: "Saia Midi Plus Size Listrada",
+        preco: "R$ 135,00",
+        parcelas: "em até 3x de R$ 45,00",
+        fotos: [
+            "Fotos/SaiaPlus1.jpg",
+            "Fotos/SaiaPlus2.jpg",
+            "Fotos/SaiaPlus3.jpg"
+        ],
+        tamanhos: ["G1", "G2"],
+        cores: ["#4D4D4D", "#8B4513", "#4682B4"],
+        corNomes: ["Preto e Branco", "Marrom e Branco", "Azul e Branco"]
+    },
+    "S002": {
+        nome: "Saia Midi Plus com Botões",
+        preco: "R$ 135,00",
+        parcelas: "em até 3x de R$ 45,00",
+        fotos: [
+            "Fotos/SaiaMidi17.jpg",
+            "Fotos/SaiaMidi15.jpg",
+            "Fotos/SaiaMidi16.jpg",
+            "Fotos/SaiaMidi23.jpg",
+            "Fotos/SaiaMidi24.jpg"
+        ],
+        tamanhos: ["G1", "G2"],
+        cores: ["#000000", "#8B0000", "#FF4500", "#D2B48C", "#363636"],
+        corNomes: ["Preto", "Vinho", "Laranja", "Bege Listrado", "Preto Listrado"]
+    },
+    "S003": {
+        nome: "Saia Midi com Cinto Redondo",
+        preco: "R$ 125,00",
+        parcelas: "em até 3x de R$ 41,67",
+        fotos: [
+            "Fotos/SaiaMidi10.jpg",
+            "Fotos/SaiaMidi8.jpg",
+            "Fotos/SaiaMidi9.jpg",
+            "Fotos/SaiaMidi11.jpg",
+            "Fotos/SaiaMidi12.jpg",
+            "Fotos/SaiaMidi13.jpg",
+            "Fotos/SaiaMidi14.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#556B2F", "#800000", "#8B4513", "#FF0000", "#6B8E23", "#5D3954", "#808080"],
+        corNomes: ["Verde Militar", "Vinho", "Marrom", "Vermelho", "Verde Oliva", "Uva", "Cinza"]
+    },
+    "S004": {
+        nome: "Saia Midi com Cinto Fino",
+        preco: "R$ 125,00",
+        parcelas: "em até 3x de R$ 41,67",
+        fotos: [
+            "Fotos/SaiaMidi1.jpg",
+            "Fotos/SaiaMidi6.jpg",
+            "Fotos/SaiaMidi4.jpg",
+            "Fotos/SaiaMidi5.jpg",
+            "Fotos/SaiaMidi2.jpg",
+            "Fotos/SaiaMidi3.jpg",
+            "Fotos/SaiaMidi7.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FF4500", "#8B4513", "#F5DEB3", "#ADD8E6"],
+        corNomes: ["Laranja", "Marrom", "Bege", "Azul Claro"]
+    },
+    "S005": {
+        nome: "Saia Midi com Amarração",
+        preco: "R$ 125,00",
+        parcelas: "em até 3x de R$ 41,67",
+        fotos: [
+            "Fotos/SaiaMidi18.jpg",
+            "Fotos/SaiaMidi22.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C", "#E1C699"],
+        corNomes: ["Bege", "Bege Claro"]
+    },
+    "S006": {
+        nome: "Saia Midi Plus Lisa",
+        preco: "R$ 135,00",
+        parcelas: "em até 3x de R$ 45,00",
+        fotos: [
+            "Fotos/SaiaMidi20.jpg",
+            "Fotos/SaiaMidi19.jpg",
+            "Fotos/SaiaMidi21.jpg"
+        ],
+        tamanhos: ["G1", "G2"],
+        cores: ["#DC143C", "#FF4500", "#000080"],
+        corNomes: ["Vermelho", "Laranja", "Azul Marinho"]
     }
+
 };
