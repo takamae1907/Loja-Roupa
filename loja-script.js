@@ -61,14 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 nav.style.height = '60px';
             }
         });
+        
+        // Função para animar a entrada no Desktop (MODIFICADA)
         function runDesktopEntryAnimation() {
             if (window.innerWidth > 768) {
-                setNavState(true);
+                // setNavState(true); // <-- REMOVIDO: Impede que o menu abra sozinho
                 navCards.forEach((card, index) => {
                     card.style.transitionDelay = `${0.15 + index * 0.1}s`;
                 });
             }
         }
+        // Roda a animação de entrada do desktop (agora apenas para delays)
         setTimeout(runDesktopEntryAnimation, 100);
     }
     

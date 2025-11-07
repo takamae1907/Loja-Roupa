@@ -320,9 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Função para animar a entrada no Desktop (MODIFICADA)
         function runDesktopEntryAnimation() {
             if (window.innerWidth > 768) {
-                // Força o menu a ABRIR no desktop ao carregar a spágina
-                setNavState(true);
-
+                // setNavState(true); // <-- REMOVIDO: Impede que o menu abra sozinho
+                
                 // Aplica a animação de entrada escalonada (o CSS cuida da animação)
                 navCards.forEach((card, index) => {
                     card.style.transitionDelay = `${0.15 + index * 0.1}s`;
@@ -330,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Roda a animação de entrada do desktop (que agora abre o menu)
+        // Roda a animação de entrada do desktop (agora apenas para delays)
         setTimeout(runDesktopEntryAnimation, 100);
     }
     
@@ -359,11 +358,5 @@ document.addEventListener("DOMContentLoaded", () => {
         closeCartBtn.addEventListener('click', closeCart);
         cartOverlay.addEventListener('click', closeCart);
     }
-
-    // ========================================================
-    // ==== 8. LÓGICA DO HERO CHROMA-GRID (REMOVIDA) ====
-    // ========================================================
-    // A lógica que estava aqui foi removida para desativar o efeito.
-
 
 }); // Fim do 'DOMContentLoaded'
