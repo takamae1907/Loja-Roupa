@@ -417,9 +417,9 @@ a.product-card-link {
     color: var(--color-accent);
 }
 
-/* Efeito de hover na imagem */
+/* Efeito de hover na imagem (ZOOM REMOVIDO) */
 .product-card:hover .product-image-placeholder {
-    transform: scale(1.03);
+    /* transform: scale(1.03); */ /* <-- REMOVIDO */
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 

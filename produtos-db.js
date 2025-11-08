@@ -8,9 +8,9 @@ const catalogo = {
         preco: "R$ 219,90",
         parcelas: "em até 3x de R$ 73,30",
         fotos: [
-            "fotos/04.jpg",
-            "fotos/15.jpg",
-            "fotos/foto-em-pé2.jpg"
+            "Fotos/04.jpg",
+            "Fotos/15.jpg",
+            "Fotos/foto-em-pé2.jpg"
         ],
         tamanhos: ["M", "G"],
         cores: ["#F08080", "#98FB98", "#000000", "#F5F5DC", "#E6E6FA", "#FFFFE0", "#FFC0CB", "#ADD8E6"],
@@ -21,9 +21,9 @@ const catalogo = {
         preco: "R$ 249,90",
         parcelas: "em até 3x de R$ 83,30",
         fotos: [
-            "fotos/02.jpg",
-            "fotos/13.jpg",
-            "fotos/foto-deitada2.png"
+            "Fotos/02.jpg",
+            "Fotos/13.jpg",
+            "Fotos/foto-deitada2.png"
         ],
         tamanhos: ["U"],
         cores: ["#B2DFDB", "#D2B48C", "#FFC0CB", "#87CEEB", "#E6E6FA"],
@@ -34,9 +34,9 @@ const catalogo = {
         preco: "R$ 199,90",
         parcelas: "em até 3x de R$ 66,63",
         fotos: [
-            "fotos/03.jpg",
-            "fotos/14.jpg",
-            "fotos/foto-em-pé.jpg"
+            "Fotos/03.jpg",
+            "Fotos/14.jpg",
+            "Fotos/foto-em-pé.jpg"
         ],
         tamanhos: ["U"],
         cores: ["#FFFFE0", "#ADD8E6", "#FFFFFF", "#98FB98", "#FFC0CB", "#E6E6FA"],
@@ -47,9 +47,9 @@ const catalogo = {
         preco: "R$ 229,90",
         parcelas: "em até 3x de R$ 76,63",
         fotos: [
-            "fotos/01.jpg",
-            "fotos/12.jpg",
-            "fotos/fotoQuadrada.png"
+            "Fotos/01.jpg",
+            "Fotos/12.jpg",
+            "Fotos/fotoQuadrada.png"
         ],
         tamanhos: ["U"],
         cores: ["#F5F5DC", "#DC143C", "#A52A2A", "#E6E6FA", "#FFFFE0", "#90EE90", "#ADD8E6", "#FFFFFF", "#000000"],
@@ -60,8 +60,8 @@ const catalogo = {
         preco: "R$ 189,90",
         parcelas: "em até 3x de R$ 63,30",
         fotos: [
-            "fotos/16.jpg",
-            "fotos/foto-quadrada.jpg"
+            "Fotos/16.jpg",
+            "Fotos/foto-quadrada.jpg"
         ],
         tamanhos: ["G1"],
         cores: ["#000000", "#00008B", "#8B4513"],
@@ -72,10 +72,10 @@ const catalogo = {
         preco: "R$ 199,90",
         parcelas: "em até 3x de R$ 66,63",
         fotos: [
-            "fotos/17.jpg",
-            "fotos/foto-vemelha.jpg",
-            "fotos/19.jpg",
-            "fotos/foto-branca.jpg"
+            "Fotos/17.jpg",
+            "Fotos/foto-vemelha.jpg",
+            "Fotos/19.jpg",
+            "Fotos/foto-branca.jpg"
         ],
         tamanhos: ["U"],
         cores: ["#FF4500", "#F5F5DC"],
@@ -86,9 +86,9 @@ const catalogo = {
         preco: "R$ 179,90",
         parcelas: "em até 3x de R$ 59,96",
         fotos: [
-            "fotos/07.jpg",
-            "fotos/foto-verde2.jpg",
-            "fotos/21.jpg"
+            "Fotos/07.jpg",
+            "Fotos/foto-verde2.jpg",
+            "Fotos/21.jpg"
         ],
         tamanhos: ["U"],
         cores: ["#AFEEEE"],
@@ -99,7 +99,7 @@ const catalogo = {
         preco: "R$ 209,90",
         parcelas: "em até 3x de R$ 69,96",
         fotos: [
-            "fotos/10.jpg"
+            "Fotos/10.jpg"
         ],
         tamanhos: ["M", "G1", "G2"],
         cores: ["#F5F5DC"],

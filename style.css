@@ -472,7 +472,18 @@ body {
     text-align: left;
     position: relative;
     overflow: hidden;
+    /* NOVO: Adicionado para o footer */
+    display: flex;
+    flex-direction: column;
 }
+
+/* NOVO: Container para o conteúdo */
+.product-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o conteúdo crescer */
+}
+
 
 .product-image-placeholder {
     width: 100%;
@@ -513,6 +524,12 @@ body {
     font-size: 0.9rem;
     color: var(--color-text-light);
     margin-bottom: 0.75rem;
+}
+
+/* NOVO: Footer para alinhar tamanhos/cores em baixo */
+.product-card-footer {
+    margin-top: auto; /* Empurra para o final */
+    padding-top: 1rem; /* Espaço do conteúdo acima */
 }
 
 .product-sizes {
@@ -572,6 +589,8 @@ body {
     opacity: 0.6;
 }
 
+/* --- EFEITO HOVER REMOVIDO --- */
+/*
 .product-image-placeholder .liquid-button {
     position: absolute;
     bottom: 1rem;
@@ -579,15 +598,29 @@ body {
     opacity: 0;
     transform: translate(-50%, 10px);
 }
+*/
 
 .product-image-placeholder .liquid-button .fab {
     font-size: 1.1rem;
 }
 
-
+/*
 .product-card:hover .liquid-button {
     opacity: 1;
     transform: translate(-50%, 0);
+}
+*/
+
+/* NOVO: Link do Card */
+a.product-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Efeito de hover no título */
+.product-card h3 a.product-card-link:hover {
+    color: var(--color-accent);
 }
 
 
