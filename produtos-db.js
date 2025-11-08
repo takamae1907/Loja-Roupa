@@ -498,5 +498,119 @@ const catalogo = {
         tamanhos: ["G1", "G2", "G3"],
         cores: ["#F5F5DC"],
         corNomes: ["Bege"]
+    },
+
+    /* ============================================== */
+    /* ==== NOVOS PRODUTOS (FARDAMENTOS) ==== */
+    /* ============================================== */
+    "F001": {
+        nome: "Fardamento Renda Verde",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento1.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#98FB98"],
+        corNomes: ["Verde Menta"]
+    },
+    "F002": {
+        nome: "Fardamento Tule Pink",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento2.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#FF00FF"],
+        corNomes: ["Pink"]
+    },
+    "F003": {
+        nome: "Fardamento Notas Musicais",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento3.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "F004": {
+        nome: "Fardamento Floral Rosa",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento4.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#FFC0CB"],
+        corNomes: ["Rosa"]
+    },
+    "F005": {
+        nome: "Fardamento Floral Bege",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento5.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#F5F5DC"],
+        corNomes: ["Bege"]
+    },
+    "F006": {
+        nome: "Fardamento Longo Vinho",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento6.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#8B0000"],
+        corNomes: ["Vinho"]
+    },
+    "F007": {
+        nome: "Fardamento Salmão",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento7.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#FA8072"],
+        corNomes: ["Salmão"]
+    },
+    "F008": {
+        nome: "Fardamento Saia Plissada",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento8.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#006400", "#000000"],
+        corNomes: ["Verde e Preto"]
+    },
+    "F009": {
+        nome: "Fardamento Verde Musgo",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento9.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#556B2F"],
+        corNomes: ["Verde Musgo"]
+    },
+    "F010": {
+        nome: "Fardamento Preto e Branco",
+        preco: "Sob Orçamento",
+        parcelas: "Peça uma cotação",
+        fotos: [
+            "Fotos/fardamento10.jpg"
+        ],
+        tamanhos: ["Sob Medida"],
+        cores: ["#000000"],
+        corNomes: ["Preto"]
     }
 };

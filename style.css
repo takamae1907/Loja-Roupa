@@ -491,7 +491,8 @@ body {
     background-color: var(--color-white);
     border-radius: 8px;
     margin-bottom: 1rem;
-    background-size: cover;
+    /* ===== CORRIGIDO AQUI ===== */
+    background-size: cover; /* Voltamos para 'cover' */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -590,26 +591,13 @@ body {
 }
 
 /* --- EFEITO HOVER REMOVIDO --- */
-/*
 .product-image-placeholder .liquid-button {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, 10px);
+    display: none; /* Esconde o botão 'Veja Mais' que aparecia */
 }
-*/
 
 .product-image-placeholder .liquid-button .fab {
     font-size: 1.1rem;
 }
-
-/*
-.product-card:hover .liquid-button {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
-*/
 
 /* NOVO: Link do Card */
 a.product-card-link {
@@ -680,7 +668,7 @@ a.product-card-link {
 .product-carousel-card img {
     width: 100%;
     height: 350px;
-    object-fit: cover;
+    object-fit: cover; /* 'cover' está ok para o carrossel, pois são fotos de destaque */
     display: block;
 }
 
