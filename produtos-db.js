@@ -612,5 +612,80 @@ const catalogo = {
         tamanhos: ["Sob Medida"],
         cores: ["#000000"],
         corNomes: ["Preto"]
+    },
+    
+    /* ============================================== */
+    /* ==== NOVOS PRODUTOS (CAMISETAS) - CORRIGIDO ==== */
+    /* ============================================== */
+    "T001": {
+        nome: "Camiseta Sorria Vigiado",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaA1.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "T002": {
+        nome: "Camiseta Meu Alvo é Cristo",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaB2.png",
+            "Fotos/CamisaB1.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "T003": {
+        nome: "Camiseta Deus é Bom Demais",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaC2.png",
+            "Fotos/CamisaC1.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "T004": {
+        nome: "Camiseta Sagrado Coração",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaD1.png",
+            "Fotos/CamisaD2.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "T005": {
+        nome: "Camiseta Espírito Santo",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaE1.png",
+            "Fotos/CamisaE2.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
+    },
+    "T006": {
+        nome: "Camiseta Não Reclame, Clame, Ame",
+        preco: "R$ 65,00",
+        parcelas: "em até 3x de R$ 21,67",
+        fotos: [
+            "Fotos/CamisaF2.png",
+            "Fotos/CamisaF1.png"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFFFFF"],
+        corNomes: ["Branco"]
     }
 };
