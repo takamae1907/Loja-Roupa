@@ -114,6 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const filterTabs = filterTabsContainer.querySelectorAll('.filter-tab-btn');
         const productCards = productGrid.querySelectorAll('.product-card');
         const sidebarCheckboxes = document.querySelectorAll('.sub-filter-checkbox');
+        
+        // NOVO: Pega os swatches de cor
+        const colorSwatches = document.querySelectorAll('.color-filter-swatch');
 
         function filterProducts() {
             // 1. Get o termo de busca (NOVO)
@@ -130,10 +133,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     activeSubFilters.push(checkbox.value);
                 }
             });
+            
+            // NOVO: 4. Get os filtros de cor
+            const activeColorFilters = [];
+            colorSwatches.forEach(swatch => {
+                if (swatch.classList.contains('selected')) {
+                    activeColorFilters.push(swatch.dataset.colorName);
+                }
+            });
 
-            // 4. Itera sobre os cards e aplica a lógica
+
+            // 5. Itera sobre os cards e aplica a lógica
             productCards.forEach(card => {
                 const cardCategories = card.dataset.category || 'destaques';
+                const cardColorNames = card.dataset.colorNames || ''; // Pega os nomes das cores do card
                 
                 // Pega o texto do card para a busca (NOVO)
                 const productName = (card.querySelector('h3 a') ? card.querySelector('h3 a').textContent : '').toLowerCase();
@@ -142,14 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Lógica do Filtro Principal
                 const showsMain = (mainCategory === 'destaques') || cardCategories.includes(mainCategory);
                 
-                // Lógica do Sub-Filtro
+                // Lógica do Sub-Filtro (Checkboxes)
                 const showsSub = (activeSubFilters.length === 0) || activeSubFilters.some(sub => cardCategories.includes(sub));
 
                 // Lógica da Busca (NOVO)
                 const showsSearch = (searchTerm === '') || productName.includes(searchTerm) || productCode.includes(searchTerm);
+                
+                // NOVO: Lógica do Filtro de Cor
+                // Se nenhum filtro de cor estiver ativo, mostra (true)
+                // Se houver filtros, verifica se o cardColorNames inclui PELO MENOS UM (some) dos activeColorFilters
+                const showsColor = (activeColorFilters.length === 0) || activeColorFilters.some(colorName => cardColorNames.includes(colorName));
 
-                // 5. Mostra ou esconde o card
-                if (showsMain && showsSub && showsSearch) {
+
+                // 6. Mostra ou esconde o card (ADICIONADO O showsColor)
+                if (showsMain && showsSub && showsSearch && showsColor) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -169,6 +188,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Adiciona o clique em cada checkbox da sidebar
         sidebarCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
+                filterProducts();
+            });
+        });
+
+        // NOVO: Adiciona o clique em cada swatch de cor
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                // Alterna a classe 'selected'
+                swatch.classList.toggle('selected');
+                // Roda o filtro novamente
                 filterProducts();
             });
         });
