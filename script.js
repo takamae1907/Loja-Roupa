@@ -360,3 +360,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 }); // Fim do 'DOMContentLoaded'
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 1. Encontra todos os botões de filtro
+  const botoesFiltro = document.querySelectorAll('.btn-categoria');
+  
+  // 2. Encontra todos os itens de produto
+  const todosProdutos = document.querySelectorAll('.item-produto');
+
+  // 3. Adiciona um "ouvinte" de clique para cada botão
+  botoesFiltro.forEach(function(botao) {
+    
+    botao.addEventListener('click', function(e) {
+      e.preventDefault(); // Impede o link de pular a página
+
+      // Pega o filtro do botão clicado (ex: "vestido", "saia", "todos")
+      const filtro = botao.getAttribute('data-filtro');
+
+      // --- Atualiza o visual dos botões ---
+      // Remove a classe "ativo" de todos os botões
+      botoesFiltro.forEach(function(btn) {
+        btn.classList.remove('ativo');
+      });
+      // Adiciona a classe "ativo" apenas no botão clicado
+      botao.classList.add('ativo');
+
+      // --- Filtra os produtos ---
+      todosProdutos.forEach(function(produto) {
+        
+        // Pega a categoria do produto
+        const categoriaProduto = produto.getAttribute('data-categoria');
+
+        // Se o filtro for "todos" OU o filtro bater com a categoria
+        if (filtro === 'todos' || categoriaProduto === filtro) {
+          // Mostra o produto
+          produto.classList.remove('escondido');
+        } else {
+          // Esconde o produto
+          produto.classList.add('escondido');
+        }
+      });
+    });
+  });
+});

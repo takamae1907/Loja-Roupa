@@ -210,3 +210,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 }); // Fim do 'DOMContentLoaded'
+
+// Este script executa assim que a página "loja.html" carrega
+document.addEventListener('DOMContentLoaded', function() {
+
+  // --- 1. LER A URL ---
+  // Pega os parâmetros da URL (ex: ?categoria=vestido)
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  // Pega o valor do parâmetro "categoria"
+  // Se não houver, usa "todos" como padrão
+  const filtroDaURL = urlParams.get('categoria') || 'todos';
+
+  // --- 2. ENCONTRAR OS ELEMENTOS ---
+  const todosProdutos = document.querySelectorAll('.item-produto');
+  const botoesFiltro = document.querySelectorAll('.btn-categoria');
+
+  // --- 3. ATUALIZAR OS BOTÕES ---
+  botoesFiltro.forEach(function(botao) {
+    // Limpa a classe "ativo" de todos
+    botao.classList.remove('ativo');
+    
+    // Pega o "data-filtro" do botão (ex: "vestido")
+    const filtroDoBotao = botao.getAttribute('data-filtro');
+    
+    // Se o filtro do botão for igual ao filtro da URL...
+    if (filtroDoBotao === filtroDaURL) {
+      // ...adiciona a classe "ativo" nele
+      botao.classList.add('ativo');
+    }
+  });
+
+  // --- 4. FILTRAR OS PRODUTOS ---
+  todosProdutos.forEach(function(produto) {
+    // Pega a categoria do produto (ex: "saia")
+    const categoriaProduto = produto.getAttribute('data-categoria');
+
+    // Se o filtro for "todos" OU a categoria do produto bater...
+    if (filtroDaURL === 'todos' || categoriaProduto === filtroDaURL) {
+      // Mostra o produto
+      produto.classList.remove('escondido');
+    } else {
+      // Esconde o produto
+      produto.classList.add('escondido');
+    }
+  });
+});

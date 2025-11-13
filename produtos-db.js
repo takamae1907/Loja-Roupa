@@ -196,6 +196,65 @@ const catalogo = {
         cores: ["#DC143C", "#FF4500", "#000080"],
         corNomes: ["Vermelho", "Laranja", "Azul Marinho"]
     },
+    "S007": {
+        nome: "Saia Tule Bordado Floral 3D",
+        preco: "R$ 80,00",
+        parcelas: "em até 3x de R$ 26,67",
+        fotos: [
+            "Fotos/SaiaTule8.jpg",
+            "Fotos/SaiaTule5.jpg",
+            "Fotos/SaiaTule2.jpg",
+            "Fotos/SaiaTule4.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#FFFFFF", "#F5F5DC", "#FFC0CB", "#8B4513", "#000000"],
+        corNomes: ["Branco", "Bege", "Rosa", "Marrom", "Preto"]
+    },
+    "S008": {
+        nome: "Saia Tule com Pérolas",
+        preco: "R$ 79,90",
+        parcelas: "em até 3x de R$ 26,63",
+        fotos: [
+            "Fotos/SaiaTule9.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#FFFFFF", "#F5F5DC", "#FFC0CB", "#D2B48C", "#000000"],
+        corNomes: ["Branco", "Bege", "Rosa", "Nude", "Preto"]
+    },
+    "S009": {
+        nome: "Saia Tule Plissada Lisa",
+        preco: "R$ 69,90",
+        parcelas: "em até 3x de R$ 23,30",
+        fotos: [
+            "Fotos/SaiaTule10.jpg"
+        ],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#000000", "#FFFFFF", "#ADD8E6", "#F5F5DC", "#8B4513"],
+        corNomes: ["Preto", "Branco", "Azul", "Bege", "Marrom"]
+    },
+    "S010": {
+        nome: "Saia Tule com Lantejoulas",
+        preco: "R$ 85,00",
+        parcelas: "em até 3x de R$ 28,33",
+        fotos: [
+            "Fotos/SaiaTule7.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#F5F5DC", "#8B4513", "#000000"],
+        corNomes: ["Bege", "Marrom", "Preto"]
+    },
+    "S011": {
+        nome: "Saia Tule Longa Camadas",
+        preco: "R$ 110,00",
+        parcelas: "em até 3x de R$ 36,67",
+        fotos: [
+            "Fotos/SaiaTule6.jpg",
+            "Fotos/SaiaTule3.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#808080", "#DC143C"],
+        corNomes: ["Cinza", "Vermelho"]
+    },
 
     /* ============================================== */
     /* ==== NOVOS PRODUTOS (BLUSAS) ==== */
@@ -376,6 +435,46 @@ const catalogo = {
     },
 
     /* ============================================== */
+    /* ==== NOVOS PRODUTOS (CALÇAS) ==== */
+    /* ============================================== */
+    "C001": {
+        nome: "Calça Alfaiataria Plus Size",
+        preco: "R$ 119,90",
+        parcelas: "em até 3x de R$ 39,97",
+        fotos: [
+            "Fotos/Calças1.jpg",
+            "Fotos/Calças2.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#000000", "#FF1493", "#ADD8E6", "#A0522D", "#F5F5DC", "#000080", "#8B0000", "#D2691E"],
+        corNomes: ["Preto", "Pink", "Azul Claro", "Cáqui", "Bege", "Azul Marinho", "Vinho", "Telha"]
+    },
+    "C002": {
+        nome: "Calça Sarja Plus Size com Cinto",
+        preco: "R$ 129,90",
+        parcelas: "em até 3x de R$ 43,30",
+        fotos: [
+            "Fotos/Calças3.jpg",
+            "Fotos/Calças4.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#000000", "#800080", "#F5F5DC", "#FF4500", "#9ACD32", "#556B2F", "#FFC0CB", "#D2B48C", "#A52A2A", "#808080"],
+        corNomes: ["Preto", "Roxo", "Bege", "Laranja", "Verde", "Verde Musgo", "Rosa", "Cáqui", "Marrom", "Cinza"]
+    },
+    "C003": {
+        nome: "Calça Sarja com Cinto Elástico",
+        preco: "R$ 99,90",
+        parcelas: "em até 3x de R$ 33,30",
+        fotos: [
+            "Fotos/Calças5.jpg",
+            "Fotos/Calças6.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#000000", "#556B2F", "#D2B48C", "#8B4513", "#ADD8E6", "#F5F5DC", "#FF4500", "#808080"],
+        corNomes: ["Preto", "Verde Musgo", "Cáqui", "Marrom", "Azul Claro", "Bege", "Telha", "Cinza"]
+    },
+
+    /* ============================================== */
     /* ==== NOVOS PRODUTOS (VESTIDOS) ==== */
     /* ============================================== */
     "V001": {
@@ -498,6 +597,50 @@ const catalogo = {
         tamanhos: ["G1", "G2", "G3"],
         cores: ["#F5F5DC"],
         corNomes: ["Bege"]
+    },
+    "V012": {
+        nome: "Vestido Longo com Viés",
+        preco: "R$ 189,90",
+        parcelas: "em até 3x de R$ 63,30",
+        fotos: [
+            "Fotos/Vestido189.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#000000", "#ADD8E6", "#98FB98", "#FFC0CB", "#FFFFE0", "#FFFFFF", "#006400"],
+        corNomes: ["Preto", "Azul Claro", "Verde Menta", "Rosa", "Amarelo", "Branco", "Verde Escuro"]
+    },
+    "V013": {
+        nome: "Vestido Midi Plus Botões",
+        preco: "R$ 195,00",
+        parcelas: "em até 3x de R$ 65,00",
+        fotos: [
+            "Fotos/VestidoPlus195.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#808000"],
+        corNomes: ["Verde Oliva"]
+    },
+    "V014": {
+        nome: "Vestido Longo Vermelho com Fenda",
+        preco: "R$ 210,00",
+        parcelas: "em até 3x de R$ 70,00",
+        fotos: [
+            "Fotos/VestidoVermelho.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#FF0000"],
+        corNomes: ["Vermelho"]
+    },
+    "V015": {
+        nome: "Vestido Linho Manga Curta",
+        preco: "R$ 199,90",
+        parcelas: "em até 3x de R$ 66,63",
+        fotos: [
+            "Fotos/Vestidos.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#98FB98", "#F5F5DC", "#ADD8E6", "#000000", "#FFFFE0", "#FFC0CB"],
+        corNomes: ["Verde Menta", "Bege", "Azul Claro", "Preto", "Amarelo", "Rosa"]
     },
 
     /* ============================================== */

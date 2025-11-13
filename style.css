@@ -1324,9 +1324,16 @@ a.product-card-link {
         .product-grid .product-card:nth-child(5) {
             grid-column: 3;
             grid-row: 3;
+            grid-column: 1;
+            grid-row: 2;
         }
         .product-grid .product-card:nth-child(6) {
             grid-column: 4;
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .product-grid .product-card:nth-child(4) {
+            grid-column: 1 / span 2;
             grid-row: 3;
         }
     }
@@ -1492,3 +1499,102 @@ a.product-card-link {
 /* ==== 13. ESTILOS DA SACOLA (REMOVIDO) ==== */
 /* ============================================== */
 /* Todos os estilos do .cart-overlay, .cart-sidebar, etc., foram removidos */
+
+/* ================================================
+  ESTILOS PARA O CARD DE AÇÃO/BOTÃO (ESTILO DARK/BLUE GLOW)
+  ================================================
+*/
+
+/* ================================================
+  ESTILOS PARA O BOTÃO COM EFEITO LÍQUIDO (AMARELO-ESCURO)
+  ================================================
+*/
+
+/* O container para centralizar */
+.container-botao-loja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  margin-bottom: 40px; /* Espaço antes da "Nossa Coleção" */
+}
+
+/* O botão principal */
+.btn-liquid {
+  display: inline-block;
+  padding: 20px 45px; /* Tamanho do botão */
+  text-decoration: none;
+  font-size: 1.4em;
+  font-weight: 700;
+  border-radius: 50px; /* Bordas arredondadas */
+  
+  /* --- A MÁGICA COMEÇA AQUI --- */
+  position: relative; /* Essencial para o efeito */
+  overflow: hidden;   /* Esconde a "bolha" que está fora */
+  
+  /* --- Paleta de Cor (Amarelo-Escuro) --- */
+  border: 3px solid #FF69B4; /* Amarelo-escuro na borda */
+  background: transparent;
+  
+  /* Transição suave da cor do texto */
+  transition: color 0.5s ease;
+}
+
+/* O texto do botão */
+.btn-liquid-text {
+  /* Fica na frente da bolha */
+  position: relative;
+  z-index: 2;
+  
+  /* Cor inicial do texto (Amarelo-escuro) */
+  color: #FF69B4;
+  transition: color 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* A "bolha" de preenchimento (escondida no início) */
+.btn-liquid::before {
+  content: '';
+  position: absolute;
+  
+  /* Cor de preenchimento da bolha (Amarelo-escuro) */
+  background: #FF69B4;
+  
+  /* Posição inicial (controlada pelo JS via --x e --y) */
+  /* Começa no centro se o JS falhar */
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+
+  /* Começa invisível (escala 0) */
+  transform: translate(-50%, -50%) scale(0);
+  width: 200px; /* Tamanho da bolha (grande o suficiente) */
+  height: 200px;
+  border-radius: 50%;
+  
+  /* Z-index 1 (atrás do texto) */
+  z-index: 1;
+  
+  /* Transição da animação */
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* --- O EFEITO HOVER (AO PASSAR O MOUSE) --- */
+
+/* 1. Expande a bolha */
+.btn-liquid:hover::before {
+  /* A bolha cresce para preencher o botão */
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* 2. Muda a cor do texto */
+.btn-liquid:hover .btn-liquid-text {
+  /* O texto inverte para uma cor escura */
+  color: #1a1a1a; 
+}
+/* Estilo para o título "Nossa Coleção" */
+.titulo-colecao {
+  text-align: center;
+  font-size: 2.5em; /* Tamanho grande */
+  color: #333; /* Cor escura */
+  margin-bottom: 30px; /* Espaço antes dos produtos */
+  margin-top: 20px; /* Espaço depois do botão */
+} 

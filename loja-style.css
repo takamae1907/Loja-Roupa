@@ -1072,3 +1072,9 @@ a.product-card-link {
         order: 2;
     }
 }
+/* (Todo o CSS dos botões .btn-categoria que te passei antes) */
+
+/* Classe que o JS vai usar para esconder produtos */
+.item-produto.escondido {
+  display: none;
+}
