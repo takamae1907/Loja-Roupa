@@ -3,7 +3,108 @@
 /* =================================================== */
 
 const catalogo = {
-
+    "0801": {
+        nome: "Macacão Brenda",
+        preco: "R$ 219,90",
+        parcelas: "em até 3x de R$ 73,30",
+        fotos: [
+            "Fotos/04.jpg",
+            "Fotos/15.jpg",
+            "Fotos/foto-em-pé2.jpg"
+        ],
+        tamanhos: ["M", "G"],
+        cores: ["#F08080", "#98FB98", "#000000", "#F5F5DC", "#E6E6FA", "#FFFFE0", "#FFC0CB", "#ADD8E6"],
+        corNomes: ["Salmão", "Verde Menta", "Preto", "Nude", "Lilás", "Amarelo", "Rosa BB", "Azul BB"]
+    },
+    "0755": {
+        nome: "Vestido com cinto e plissado",
+        preco: "R$ 249,90",
+        parcelas: "em até 3x de R$ 83,30",
+        fotos: [
+            "Fotos/02.jpg",
+            "Fotos/13.jpg",
+            "Fotos/foto-deitada2.png"
+        ],
+        tamanhos: ["U"],
+        cores: ["#B2DFDB", "#D2B48C", "#FFC0CB", "#87CEEB", "#E6E6FA"],
+        corNomes: ["Verde Água", "Bege", "Rosa", "Azul", "Lilás"]
+    },
+    "0853": {
+        nome: "Vestido com cinto",
+        preco: "R$ 199,90",
+        parcelas: "em até 3x de R$ 66,63",
+        fotos: [
+            "Fotos/03.jpg",
+            "Fotos/14.jpg",
+            "Fotos/foto-em-pé.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#FFFFE0", "#ADD8E6", "#FFFFFF", "#98FB98", "#FFC0CB", "#E6E6FA"],
+        corNomes: ["Amarelo", "Azul Claro", "Branco", "Verde", "Rosa", "Lilás"]
+    },
+    "0803": {
+        nome: "Vestido Longo",
+        preco: "R$ 229,90",
+        parcelas: "em até 3x de R$ 76,63",
+        fotos: [
+            "Fotos/01.jpg",
+            "Fotos/12.jpg",
+            "Fotos/fotoQuadrada.png"
+        ],
+        tamanhos: ["U"],
+        cores: ["#F5F5DC", "#DC143C", "#A52A2A", "#E6E6FA", "#FFFFE0", "#90EE90", "#ADD8E6", "#FFFFFF", "#000000"],
+        corNomes: ["Bege", "Vermelho", "Marrom", "Lilás", "Amarelo", "Verde", "Azul", "Branco", "Preto"]
+    },
+    "0651": {
+        nome: "Vestido plus Midi",
+        preco: "R$ 189,90",
+        parcelas: "em até 3x de R$ 63,30",
+        fotos: [
+            "Fotos/16.jpg",
+            "Fotos/foto-quadrada.jpg"
+        ],
+        tamanhos: ["G1"],
+        cores: ["#000000", "#00008B", "#8B4513"],
+        corNomes: ["Preto/Bege", "Azul/Bege", "Marrom/Bege"]
+    },
+    "0700": {
+        nome: "Vestido Estampado",
+        preco: "R$ 199,90",
+        parcelas: "em até 3x de R$ 66,63",
+        fotos: [
+            "Fotos/17.jpg",
+            "Fotos/foto-vemelha.jpg",
+            "Fotos/19.jpg",
+            "Fotos/foto-branca.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#FF4500", "#F5F5DC"],
+        corNomes: ["Laranja Estampado", "Bege Estampado"]
+    },
+    "0757": {
+        nome: "Vestido Valéria",
+        preco: "R$ 179,90",
+        parcelas: "em até 3x de R$ 59,96",
+        fotos: [
+            "Fotos/07.jpg",
+            "Fotos/foto-verde2.jpg",
+            "Fotos/21.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#AFEEEE"],
+        corNomes: ["Verde Água"]
+    },
+    "1051": {
+        nome: "Conjunto Saia e Blusa",
+        preco: "R$ 209,90",
+        parcelas: "em até 3x de R$ 69,96",
+        fotos: [
+            "Fotos/10.jpg"
+        ],
+        tamanhos: ["M", "G1", "G2"],
+        cores: ["#F5F5DC"],
+        corNomes: ["Bege com Vinho"]
+    },
 
     /* ============================================== */
     /* ==== NOVOS PRODUTOS (SAIAS) ==== */
@@ -95,6 +196,65 @@ const catalogo = {
         cores: ["#DC143C", "#FF4500", "#000080"],
         corNomes: ["Vermelho", "Laranja", "Azul Marinho"]
     },
+    "S007": {
+        nome: "Saia Tule Bordado Floral 3D",
+        preco: "R$ 80,00",
+        parcelas: "em até 3x de R$ 26,67",
+        fotos: [
+            "Fotos/SaiaTule8.jpg",
+            "Fotos/SaiaTule5.jpg",
+            "Fotos/SaiaTule2.jpg",
+            "Fotos/SaiaTule4.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#FFFFFF", "#F5F5DC", "#FFC0CB", "#8B4513", "#000000"],
+        corNomes: ["Branco", "Bege", "Rosa", "Marrom", "Preto"]
+    },
+    "S008": {
+        nome: "Saia Tule com Pérolas",
+        preco: "R$ 79,90",
+        parcelas: "em até 3x de R$ 26,63",
+        fotos: [
+            "Fotos/SaiaTule9.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#FFFFFF", "#F5F5DC", "#FFC0CB", "#D2B48C", "#000000"],
+        corNomes: ["Branco", "Bege", "Rosa", "Nude", "Preto"]
+    },
+    "S009": {
+        nome: "Saia Tule Plissada Lisa",
+        preco: "R$ 69,90",
+        parcelas: "em até 3x de R$ 23,30",
+        fotos: [
+            "Fotos/SaiaTule10.jpg"
+        ],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#000000", "#FFFFFF", "#ADD8E6", "#F5F5DC", "#8B4513"],
+        corNomes: ["Preto", "Branco", "Azul", "Bege", "Marrom"]
+    },
+    "S010": {
+        nome: "Saia Tule com Lantejoulas",
+        preco: "R$ 85,00",
+        parcelas: "em até 3x de R$ 28,33",
+        fotos: [
+            "Fotos/SaiaTule7.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GGG"],
+        cores: ["#F5F5DC", "#8B4513", "#000000"],
+        corNomes: ["Bege", "Marrom", "Preto"]
+    },
+    "S011": {
+        nome: "Saia Tule Longa Camadas",
+        preco: "R$ 110,00",
+        parcelas: "em até 3x de R$ 36,67",
+        fotos: [
+            "Fotos/SaiaTule6.jpg",
+            "Fotos/SaiaTule3.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#808080", "#DC143C"],
+        corNomes: ["Cinza", "Vermelho"]
+    },
 
     /* ============================================== */
     /* ==== NOVOS PRODUTOS (BLUSAS) ==== */
@@ -152,8 +312,8 @@ const catalogo = {
     },
     "B005": {
         nome: "Blusa Poá Manga Longa",
-        preco: "R$ 75,00",
-        parcelas: "em até 3x de R$ 25,00",
+        preco: "R$ 99,90",
+        parcelas: "em até 3x de R$ 33,30",
         fotos: [
             "Fotos/BlusaBolinha.jpg",
             "Fotos/BlusaBolinha2.jpg"
@@ -253,8 +413,8 @@ const catalogo = {
     },
     "B014": {
         nome: "Blusa Manga Curta Laço",
-        preco: "R$ 89,90",
-        parcelas: "em até 3x de R$ 29,97",
+        preco: "R$ 55,00",
+        parcelas: "em até 3x de R$ 18,33",
         fotos: [
             "Fotos/BlusaMangaCurta.jpg"
         ],
@@ -272,6 +432,46 @@ const catalogo = {
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF", "#000000", "#F5F5DC", "#98FB98", "#ADD8E6", "#D2B48C"],
         corNomes: ["Branco", "Preto", "Creme", "Verde", "Azul", "Ocre"]
+    },
+
+    /* ============================================== */
+    /* ==== NOVOS PRODUTOS (CALÇAS) ==== */
+    /* ============================================== */
+    "C001": {
+        nome: "Calça Alfaiataria Plus Size",
+        preco: "R$ 119,90",
+        parcelas: "em até 3x de R$ 39,97",
+        fotos: [
+            "Fotos/Calças1.jpg",
+            "Fotos/Calças2.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#000000", "#FF1493", "#ADD8E6", "#A0522D", "#F5F5DC", "#000080", "#8B0000", "#D2691E"],
+        corNomes: ["Preto", "Pink", "Azul Claro", "Cáqui", "Bege", "Azul Marinho", "Vinho", "Telha"]
+    },
+    "C002": {
+        nome: "Calça Sarja Plus Size com Cinto",
+        preco: "R$ 129,90",
+        parcelas: "em até 3x de R$ 43,30",
+        fotos: [
+            "Fotos/Calças3.jpg",
+            "Fotos/Calças4.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#000000", "#800080", "#F5F5DC", "#FF4500", "#9ACD32", "#556B2F", "#FFC0CB", "#D2B48C", "#A52A2A", "#808080"],
+        corNomes: ["Preto", "Roxo", "Bege", "Laranja", "Verde", "Verde Musgo", "Rosa", "Cáqui", "Marrom", "Cinza"]
+    },
+    "C003": {
+        nome: "Calça Sarja com Cinto Elástico",
+        preco: "R$ 99,90",
+        parcelas: "em até 3x de R$ 33,30",
+        fotos: [
+            "Fotos/Calças5.jpg",
+            "Fotos/Calças6.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#000000", "#556B2F", "#D2B48C", "#8B4513", "#ADD8E6", "#F5F5DC", "#FF4500", "#808080"],
+        corNomes: ["Preto", "Verde Musgo", "Cáqui", "Marrom", "Azul Claro", "Bege", "Telha", "Cinza"]
     },
 
     /* ============================================== */
@@ -398,6 +598,50 @@ const catalogo = {
         cores: ["#F5F5DC"],
         corNomes: ["Bege"]
     },
+    "V012": {
+        nome: "Vestido Longo com Viés",
+        preco: "R$ 189,90",
+        parcelas: "em até 3x de R$ 63,30",
+        fotos: [
+            "Fotos/Vestido189.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#000000", "#ADD8E6", "#98FB98", "#FFC0CB", "#FFFFE0", "#FFFFFF", "#006400"],
+        corNomes: ["Preto", "Azul Claro", "Verde Menta", "Rosa", "Amarelo", "Branco", "Verde Escuro"]
+    },
+    "V013": {
+        nome: "Vestido Midi Plus Botões",
+        preco: "R$ 195,00",
+        parcelas: "em até 3x de R$ 65,00",
+        fotos: [
+            "Fotos/VestidoPlus195.jpg"
+        ],
+        tamanhos: ["G1", "G2", "G3"],
+        cores: ["#808000"],
+        corNomes: ["Verde Oliva"]
+    },
+    "V014": {
+        nome: "Vestido Longo Vermelho com Fenda",
+        preco: "R$ 210,00",
+        parcelas: "em até 3x de R$ 70,00",
+        fotos: [
+            "Fotos/VestidoVermelho.jpg"
+        ],
+        tamanhos: ["U"],
+        cores: ["#FF0000"],
+        corNomes: ["Vermelho"]
+    },
+    "V015": {
+        nome: "Vestido Linho Manga Curta",
+        preco: "R$ 199,90",
+        parcelas: "em até 3x de R$ 66,63",
+        fotos: [
+            "Fotos/Vestidos.jpg"
+        ],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#98FB98", "#F5F5DC", "#ADD8E6", "#000000", "#FFFFE0", "#FFC0CB"],
+        corNomes: ["Verde Menta", "Bege", "Azul Claro", "Preto", "Amarelo", "Rosa"]
+    },
 
     /* ============================================== */
     /* ==== NOVOS PRODUTOS (FARDAMENTOS) ==== */
@@ -512,16 +756,16 @@ const catalogo = {
         cores: ["#000000"],
         corNomes: ["Preto"]
     },
-    
+
     /* ============================================== */
-    /* ==== NOVOS PRODUTOS (CAMISETAS) ==== */
+    /* ==== NOVOS PRODUTOS (CAMISETAS) - CORRIGIDO ==== */
     /* ============================================== */
     "T001": {
         nome: "Camiseta Sorria Vigiado",
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaA1.jpg"
+            "Fotos/CamisaA1.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
@@ -532,8 +776,8 @@ const catalogo = {
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaB2.jpg",
-            "Fotos/CamisaB1.jpg"
+            "Fotos/CamisaB2.png",
+            "Fotos/CamisaB1.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
@@ -544,7 +788,8 @@ const catalogo = {
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaC2.jpg"
+            "Fotos/CamisaC2.png",
+            "Fotos/CamisaC1.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
@@ -555,8 +800,8 @@ const catalogo = {
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaD1.jpg",
-            "Fotos/CamisaD2.jpg"
+            "Fotos/CamisaD1.png",
+            "Fotos/CamisaD2.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
@@ -567,8 +812,8 @@ const catalogo = {
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaE1.jpg",
-            "Fotos/CamisaE2.jpg"
+            "Fotos/CamisaE1.png",
+            "Fotos/CamisaE2.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
@@ -579,8 +824,8 @@ const catalogo = {
         preco: "R$ 65,00",
         parcelas: "em até 3x de R$ 21,67",
         fotos: [
-            "Fotos/CamisaF2.jpg",
-            "Fotos/CamisaF1.jpg"
+            "Fotos/CamisaF2.png",
+            "Fotos/CamisaF1.png"
         ],
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],

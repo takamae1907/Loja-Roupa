@@ -312,8 +312,8 @@ const catalogo = {
     },
     "B005": {
         nome: "Blusa Poá Manga Longa",
-        preco: "R$ 75,00",
-        parcelas: "em até 3x de R$ 25,00",
+        preco: "R$ 99,90",
+        parcelas: "em até 3x de R$ 33,30",
         fotos: [
             "Fotos/BlusaBolinha.jpg",
             "Fotos/BlusaBolinha2.jpg"
@@ -413,8 +413,8 @@ const catalogo = {
     },
     "B014": {
         nome: "Blusa Manga Curta Laço",
-        preco: "R$ 89,90",
-        parcelas: "em até 3x de R$ 29,97",
+        preco: "R$ 55,00",
+        parcelas: "em até 3x de R$ 18,33",
         fotos: [
             "Fotos/BlusaMangaCurta.jpg"
         ],
@@ -756,7 +756,7 @@ const catalogo = {
         cores: ["#000000"],
         corNomes: ["Preto"]
     },
-    
+
     /* ============================================== */
     /* ==== NOVOS PRODUTOS (CAMISETAS) - CORRIGIDO ==== */
     /* ============================================== */
