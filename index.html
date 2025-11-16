@@ -33,6 +33,11 @@
                 </div>
 
                 <div class="nav-icons">
+
+                    <button class="nav-icon-btn" id="bag-icon-button" aria-label="Abrir sacola">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="bag-item-count" class="bag-item-count">0</span>
+                    </button>
                     <a href="https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q"
                         target="_blank" class="liquid-button-whatsapp">
                         <i class="fab fa-whatsapp"></i>
@@ -68,10 +73,10 @@
                     </div>
                 </div>
                 <div class="nav-card" style="background-color: var(--color-text-dark); color: var(--color-white);">
-                    <div class="nav-card-label">Contato</div>
+                    <div class="nav-card-label">Loja</div>
                     <div class="nav-card-links">
-                        <a class="nav-card-link" href="#contato">
-                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Fale Conosco
+                        <a class="nav-card-link" href="#categorias">
+                            <i class="fas fa-arrow-right nav-card-link-icon"></i> Categorias
                         </a>
                     </div>
                 </div>
@@ -100,7 +105,6 @@
                     <div class="chroma-img-wrapper"><img src="Fotos/SaiaMidi23.jpg"
                             alt="Vestido longo laranja e branco com listras"></div>
                 </article>
-
                 <article class="chroma-card">
                     <div class="chroma-img-wrapper"><img src="Fotos/BlusaListrada.jpg"
                             alt="Mulher com vestido vermelho próximo a uma árvore de natal"></div>
@@ -117,7 +121,6 @@
                     <div class="chroma-img-wrapper"><img src="Fotos/Vestido6.jpg"
                             alt="Mulher com vestido estampado longo vermelho"></div>
                 </article>
-
                 <article class="chroma-card">
                     <div class="chroma-img-wrapper"><img src="Fotos/Vestido4.jpg"
                             alt="Mulher com saia longa rosa de tule e camisa branca"></div>
@@ -133,7 +136,6 @@
                     <div class="chroma-img-wrapper"><img src="Fotos/Vestido2.jpg"
                             alt="Vestido longo de alça com listras finas"></div>
                 </article>
-
                 <article class="chroma-card">
                     <div class="chroma-img-wrapper"><img src="Fotos/SaiaMidi16.jpg"
                             alt="Mulher com vestido azul florido de manga longa"></div>
@@ -150,7 +152,6 @@
                     <div class="chroma-img-wrapper"><img src="Fotos/blusa6.jpg" alt="Detalhe de tecidos de vestidos">
                     </div>
                 </article>
-
                 <article class="chroma-card">
                     <div class="chroma-img-wrapper"><img src="Fotos/blusa6.jpg" alt="Mulher com vestido longo rosa">
                     </div>
@@ -167,7 +168,6 @@
                     <div class="chroma-img-wrapper"><img src="Fotos/Blusa75-1.jpg"
                             alt="Mulher com vestido plus size preto e bege estampado"></div>
                 </article>
-
                 <div class="chroma-overlay"></div>
                 <div class="chroma-fade" id="hero-chroma-fade"></div>
             </div>
@@ -178,7 +178,6 @@
                         <h1 class="hero-static-title">Coleção de</h1>
                         <div id="hero-rotating-text"></div>
                     </div>
-
                     <p class="hero-animated-subtitle">
                         Elegância e conforto para o seu dia a dia.
                     </p>
@@ -196,11 +195,6 @@
 
             <h2 class="titulo-colecao">Nossa Coleção</h2>
 
-            <div class="nossa-colecao">
-            </div>
-
-            <div class="nossa-colecao">
-            </div>
             <div class="product-grid">
 
                 <div class="product-card" data-category="destaques vestidos">
@@ -208,18 +202,17 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/Vestido1.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód V001</span>
-                    <h3><a href="produto.html?id=V001" class="product-card-link">Vestido Bordado Borboletas</a></h3>
-                    <p class="product-price">R$ 245,00</p>
-                    <p class="product-installments">em até 3x de R$ 81,67</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho P">P</span>
-                        <span class="size-option" aria-label="Tamanho M">M</span>
-                        <span class="size-option" aria-label="Tamanho G">G</span>
-                        <span class="size-option" aria-label="Tamanho GG">GG</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #FFC0CB;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód V001</span>
+                        <h3><a href="produto.html?id=V001" class="product-card-link">Vestido Bordado Borboletas</a></h3>
+                        <p class="product-price">R$ 245,00</p>
+                        <p class="product-installments">em até 3x de R$ 81,67</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=V001" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -228,20 +221,17 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/blusa1.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód B001</span>
-                    <h3><a href="produto.html?id=B001" class="product-card-link">Blusa Crepe com Abertura</a></h3>
-                    <p class="product-price">R$ 49,90</p>
-                    <p class="product-installments">em até 3x de R$ 16,63</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho P">P</span>
-                        <span class="size-option" aria-label="Tamanho M">M</span>
-                        <span class="size-option" aria-label="Tamanho G">G</span>
-                        <span class="size-option" aria-label="Tamanho GG">GG</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #E0BBAA;"></span>
-                        <span class="color-swatch" style="background-color: #E6A8B1;"></span>
-                        <span class="color-swatch" style="background-color: #3EB489;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód B001</span>
+                        <h3><a href="produto.html?id=B001" class="product-card-link">Blusa Crepe com Abertura</a></h3>
+                        <p class="product-price">R$ 49,90</p>
+                        <p class="product-installments">em até 3x de R$ 16,63</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=B001" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -250,21 +240,18 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaMidi10.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód S003</span>
-                    <h3><a href="produto.html?id=S003" class="product-card-link">Saia Midi com Cinto Redondo</a>
-                    </h3>
-                    <p class="product-price">R$ 125,00</p>
-                    <p class="product-installments">em até 3x de R$ 41,67</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho P">P</span>
-                        <span class="size-option" aria-label="Tamanho M">M</span>
-                        <span class="size-option" aria-label="Tamanho G">G</span>
-                        <span class="size-option" aria-label="Tamanho GG">GG</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #556B2F;"></span>
-                        <span class="color-swatch" style="background-color: #800000;"></span>
-                        <span class="color-swatch" style="background-color: #8B4513;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód S003</span>
+                        <h3><a href="produto.html?id=S003" class="product-card-link">Saia Midi com Cinto Redondo</a>
+                        </h3>
+                        <p class="product-price">R$ 125,00</p>
+                        <p class="product-installments">em até 3x de R$ 41,67</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=S003" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -273,17 +260,17 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/vestido8.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód V008</span>
-                    <h3><a href="produto.html?id=V008" class="product-card-link">Vestido Bordado Rosa Plus</a></h3>
-                    <p class="product-price">R$ 235,00</p>
-                    <p class="product-installments">em até 3x de R$ 78,33</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho G1">G1</span>
-                        <span class="size-option" aria-label="Tamanho G2">G2</span>
-                        <span class="size-option" aria-label="Tamanho G3">G3</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #FFC0CB;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód V008</span>
+                        <h3><a href="produto.html?id=V008" class="product-card-link">Vestido Bordado Rosa Plus</a></h3>
+                        <p class="product-price">R$ 235,00</p>
+                        <p class="product-installments">em até 3x de R$ 78,33</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=V008" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -292,19 +279,17 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/BlusaPlus.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód B003</span>
-                    <h3><a href="produto.html?id=B003" class="product-card-link">Blusa Plus com Renda</a></h3>
-                    <p class="product-price">R$ 84,00</p>
-                    <p class="product-installments">em até 3x de R$ 28,00</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho G1">G1</span>
-                        <span class="size-option" aria-label="Tamanho G2">G2</span>
-                        <span class="size-option" aria-label="Tamanho G3">G3</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #FFC0CB;"></span>
-                        <span class="color-swatch" style="background-color: #FFFFFF;"></span>
-                        <span class="color-swatch" style="background-color: #8B4513;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód B003</span>
+                        <h3><a href="produto.html?id=B003" class="product-card-link">Blusa Plus com Renda</a></h3>
+                        <p class="product-price">R$ 84,00</p>
+                        <p class="product-installments">em até 3x de R$ 28,00</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=B003" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -313,25 +298,23 @@
                         <div class="product-image-placeholder" style="background-image: url('Fotos/SaiaPlus1.jpg');">
                         </div>
                     </a>
-                    <span class="product-card-label">Cód S001</span>
-                    <h3><a href="produto.html?id=S001" class="product-card-link">Saia Midi Plus Size Listrada</a>
-                    </h3>
-                    <p class="product-price">R$ 135,00</p>
-                    <p class="product-installments">em até 3x de R$ 45,00</p>
-                    <div class="product-sizes">
-                        <span class="size-option" aria-label="Tamanho G1">G1</span>
-                        <span class="size-option" aria-label="Tamanho G2">G2</span>
-                    </div>
-                    <div class="product-colors">
-                        <span class="color-swatch" style="background-color: #4D4D4D;"></span>
-                        <span class="color-swatch" style="background-color: #8B4513;"></span>
-                        <span class="color-swatch" style="background-color: #4682B4;"></span>
+                    <div class="product-card-content">
+                        <span class="product-card-label">Cód S001</span>
+                        <h3><a href="produto.html?id=S001" class="product-card-link">Saia Midi Plus Size Listrada</a>
+                        </h3>
+                        <p class="product-price">R$ 135,00</p>
+                        <p class="product-installments">em até 3x de R$ 45,00</p>
+                        <div class="product-card-footer">
+                            <a href="produto.html?id=S001" class="card-add-button">
+                                <span>Ver Opções</span>
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
-
         <section id="destaques-carousel" class="product-carousel-section">
             <h2>Vestidos das Famosas</h2>
             <div class="carousel-wrapper">
@@ -357,7 +340,6 @@
                 </div>
                 <button class="carousel-button next" id="carousel-next">&gt;</button>
             </div>
-
             <a href="loja.html" class="liquid-button cta-center">Veja Mais</a>
         </section>
 
@@ -398,12 +380,13 @@
                         <p>Navegue pelas nossas coleções e encontre os looks que são a sua cara.</p>
                     </div>
                     <div class="stepper-content" data-step="2">
-                        <h3>2. Chame no WhatsApp</h3>
-                        <p>Envie uma mensagem para nossa vendedora com os looks que você gostou.</p>
+                        <h3>2. Adicione à Sacola</h3>
+                        <p>Vá adicionando seus itens favoritos à sacola para organizar seu pedido.</p>
                     </div>
                     <div class="stepper-content" data-step="3">
-                        <h3>3. Atendimento Exclusivo</h3>
-                        <p>Você receberá fotos, vídeos, e todo o suporte para finalizar seu pedido com segurança.</p>
+                        <h3>3. Envie seu Pedido</h3>
+                        <p>Quando terminar, abra a sacola e clique em "Finalizar Pedido" para enviar tudo para o nosso
+                            WhatsApp!</p>
                     </div>
                 </div>
                 <div class="stepper-footer">
@@ -430,26 +413,37 @@
         </section>
 
 
-        <section id="contato" class="contact-section">
-            <div class="contact-content">
-                <h2>Entre em contato</h2>
-                <p>Tem alguma dúvida ou sugestão? Fale com a vendedora.</p>
+        <section id="categorias" class="product-grid-section"
+            style="background-color: var(--color-white); padding-top: 3rem; padding-bottom: 5rem;">
+            <h2>Navegue por Categorias</h2>
+            <p style="font-size: 1.1rem; color: var(--color-text-light); margin-top: -2rem; margin-bottom: 2.5rem;">
+                Encontre exatamente o que você procura.</p>
 
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Seu Nome</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Seu E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="liquid-button dark">Enviar Mensagem</button>
-                </form>
+            <div class="category-grid">
+                <a href="loja.html?categoria=vestidos" class="category-card"
+                    style="background-image: url('Fotos/Vestido1.jpg');">
+                    <span>Vestidos</span>
+                </a>
+                <a href="loja.html?categoria=saias" class="category-card"
+                    style="background-image: url('Fotos/SaiaMidi10.jpg');">
+                    <span>Saias</span>
+                </a>
+                <a href="loja.html?categoria=blusas" class="category-card"
+                    style="background-image: url('Fotos/blusa1.jpg');">
+                    <span>Blusas</span>
+                </a>
+                <a href="loja.html?categoria=camisetas" class="category-card"
+                    style="background-image: url('Fotos/CamisaC2.png');">
+                    <span>Camisetas</span>
+                </a>
+                <a href="loja.html?categoria=calcas" class="category-card"
+                    style="background-image: url('Fotos/Calças6.jpg');">
+                    <span>Calças</span>
+                </a>
+                <a href="loja.html?categoria=fardamentos" class="category-card"
+                    style="background-image: url('Fotos/fardamento5.jpg');">
+                    <span>Fardamentos</span>
+                </a>
             </div>
         </section>
     </main>
@@ -464,13 +458,28 @@
                 <span class="dock-icon"><i class="fas fa-box-archive"></i></span>
                 <span class="dock-label">Coleção</span>
             </a>
-            <a href="#contato" class="dock-item" data-label="Contato">
-                <span class="dock-icon"><i class="fas fa-user"></i></span>
-                <span class="dock-label">Contato</span>
+            <a href="#categorias" class="dock-item" data-label="Categorias">
+                <span class="dock-icon"><i class="fas fa-th-large"></i></span>
+                <span class="dock-label">Categorias</span>
             </a>
         </div>
     </nav>
 
+    <div class="bag-overlay" id="bag-overlay"></div>
+    <aside class="bag-sidebar" id="bag-sidebar">
+        <div class="bag-header">
+            <h3>Sua Sacola</h3>
+            <button class="bag-close-btn" id="bag-close-btn">&times;</button>
+        </div>
+        <div class="bag-content" id="bag-items-container">
+            <p class="bag-empty-message">Sua sacola está vazia.</p>
+        </div>
+        <div class="bag-footer">
+            <a href="#" class="pdp-whatsapp-button" id="bag-checkout-whatsapp" style="display: none;">
+                <i class="fab fa-whatsapp"></i> Finalizar Pedido
+            </a>
+        </div>
+    </aside>
     <div class="floating-social">
         <a href="https://chat.whatsapp.com/BS9jxBn1V2eIzFxjMFlxXG?fbclid=PAZXh0bgNhZW0CMTEAAadpgJFJx9NshdqBFCB9NrVhL5M68yZynr7unGsOEl4Qdg7ms3brQYLnPpvg5Q_aem_YoHqPQW_SD-3Awi7FhzB1Q"
             target="_blank" class="social-icon whatsapp">
@@ -486,6 +495,7 @@
         <p>&copy; 2025 Crismon Modas. Todos os direitos reservados.</p>
     </footer>
 
+    <script src="bag-script.js"></script>
     <script src="RotatingText.js"></script>
     <script src="script.js"></script>
 

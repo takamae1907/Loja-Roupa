@@ -218,3 +218,246 @@
         font-size: 1.5rem;
     }
 }
+/* ============================================== */
+/* ==== 17. ESTILOS DA SACOLA DE COMPRAS ==== */
+/* ============================================== */
+
+/* --- Contador no ícone --- */
+.bag-item-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-white);
+    display: none; /* Escondido por padrão */
+}
+
+/* --- Overlay (Fundo) --- */
+.bag-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1010;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.bag-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Sidebar (Painel) --- */
+.bag-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100%;
+    background-color: var(--color-white);
+    z-index: 1011;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.bag-sidebar.open {
+    transform: translateX(0);
+}
+
+.bag-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+.bag-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+.bag-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+/* --- Conteúdo e Itens --- */
+.bag-content {
+    padding: 1rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.bag-empty-message {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-top: 2rem;
+}
+.bag-item {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.bag-item-img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+}
+.bag-item-details {
+    flex-grow: 1;
+}
+.bag-item-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+.bag-item-info {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}
+.bag-item-price {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+.bag-item-remove {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    align-self: flex-start;
+}
+.bag-item-remove:hover {
+    color: #DC143C; /* Vermelho */
+}
+
+/* --- Rodapé --- */
+.bag-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-beige);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .bag-sidebar {
+        width: 90%;
+        max-width: 320px;
+    }
+}
+/* ============================================== */
+/* ==== 18. ESTILO SACOLA MINIMALISTA ==== */
+/* ============================================== */
+
+/* 1. Remove o estilo de botão da sacola */
+.nav-icon-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-dark); /* Ícone preto */
+    font-size: 1.4rem; /* Tamanho do ícone */
+    cursor: pointer;
+    position: relative; /* Para o contador */
+    padding: 5px; /* Pequeno espaço para clique */
+    transition: opacity 0.2s ease;
+    margin-right: 0.5rem; /* Espaço entre a sacola e o botão de Wpp */
+}
+
+.nav-icon-btn:hover {
+    opacity: 0.7;
+}
+
+/* 2. Reposiciona o contador para o novo ícone */
+.nav-icon-btn .bag-item-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 18px; /* Um pouco menor */
+    height: 18px;
+    font-size: 0.7rem;
+    border: 1px solid var(--color-white);
+}
+
+/* 3. Alinha os ícones no header */
+.nav-icons {
+    display: flex;
+    align-items: center;
+}
+/* ============================================== */
+/* ==== 20. BOTÃO DE OPÇÕES NO CARD ==== */
+/* ============================================== */
+
+/* 1. Remove os tamanhos e cores falsos dos cards */
+#loja .product-sizes,
+#loja .product-colors,
+#colecao .product-sizes,
+#colecao .product-colors {
+    display: none;
+}
+
+/* 2. Garante que o conteúdo do card possa ter um footer */
+.product-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o conteúdo crescer */
+}
+
+/* 3. O footer que segura o botão */
+.product-card-footer {
+    margin-top: auto; /* Empurra para o final */
+    padding-top: 1rem; 
+}
+
+/* 4. O estilo do novo botão "Liquid Glass" */
+.card-add-button {
+    /* Estilo "Liquid Glass" */
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(34, 34, 34, 0.15); /* Fundo escuro leve */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(34, 34, 34, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    
+    /* Texto e Alinhamento */
+    text-decoration: none;
+    color: var(--color-text-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    
+    /* Posição */
+    display: block;
+    margin-top: 1rem; /* Espaço do conteúdo acima */
+    
+    /* Transição */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-add-button:hover {
+    background-color: rgba(34, 34, 34, 0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    color: var(--color-text-dark);
+    transform: scale(1.03);
+}
