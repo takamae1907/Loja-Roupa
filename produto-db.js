@@ -830,5 +830,143 @@ const catalogo = {
         tamanhos: ["P", "M", "G", "GG"],
         cores: ["#FFFFFF"],
         corNomes: ["Branco"]
+    },
+
+    /* ============================================== */
+    /* ==== ADICIONADOS: VESTIDOS DO PRINT ==== */
+    /* ============================================== */
+    
+    // Grupo A-F: R$ 235,00
+    "V016": {
+        nome: "Vestido Elegance A",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoA.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+    "V017": {
+        nome: "Vestido Elegance B",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoB.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+    "V018": {
+        nome: "Vestido Elegance C",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoC.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+    "V019": {
+        nome: "Vestido Elegance D",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoD.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+    "V020": {
+        nome: "Vestido Elegance E",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoE.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+    "V021": {
+        nome: "Vestido Elegance F",
+        preco: "R$ 235,00",
+        parcelas: "em até 3x de R$ 78,33",
+        fotos: ["Fotos/VestidoF.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#D2B48C"], corNomes: ["Variadas"]
+    },
+
+    // Grupo 350: R$ 350,00 (Assumido pelo nome/contexto, parcela de 116,66)
+    "V022": {
+        nome: "Vestido Luxo 350 A",
+        preco: "R$ 350,00",
+        parcelas: "em até 3x de R$ 116,66",
+        fotos: ["Fotos/Vestido350A.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFC0CB"], corNomes: ["Variadas"]
+    },
+    "V023": {
+        nome: "Vestido Luxo 350 B",
+        preco: "R$ 350,00",
+        parcelas: "em até 3x de R$ 116,66",
+        fotos: ["Fotos/Vestido350B.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFC0CB"], corNomes: ["Variadas"]
+    },
+    "V024": {
+        nome: "Vestido Luxo 350 C",
+        preco: "R$ 350,00",
+        parcelas: "em até 3x de R$ 116,66",
+        fotos: ["Fotos/Vestido350C.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFC0CB"], corNomes: ["Variadas"]
+    },
+    "V025": {
+        nome: "Vestido Luxo 350 D",
+        preco: "R$ 350,00",
+        parcelas: "em até 3x de R$ 116,66",
+        fotos: ["Fotos/Vestido350D.jpg"],
+        tamanhos: ["P", "M", "G", "GG"],
+        cores: ["#FFC0CB"], corNomes: ["Variadas"]
+    },
+
+    // Grupo 180: R$ 180,00 (Parcela de 60,00)
+    "V026": {
+        nome: "Vestido Casual 180 A",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180A.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
+    },
+    "V027": {
+        nome: "Vestido Casual 180 B",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180B.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
+    },
+    "V028": {
+        nome: "Vestido Casual 180 C",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180C.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
+    },
+    "V029": {
+        nome: "Vestido Casual 180 D",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180D.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
+    },
+    "V030": {
+        nome: "Vestido Casual 180 E",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180E.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
+    },
+    "V031": {
+        nome: "Vestido Casual 180 F",
+        preco: "R$ 180,00",
+        parcelas: "em até 3x de R$ 60,00",
+        fotos: ["Fotos/Vestido180F.jpg"],
+        tamanhos: ["P", "M", "G"],
+        cores: ["#ADD8E6"], corNomes: ["Variadas"]
     }
 };
